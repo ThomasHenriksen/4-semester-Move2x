@@ -19,4 +19,4 @@ def listOfWords(path):
                list.append(b[11])
     return list
                
-           # cv2.rectangle(img, (x,y),(w+x,h+y),(0,0,255),1)
+ 

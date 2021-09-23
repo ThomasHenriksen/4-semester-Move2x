@@ -11,6 +11,7 @@
     <OutputPath>.</OutputPath>
     <Name>ImageReader</Name>
     <RootNamespace>ImageReader</RootNamespace>
+    <TestFramework>unittest</TestFramework>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,8 +22,11 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ImageReader.py" />
+    <Compile Include="imageReader.py" />
     <Compile Include="class1.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="order.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="test.py">

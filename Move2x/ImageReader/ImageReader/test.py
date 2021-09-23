@@ -1,11 +1,11 @@
-
+import order
 import ImageReader
 
-path = 'ocr-sample2.png' 
+path = 'order2.jpg' 
+listOfWords = ImageReader.listOfWords(path)
+orderlist = order.objOrder(listOfWords)
+print(orderlist)
 
-list = ImageReader.listOfWords(path)
 
-
-print(list)
 
 ImageReader.cv2.waitKey(0)
