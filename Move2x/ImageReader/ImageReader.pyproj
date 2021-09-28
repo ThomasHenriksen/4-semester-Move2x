@@ -4,7 +4,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>07f9e8e9-8159-4b56-9b26-234f143ecab0</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>test.py</StartupFile>
+    <StartupFile>
+    </StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -23,22 +24,20 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="controller\imageReaderController.py" />
-    <Compile Include="class1.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="controller\orderController.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="model\order.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="test.py">
+    <Compile Include="service\imageReaderService.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="model\" />
     <Folder Include="controller\" />
+    <Folder Include="service\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
