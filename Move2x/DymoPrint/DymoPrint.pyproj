@@ -33,6 +33,13 @@
     <Folder Include="controller\" />
     <Folder Include="model\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ImageReader\ImageReader.pyproj">
+      <Name>ImageReader</Name>
+      <Project>{07f9e8e9-8159-4b56-9b26-234f143ecab0}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
        Visual Studio and specify your pre- and post-build commands in
