@@ -5,7 +5,7 @@ my_printer = 'DYMO LabelWriter 450 Turbo'
 label_path = pathlib.Path('move2xLabel.label')
 
 class dymoController(object):
-    """description of class"""
+    """description of class uses stored information in model to print order/s"""
 
     printer_com = Dispatch('Dymo.DymoAddIn')
     printer_com.SelectPrinter('my_printer')
