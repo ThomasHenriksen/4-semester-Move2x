@@ -5,6 +5,12 @@ VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Core", "Core\Core.pyproj", "{1098CBB4-6574-4230-89C7-61E30D01C196}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "DymoPrint", "DymoPrint\DymoPrint.pyproj", "{A7DA7625-0EEB-465E-8B7B-3384F012D5F9}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "ImageReader", "ImageReader\ImageReader.pyproj", "{07F9E8E9-8159-4B56-9B26-234F143ECAB0}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PythonCam", "PythonCam\PythonCam.pyproj", "{FD7258CA-7C0A-40F5-8333-7F6C1EAC1496}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +19,12 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{1098CBB4-6574-4230-89C7-61E30D01C196}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1098CBB4-6574-4230-89C7-61E30D01C196}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7DA7625-0EEB-465E-8B7B-3384F012D5F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7DA7625-0EEB-465E-8B7B-3384F012D5F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07F9E8E9-8159-4B56-9B26-234F143ECAB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07F9E8E9-8159-4B56-9B26-234F143ECAB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD7258CA-7C0A-40F5-8333-7F6C1EAC1496}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD7258CA-7C0A-40F5-8333-7F6C1EAC1496}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
