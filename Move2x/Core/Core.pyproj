@@ -22,6 +22,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Core.py" />
+    <Compile Include="frame.py" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ImageReader\ImageReader.pyproj">
