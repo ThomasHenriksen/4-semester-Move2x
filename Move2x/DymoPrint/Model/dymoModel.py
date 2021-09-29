@@ -6,4 +6,5 @@ class dymoModel(object):
     """description of class gets information from OCR/imageReader and store it"""
     label_val = b.customerNo
     label_product =  b.product + ' ' + b.productNo
+    label_timestamp = 'tid' # Here we need the time stamp from the card might be something like b.timestamp from OCR
 
