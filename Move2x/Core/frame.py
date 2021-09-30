@@ -18,7 +18,7 @@ class SampleApp(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
 
         self.frames = {}
-        for F in (StartPage, PageOne, PageTwo):
+        for F in (HomePage, CamPage, OcrPage):
             page_name = F.__name__
             frame = F(parent=container, controller=self)
             self.frames[page_name] = frame
@@ -29,11 +29,11 @@ class SampleApp(tk.Tk):
         self.show_frame("StartPage")
 
     def show_frame(self, page_name):
-        '''Show a frame for the given page name'''
+        # Show a frame for the given page name
         frame = self.frames[page_name]
         frame.tkraise()
 
-class StartPage(tk.Frame):
+class HomePage(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -49,26 +49,26 @@ class StartPage(tk.Frame):
         button2.pack()
 
 
-class PageOne(tk.Frame):
+class CamPage(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="This is page 1", font=controller.title_font)
+        label = tk.Label(self, text="This is the Cam page", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
-        button = tk.Button(self, text="Go to the start page",
+        button = tk.Button(self, text="Go to the home page",
                            command=lambda: controller.show_frame("StartPage"))
         button.pack()
 
 
-class PageTwo(tk.Frame):
+class OcrPage(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="This is page 2", font=controller.title_font)
+        label = tk.Label(self, text="This is the Ocr Page", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
-        button = tk.Button(self, text="Go to the start page",
+        button = tk.Button(self, text="Go to the home page",
                            command=lambda: controller.show_frame("StartPage"))
         button.pack()
 
