@@ -1,5 +1,6 @@
 from win32com.client import Dispatch
 import pathlib
+import dymoModel
 
 my_printer = 'DYMO LabelWriter 450 Turbo'
 label_path = pathlib.Path('move2xLabel.label')
