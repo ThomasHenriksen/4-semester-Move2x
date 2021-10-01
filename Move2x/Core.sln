@@ -11,6 +11,8 @@ Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "ImageReader", "ImageReader\
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PythonCam", "PythonCam\PythonCam.pyproj", "{FD7258CA-7C0A-40F5-8333-7F6C1EAC1496}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "DataAccessPython", "DataAccessPython\DataAccessPython.pyproj", "{7A5C5E46-3A48-4754-B970-4E4E7F74530D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,8 @@ Global
 		{07F9E8E9-8159-4B56-9B26-234F143ECAB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD7258CA-7C0A-40F5-8333-7F6C1EAC1496}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FD7258CA-7C0A-40F5-8333-7F6C1EAC1496}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A5C5E46-3A48-4754-B970-4E4E7F74530D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A5C5E46-3A48-4754-B970-4E4E7F74530D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
