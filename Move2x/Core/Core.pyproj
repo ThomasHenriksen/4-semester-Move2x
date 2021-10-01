@@ -22,7 +22,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Core.py" />
-    <Compile Include="frame.py" />
+    <Compile Include="GUI\frame.py" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ImageReader\ImageReader.pyproj">
@@ -30,6 +30,11 @@
       <Project>{07f9e8e9-8159-4b56-9b26-234f143ecab0}</Project>
       <Private>True</Private>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="GUI\" />
+    <Folder Include="Model\" />
+    <Folder Include="Temp\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
