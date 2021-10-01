@@ -21,7 +21,6 @@ def saveToDatabase(orders):
 def printOrder(orders):
    ordersM = orders
    listOfOrder = ordersM
-   print(ordersM)
    for order in listOfOrder:
         printer.printOrder(order)
     
