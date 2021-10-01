@@ -1,13 +1,9 @@
 import sys 
 sys.path.append('..\DataAccessPython')
 from Controller import dbController as db
-
+from model import order as ordersM
 def saveToDatabase(orders):
-    listOfOrder = orders
-    for order in listlistOfOrder:
-        db.save(order)
-    
-    return null
+    return db.saveOrder(orders)
 
 def getOrderFromDatabase():
     return db.getAllOrders()

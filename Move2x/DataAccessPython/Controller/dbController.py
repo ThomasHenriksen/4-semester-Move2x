@@ -3,9 +3,9 @@ import Database.ProductAccess as Access
 
 
 
-def saveOrder(customerNo, part, color, product, productNo):
+def saveOrder(order):
 
-    return Access.addNewOrder(customerNo, part, color, product, productNo)
+    return Access.addNewOrder(order)
 
 def getProducts():
 
