@@ -1,14 +1,14 @@
-import Database.ProductAcess
-class dbController(object):
-    """description of class"""
-    #Sample select query
-cursor.execute("SELECT @@version;") 
-row = cursor.fetchone() 
-while row: 
-    print(row[0])
-    row = cursor.fetchone()
-
-addNewProduct()
+import Database.ProductAccess as Access
 
 
+
+
+def saveOrder(customerNo, part, color, product, productNo):
+
+    return Access.addNewOrder(customerNo, part, color, product, productNo)
+
+def getProducts():
+
+    return Access.selectAllOrders()
+    
 
