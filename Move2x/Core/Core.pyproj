@@ -21,6 +21,8 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Controller\DataBase.py" />
+    <Compile Include="Controller\ImageReader.py" />
     <Compile Include="Core.py" />
     <Compile Include="GUI\frame.py" />
   </ItemGroup>
@@ -32,6 +34,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Controller\" />
     <Folder Include="GUI\" />
     <Folder Include="Model\" />
     <Folder Include="Temp\" />
