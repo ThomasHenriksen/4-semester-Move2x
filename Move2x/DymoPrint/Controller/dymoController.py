@@ -1,11 +1,11 @@
 from win32com.client import Dispatch
 import pathlib
-import dymoModel # Is not usefull as we don't use the model-layer
+
 
 my_printer = 'DYMO LabelWriter 450 Turbo'
 label_path = pathlib.Path('move2xLabel.label')
 
-class dymoController(customerNo, product, productNo):
+def dymoController(customerNo, product, productNo):
     """description of class uses stored information to print order/s"""
 
     printer_com = Dispatch('Dymo.DymoAddIn')

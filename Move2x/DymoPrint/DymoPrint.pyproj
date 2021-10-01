@@ -4,7 +4,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>a7da7625-0eeb-465e-8b7b-3384f012d5f9</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>DymoPrint.py</StartupFile>
+    <StartupFile>
+    </StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -24,7 +25,6 @@
     <Compile Include="controller\dymoController.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DymoPrint.py" />
     <Compile Include="model\dymoModel.py">
       <SubType>Code</SubType>
     </Compile>
