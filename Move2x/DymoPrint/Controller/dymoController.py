@@ -5,13 +5,13 @@ import dymoModel
 my_printer = 'DYMO LabelWriter 450 Turbo'
 label_path = pathlib.Path('move2xLabel.label')
 
-class dymoController(object):
+class dymoController(customerNo, product, productNo):
     """description of class uses stored information in model to print order/s"""
 
     printer_com = Dispatch('Dymo.DymoAddIn')
     printer_com.SelectPrinter('my_printer')
     printer_com.Open(label_path)
-
+    #TEXT is customerNumber, ADDRESS is prduct + productNumber
     printer_label = Dispatch("Dymo.DymoLabels")
     printer_label.SetField('TEXT', label_product)
     printer_label.SetField('ADDRESS', label_val)
