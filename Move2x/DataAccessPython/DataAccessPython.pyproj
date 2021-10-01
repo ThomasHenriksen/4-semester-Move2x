@@ -27,6 +27,7 @@
     <Compile Include="Database\ProductAccess.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Model\order.py" />
     <Compile Include="Model\Product.py">
       <SubType>Code</SubType>
     </Compile>
