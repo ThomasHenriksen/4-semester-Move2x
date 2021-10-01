@@ -14,7 +14,7 @@ class dymoController(customerNo, product, productNo):
     #TEXT is customerNumber, ADDRESS is prduct + productNumber
     printer_label = Dispatch("Dymo.DymoLabels")
     printer_label.SetField('TEXT', product, productNo)
-    printer_label.SetField('ADDRESS', customerNo)
+    printer_label.SetField('ADRESSE', customerNo)
     #printer_label.SetField('TEXT_1', label_timestamp) for later use if we have to take in timestamps
 
     printer_com.StartprintJob()
