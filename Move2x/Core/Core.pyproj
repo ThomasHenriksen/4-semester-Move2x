@@ -22,9 +22,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Controller\DataBase.py" />
+    <Compile Include="Controller\DymoPrint.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controller\ImageReader.py" />
     <Compile Include="Core.py" />
     <Compile Include="GUI\frame.py" />
+    <Compile Include="Model\order.py" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ImageReader\ImageReader.pyproj">
