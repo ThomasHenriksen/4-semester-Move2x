@@ -9,6 +9,7 @@ def catchWordsToMakeOrder(list):
          b = b.replace('.', '')
          b = b.replace('(', '')
          b = b.replace(')', '')
+         print(list[i])
          if(b != 'CUSTOMER' and b != 'PRODUCT' and b != 'pes' and b != 'pc' and b != '|' and b != 'pe' and b != 'ORDER' and b != 'TICKET' and b != '=' and b != 'TIME' and b != 'STAMP' and b != 'HH:MM' and b != 'FROM' and b != 'START' and b != '+—'):
               if(b.isnumeric()):
                   if(int(b) > 10000):

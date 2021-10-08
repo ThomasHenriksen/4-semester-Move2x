@@ -4,13 +4,14 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>1098cbb4-6574-4230-89c7-61e30d01c196</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Controller\test.py</StartupFile>
+    <StartupFile>Controller\guiTest.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>Core</Name>
     <RootNamespace>Core</RootNamespace>
+    <TestFramework>Pytest</TestFramework>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -23,6 +24,9 @@
   <ItemGroup>
     <Compile Include="Controller\DataBase.py" />
     <Compile Include="Controller\DymoPrint.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controller\guiTest.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controller\ImageReader.py" />
