@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>1098cbb4-6574-4230-89c7-61e30d01c196</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Controller\guiTest.py</StartupFile>
+    <StartupFile>script\main.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -36,6 +36,13 @@
     <Compile Include="Core.py" />
     <Compile Include="GUI\frame.py" />
     <Compile Include="Model\order.py" />
+    <Compile Include="script\ocr.py" />
+    <Compile Include="script\main.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="script\xml.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ImageReader\ImageReader.pyproj">
@@ -48,6 +55,7 @@
     <Folder Include="Controller\" />
     <Folder Include="GUI\" />
     <Folder Include="Model\" />
+    <Folder Include="script\" />
     <Folder Include="Temp\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />

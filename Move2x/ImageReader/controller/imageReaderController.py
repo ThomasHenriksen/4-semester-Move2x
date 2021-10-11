@@ -2,11 +2,14 @@ import cv2
 import pytesseract as pt
 
 pt.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
-list = []
+
+
 def imageColorRGB(image):
     return cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
 def listOfWords(path):
     img = cv2.imread(path)
+    
     img = imageColorRGB(img)
     hImg, wImag  = img.shape
     boxes = pt.image_to_data(img) 
