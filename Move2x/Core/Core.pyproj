@@ -25,6 +25,9 @@
     <Compile Include="Move2xRPA.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Screenbots\LabelClick.py" />
+    <Compile Include="Screenbots\ScreenShotBot.py" />
+    <Compile Include="Screenbots\SearchBot.py" />
     <Compile Include="script\ocr.py" />
     <Compile Include="script\main.py">
       <SubType>Code</SubType>
@@ -43,8 +46,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Screenbots\" />
+    <Folder Include="Screenbots\__pycache__\" />
     <Folder Include="script\" />
     <Folder Include="Temp\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Screenbots\Dymoimg.JPG" />
+    <Content Include="Screenbots\DymoPrinter.JPG" />
+    <Content Include="Screenbots\LabelCustomer.JPG" />
+    <Content Include="Screenbots\LabelFind.JPG" />
+    <Content Include="Screenbots\Screenbots.pyproj" />
+    <Content Include="Screenbots\__pycache__\ScreenShotBot.cpython-37.pyc" />
+    <Content Include="Screenbots\__pycache__\SearchBot.cpython-37.pyc" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
