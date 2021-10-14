@@ -1,6 +1,7 @@
 from script import xml 
 from script import ocr as imageReader
 from script import webcam 
+from script import typingBot
 from win10toast import ToastNotifier
 import threading
 import time
@@ -23,6 +24,7 @@ class myThread (threading.Thread):
       if(self.name == "Thread-2"):
           time.sleep(5)
           webcam.takePicture()
+          time.sleep(30)
           webcam.stopWebcam()
           print_time(self.name, 2, self.counter)
 
@@ -32,19 +34,20 @@ def print_time(threadName, counter, delay):
          threadName.exit()
       counter -= 1
       
+def start():
+    # Create new threads
+    thread1 = myThread(1, "Thread-1", 1)
+    thread2 = myThread(2, "Thread-2", 2)
 
-# Create new threads
-thread1 = myThread(1, "Thread-1", 1)
-thread2 = myThread(2, "Thread-2", 2)
-
-# Start new Threads
-thread1.start()
-thread2.start()
-
-
+    # Start new Threads
+    thread1.start()
+    thread2.start()
 
 
 
+
+def writerBot(text):
+    typingBot.type_string_with_delay(text)
 
 def ocr(imgName):
     temp = 'Temp\\'

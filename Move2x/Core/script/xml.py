@@ -18,6 +18,7 @@ def createXml(dateFrom,toFile):
 
     with open(path_file, "w") as f:
         f.write(xml_str)
+
 def indent(elem, level=0):
     i = "\n" + level*"  "
     j = "\n" + (level-1)*"  "
@@ -34,6 +35,7 @@ def indent(elem, level=0):
         if level and (not elem.tail or not elem.tail.strip()):
             elem.tail = j
     return elem
+
 def saveToXml(dateFrom,toFile,words):
     path_file = 'Temp\_'+ toFile + '.xml'
     root = ElementTree.parse(path_file).getroot()
@@ -43,6 +45,7 @@ def saveToXml(dateFrom,toFile,words):
     root.insert(1, c)
     tree = ElementTree.ElementTree(indent(root))
     tree.write(path_file, xml_declaration=True, encoding='utf-8')
+
 def readXml(toFile):
     path_file = 'Temp\_'+ toFile + '.xml'
     tree = ElementTree.parse(path_file)
