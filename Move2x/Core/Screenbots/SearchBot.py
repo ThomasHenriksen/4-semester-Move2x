@@ -10,20 +10,16 @@ from ScreenShotBot import image
                
 
                 
-#image = cv.imread("straight_to_disk.png") # reads from disk (showing it got a screenshot and it is on desk)
-#screenshotimg = Screenshotbot('straight_to_disk.png')
 
-#cv.IMREAD_IMREAD_UNCHANGED
-#haystack_img = cv.imread('straight_to_disk.png', cv.IMREAD_REDUCED_COLOR_2) #half size
-haystack_img = cv.imread('straight_to_disk.png', cv.IMREAD_UNCHANGED) #half size
-needle_img = cv.imread('LabelCustomer.jpg', cv.IMREAD_UNCHANGED)
-result = cv.matchTemplate(haystack_img, needle_img, cv.TM_CCOEFF_NORMED)
+haystack_img = cv.imread('straight_to_disk.png', cv.IMREAD_UNCHANGED) #Screenshot
+needle_img = cv.imread('LabelCustomer.jpg', cv.IMREAD_UNCHANGED)#Label img to find with in screenshot
+result = cv.matchTemplate(haystack_img, needle_img, cv.TM_CCOEFF_NORMED) # match Screenshot and Label img 
 
 min_val, max_val, min_loc, max_loc = cv.minMaxLoc(result)
 
 print('Best match top left positopn: %s' % str(max_loc))
 print('Best match confidence: %s' % str(max_val))
-
+# Sets the level off accepteable match with in screenshot
 threshold = 0.8
 if max_val >= threshold:
     print('Found Dymoimg')
@@ -41,6 +37,6 @@ if max_val >= threshold:
     cv.imshow('Result', haystack_img)
     x, y = max_loc
     max_loc = x + 20, y + 20
-    pg.click(max_loc)
-    cv.waitKey()
+    #pg.click(max_loc)
+    #cv.waitKey()
 
