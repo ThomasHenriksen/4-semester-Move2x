@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>27e86aaa-9872-4ac5-b4e4-2b9ae59dc665</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Screenbots.py</StartupFile>
+    <StartupFile>SearchBot.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -24,14 +24,13 @@
     <Compile Include="LabelClick.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Screenbots.py" />
+    <Compile Include="module1.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ScreenShotBot.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="SearchBot.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="test_1.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
