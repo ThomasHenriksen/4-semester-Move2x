@@ -2,6 +2,11 @@ from script import xml
 from script import ocr as imageReader
 from script import webcam 
 from script import typingBot
+from script import LabelClick
+from script import SearchBot
+from script import ScreenShotBot
+
+
 from win10toast import ToastNotifier
 import threading
 import time
@@ -22,11 +27,23 @@ class myThread (threading.Thread):
           print_time(self.name, 1, self.counter)
           
       if(self.name == "Thread-2"):
+          listOfTrask = xml.readXml('trask')
           time.sleep(5)
-          webcam.takePicture()
-          time.sleep(10)
+          for trask in listlistOfTrask:
+              if(trask == 'webcam'):
+                  webcam.takePicture()
+              elif(trask == 'ocr'):
+                  lala = 2    
+              elif(trask == 'click'):
+                  lala = 2
+              elif(trask == 'tast'):
+                  lala = 2
+              elif(trask == 'screen'):
+                  lala = 2    
+              elif(trask == 'search'):
+                  lala = 2                  
           webcam.stopWebcam()
-          print_time(self.name, 2, self.counter)
+          print_time(self.name, 2, self.counter)    
 
 def print_time(threadName, counter, delay):
    while counter:
@@ -45,8 +62,14 @@ def start():
     thread1.start()
     thread2.start()
 
+def screenshot():
+    ScreenShotBot.take_screenshot()
 
+def search():
+    loc = SearchBot.find_label()
 
+def click():
+    LabelClick.Click_coord()
 
 def writerBot(text):
     typingBot.type_string_with_delay(text)
