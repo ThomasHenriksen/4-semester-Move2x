@@ -15,7 +15,7 @@ time.sleep(6)
 def find_label(take_screenshot):              
 
     haystack_img = cv.imread('ScreenShot.png', cv.IMREAD_UNCHANGED) #Screenshot
-    needle_img = cv.imread('LabelCustomer.jpg', cv.IMREAD_UNCHANGED)#Label img to find with in screenshot
+    needle_img = cv.imread('Label.png', cv.IMREAD_UNCHANGED)#Label img to find with in screenshot
     result = cv.matchTemplate(haystack_img, needle_img, cv.TM_CCOEFF_NORMED) # match Screenshot and Label img 
 
     min_val, max_val, min_loc, max_loc = cv.minMaxLoc(result)
