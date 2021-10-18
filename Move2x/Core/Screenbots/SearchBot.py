@@ -14,7 +14,7 @@ time.sleep(6)
 
 def find_label(take_screenshot):              
 
-    haystack_img = cv.imread('straight_to_disk.png', cv.IMREAD_UNCHANGED) #Screenshot
+    haystack_img = cv.imread('ScreenShot.png', cv.IMREAD_UNCHANGED) #Screenshot
     needle_img = cv.imread('LabelCustomer.jpg', cv.IMREAD_UNCHANGED)#Label img to find with in screenshot
     result = cv.matchTemplate(haystack_img, needle_img, cv.TM_CCOEFF_NORMED) # match Screenshot and Label img 
 
@@ -42,4 +42,4 @@ def find_label(take_screenshot):
         max_loc = x + 20, y + 20
         cv.imshow('Result', haystack_img)
         cv.waitKey()
-find_label(take_screenshot)
+        return take_screenshot
