@@ -29,21 +29,25 @@ class myThread (threading.Thread):
       if(self.name == "Thread-2"):
           listOfTrask = xml.readXml('trask')
           time.sleep(5)
-          for trask in listlistOfTrask:
+          objWebcam = ''
+          objOcr = []
+          objScreen = ''
+          objLoc = []
+          for trask in listOfTrask:
               if(trask == 'webcam'):
-                  webcam.takePicture()
+                  objWebcam = webcam.takePicture()
               elif(trask == 'ocr'):
-                  lala = 2    
+                  objOcr = ocr(objWebcam)    
               elif(trask == 'click'):
-                  lala = 2
+                  click(objLoc)
               elif(trask == 'tast'):
-                  lala = 2
+                  writerBot(objOcr)
               elif(trask == 'screen'):
-                  lala = 2    
+                  objScreen = screenshot()   
               elif(trask == 'search'):
-                  lala = 2                  
+                 objLoc = search(objScreen)             
           webcam.stopWebcam()
-          print_time(self.name, 2, self.counter)    
+          print_time(self.name, 1, self.counter)    
 
 def print_time(threadName, counter, delay):
    while counter:
@@ -63,13 +67,20 @@ def start():
     thread2.start()
 
 def screenshot():
-    ScreenShotBot.take_screenshot()
+    return ScreenShotBot.take_screenshot()
 
-def search():
+def search(imgName):
+    temp = 'Temp\\'
+    type = '.jpg'
+    path = temp + imgName + type 
+    fileToWrite = 'ocr'
+    xml.createXml('ocr',fileToWrite)
     loc = SearchBot.find_label()
+    for f in list:
+       xml.saveToXml('ocr',fileToWrite, f)
 
-def click():
-    LabelClick.Click_coord()
+def click(max_loc):
+    LabelClick.Click_coord(max_loc)
 
 def writerBot(text):
     typingBot.type_string_with_delay(text)
@@ -88,6 +99,7 @@ def ocr(imgName):
        
     listFromXml = xml.readXml(fileToWrite)
     print(listFromXml)
+    return list
 
 
 

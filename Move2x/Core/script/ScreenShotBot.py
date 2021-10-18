@@ -2,9 +2,12 @@ import pyautogui as pg
 
 
 def take_screenshot ():
-    #path = ('temp\\')
+    temp = 'temp\\'
+    type = '.png'
+    name = 'ScreenShot'
+    path = temp + name + type     
     myScreenshot = pg.screenshot() 
-    myScreenshot.save('ScreenShot.png')
-    return myScreenshot
+    myScreenshot.save(path)
+    return name
         
     

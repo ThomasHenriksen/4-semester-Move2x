@@ -19,9 +19,13 @@ def startWebcam():
 
         
 def takePicture():
-    
+    temp = 'temp\\'
+    type = '.png'
+    name = 'move2xGameCard'
+    path = temp + name + type     
     rval, frame = vc.read()
-    cv2.imwrite("Temp\\move2xGameCard.jpg",frame)
+    cv2.imwrite(path,frame)
+    return name
      
 def stopWebcam():
     vc.release()
