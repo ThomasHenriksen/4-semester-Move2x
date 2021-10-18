@@ -2,15 +2,9 @@ import numpy as np
 import cv2 as cv
 import pyautogui as pg
 import win32com 
-import imutils
-from ScreenShotBot import take_screenshot 
 import pyautogui, time
 
-time.sleep(6)
-#import Screenshotbot as screenshotbot
-
-#pg.screenshot("straight_to_disk.png") #take screenshot and saves to disk
-               
+             
 
 def find_label(take_screenshot):              
 
