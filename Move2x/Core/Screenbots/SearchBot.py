@@ -9,7 +9,7 @@ import pyautogui, time
 time.sleep(6)
 #import Screenshotbot as screenshotbot
 
-#pg.screenshot("straight_to_disk.png") #take screenshot and saves ti disk
+#pg.screenshot("straight_to_disk.png") #take screenshot and saves to disk
                
 
 def find_label(take_screenshot):              
