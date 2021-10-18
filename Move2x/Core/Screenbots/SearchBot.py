@@ -35,11 +35,6 @@ def find_label(take_screenshot):
         top_left = max_loc
         bottom_right = (top_left[0] + needle_w, top_left[1] + needle_h)
 
-        cv.rectangle(haystack_img, top_left, bottom_right, color=(0, 255, 0), thickness=2, lineType=cv.LINE_4)
-
-        cv.imshow('Result', haystack_img)
         x, y = max_loc
         max_loc = x + 20, y + 20
-        cv.imshow('Result', haystack_img)
-        cv.waitKey()
-        return take_screenshot
+        return max_loc
