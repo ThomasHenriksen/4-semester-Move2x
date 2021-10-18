@@ -37,4 +37,4 @@ def find_label(take_screenshot):
 
         x, y = max_loc
         max_loc = x + 20, y + 20
-        return max_loc
+    return max_loc
