@@ -56,8 +56,8 @@ def print_time(threadName, counter, delay):
       counter -= 1
       
 def start():
-    toaster = ToastNotifier()
-    toaster.show_toast("Move2x", "Running RPA", duration=120)
+   #toaster = ToastNotifier()
+   #toaster.show_toast("Move2x", "Running RPA", duration=120)
     # Create new threads
     thread1 = myThread(1, "Thread-1", 1)
     thread2 = myThread(2, "Thread-2", 2)
