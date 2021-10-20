@@ -59,6 +59,7 @@ def start():
    #toaster = ToastNotifier()
    #toaster.show_toast("Move2x", "Running RPA", duration=120)
     # Create new threads
+    exec(open("script\\ButtonsFromArrayGUI").read())
     thread1 = myThread(1, "Thread-1", 1)
     thread2 = myThread(2, "Thread-2", 2)
 
