@@ -25,6 +25,7 @@
     <Compile Include="Move2xRPA.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="script\ButtonsFromArrayGUI.py" />
     <Compile Include="script\LabelClick.py" />
     <Compile Include="script\ScreenShotBot.py" />
     <Compile Include="script\SearchBot.py" />
