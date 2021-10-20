@@ -14,8 +14,9 @@ def find_label(take_screenshot):
     temp = 'temp\\'
     type = '.png'
     path = temp + take_screenshot + type 
-    haystack_img = cv.imread(path, cv.IMREAD_UNCHANGED) #Screenshot
-    needle_img = cv.imread(pathSearch, cv.IMREAD_UNCHANGED)#Label img to find with in screenshot
+    haystack_img = cv.imread(path) #Screenshot
+    #haystack_img = cv.resize(haystack_img, (1024, 720))
+    needle_img = cv.imread(pathSearch)#Label img to find with in screenshot
     result = cv.matchTemplate(haystack_img, needle_img, cv.TM_CCOEFF_NORMED) # match Screenshot and Label img 
 
     min_val, max_val, min_loc, max_loc = cv.minMaxLoc(result)
@@ -37,4 +38,5 @@ def find_label(take_screenshot):
 
         x, y = max_loc
         max_loc = x + 20, y + 20
-    return max_loc
+
+        return max_loc
