@@ -1,36 +1,77 @@
-# create multiple Tkinter buttons using a dictionary:
 
+from tkinter import *
+from tkinter import ttk
 import tkinter as tk
-#Laver et grid vindue hvor man måske nemmere kan placere de to ekstra knapper, ved siden af tekstfeltet
-#master=tk.Tk()
-#master.title("grid() method")
-#master.geometry("600x400")
-def text_update(Words):
-    text.delete(0, tk.END)
-    text.insert(0, Words) 
+from script import xml
 
-root = tk.Tk()
+win = Tk()
 
-text = tk.Entry(root, width=35, bg='yellow')
-text.grid(row=0, column=0, columnspan=5)
-#Måden man ville placere f.eks. en knap i grid vinduet
-#B = tk.Button(master, text="button1")
-#B.grid(row=0, column=0)
+# setting the windows size
+win.geometry("600x400")
+
+# declaring string variable
+# for storing name
+name_var=tk.StringVar()
+
+choosenword = ''
+def xml_Save(word):
+    fileToWrite = 'choosenword'
+    xml.createXml('choosenword',fileToWrite)
+    xml.saveToXml('choosenword',fileToWrite, word)
+
+def xml_Read():
+	return xml.readXml('ocr')
+
+	# defining a function that will
+	# get the name 
+def submit():
+
+		
+	name=name_var.get()
+	choosenword = name
+		
+	xml_Save(choosenword)
+
+	
+	name_var.set("")
+	win.destroy()
+		
+		
+	
+	# creating a label for
+	# name using widget Label
+name_label = tk.Label(win, text = 'Username', font=('calibre',10, 'bold'))
+
+	# creating a entry for input
+	# name using widget Entry
+name_entry = tk.Entry(win,textvariable = name_var, font=('calibre',10,'normal'))
+
+	# creating a button using the widget
+	# Button that will call the submit function
+sub_btn=tk.Button(win,text = 'Submit', command = submit)
+
+name_entry.pack()
+sub_btn.pack()
 
 
+	#Define a function to update the entry widget
+def entry_update(text):
+	   name_entry.delete(0,END)
+	   name_entry.insert(0,text)
 
 
-btn_dict = {}
-col = 0 
-words = ["Order", "Black 1 fuse L", "Timestamp", "Customer", "Product"] 
-for Words in words:
-    # pass each button's text to a function
-    action = lambda x = Words: text_update(x)
-    # create the buttons and assign to Words:button-object dict pair
-    btn_dict[Words] = tk.Button(root, text=Words, command=action) 
-    btn_dict[Words].grid(row=1, column=col, pady=5) 
-    col += 1 
+	#Create Multiple Buttons with different commands
+button_dict={}
+option = xml_Read()
 
-# run the GUI event loop
-root.mainloop()
+for i in option:
+		def func(x=i):
+			return entry_update(x)
+
+		button_dict[i]=ttk.Button(win, text=i, command= func)
+		button_dict[i].pack()
+
+	# performing an infinite loop
+	# for the window to display
+win.mainloop()
 
