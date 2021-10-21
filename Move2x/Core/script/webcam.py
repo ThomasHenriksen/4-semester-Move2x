@@ -4,7 +4,23 @@ import time
 
 vc = cv2.VideoCapture(0)
 
+def returnCameraIndexes():
+    # checks the first 10 indexes.
+    index = 1
+    arr = []
+    i = 10
+    while i > 0:
+        cap = cv2.VideoCapture(index)
+        if cap.read()[0]:
+            arr.append(index)
+            cap.release()
+        index += 1
+        i -= 1
+    
+    return i
+
 def startWebcam():
+    print(str(returnCameraIndexes()))
     vc.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
     vc.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
     if vc.isOpened(): # try to get the first frame
@@ -19,6 +35,7 @@ def startWebcam():
 
         
 def takePicture():
+
     temp = 'temp\\'
     type = '.png'
     name = 'move2xGameCard'
