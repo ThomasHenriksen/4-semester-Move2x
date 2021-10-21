@@ -1,5 +1,5 @@
-from script import main
+from script import main as rpa
 
-
-main.start()
+def main():
+    rpa.start()
 
