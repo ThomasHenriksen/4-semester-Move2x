@@ -6,10 +6,14 @@ import pyautogui, time
 
              
 
-def find_label(take_screenshot):              
+def find_label(take_screenshot, Label): 
     tempSearch = 'resources\\'
     typeSearch = '.png'
-    nameSearch = 'Label'
+    nameSearch = ''
+    if(Label == "label"):
+        nameSearch = 'Label' 
+    elif(Label == "textBox"):
+        nameSearch = 'textBox'
     pathSearch = tempSearch + nameSearch + typeSearch 
     temp = 'temp\\'
     type = '.png'
@@ -36,7 +40,6 @@ def find_label(take_screenshot):
         top_left = max_loc
         bottom_right = (top_left[0] + needle_w, top_left[1] + needle_h)
 
-        x, y = max_loc
-        max_loc = x + 20, y + 20
+       
 
         return max_loc

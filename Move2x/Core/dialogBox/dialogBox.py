@@ -1,7 +1,5 @@
 from tkinter import *
-from tkinter import ttk
-import tkinter as tk
-from script import xmlScript as xml
+import xml
 
 win = Tk()
 

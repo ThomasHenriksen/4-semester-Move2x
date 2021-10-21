@@ -35,16 +35,7 @@
     </Compile>
     <Compile Include="script\typingBot.py" />
     <Compile Include="script\webcam.py" />
-    <Compile Include="script\xml.py">
-      <SubType>Code</SubType>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ImageReader\ImageReader.pyproj">
-      <Name>ImageReader</Name>
-      <Project>{07f9e8e9-8159-4b56-9b26-234f143ecab0}</Project>
-      <Private>True</Private>
-    </ProjectReference>
+    <Compile Include="script\xmlScript.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="resources\" />

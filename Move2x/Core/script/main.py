@@ -1,4 +1,4 @@
-from script import xml 
+from script import xmlScript as xml
 from script import ocr as imageReader
 from script import webcam 
 from script import typingBot
@@ -11,6 +11,7 @@ from win10toast import ToastNotifier
 import threading
 import time
 import logging
+import os
 
 exitFlag = 0
 
@@ -33,6 +34,7 @@ class myThread (threading.Thread):
           objOcr = []
           objScreen = ''
           objLoc = []
+          labelFundt = False
           for trask in listOfTrask:
               if(trask == 'webcam'):
                   objWebcam = webcam.takePicture()
@@ -41,11 +43,17 @@ class myThread (threading.Thread):
               elif(trask == 'click'):
                   click(objLoc)
               elif(trask == 'tast'):
-                  writerBot(objOcr)
+                  os.system('python script/ButtonsFromArrayGUI.py')
+                  text = readChooseWordXml()
+                  writerBot(text)
               elif(trask == 'screen'):
                   objScreen = screenshot()   
               elif(trask == 'search'):
-                 objLoc = search(objScreen)             
+                 if(labelFundt == True):
+                    objLoc = search(objScreen, 'textbox')
+                 else:
+                    objLoc = search(objScreen, 'label')
+                    labelFundt = True
           webcam.stopWebcam()
           print_time(self.name, 1, self.counter)    
 
@@ -59,7 +67,7 @@ def start():
    #toaster = ToastNotifier()
    #toaster.show_toast("Move2x", "Running RPA", duration=120)
     # Create new threads
-    exec(open("script\\ButtonsFromArrayGUI").read())
+    
     thread1 = myThread(1, "Thread-1", 1)
     thread2 = myThread(2, "Thread-2", 2)
 
@@ -70,25 +78,20 @@ def start():
 def screenshot():
     return ScreenShotBot.take_screenshot()
 
-def search(imgName):
-    temp = 'Temp\\'
-    type = '.jpg'
-    path = temp + imgName + type 
-    fileToWrite = 'ocr'
-    xml.createXml('ocr',fileToWrite)
-    loc = SearchBot.find_label()
-    for f in list:
-       xml.saveToXml('ocr',fileToWrite, f)
+def search(imgName, label):
+    return SearchBot.find_label(imgName, label)
+
 
 def click(max_loc):
     LabelClick.Click_coord(max_loc)
 
 def writerBot(text):
     typingBot.type_string_with_delay(text)
-
+def readChooseWordXml():
+    return xml.readXml('choosenword')
 def ocr(imgName):
     temp = 'Temp\\'
-    type = '.jpg'
+    type = '.png'
     path = temp + imgName + type 
     fileToWrite = 'ocr'
     xml.createXml('ocr',fileToWrite)
