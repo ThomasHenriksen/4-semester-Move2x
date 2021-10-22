@@ -1,11 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <root>
+<trask>srceen</trask>
+<trask>windows</trask>
 <trask>webcam</trask>
-<trask>ocr</trask>
-<trask>screen</trask>
-<trask>search</trask>
-<trask>click</trask>
-<trask>tast</trask>
+
 
 
 </root>

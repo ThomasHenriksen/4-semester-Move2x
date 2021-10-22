@@ -14,6 +14,12 @@ def find_label(take_screenshot, Label):
         nameSearch = 'Label' 
     elif(Label == "textBox"):
         nameSearch = 'textBox'
+    elif(Label == "windows"):
+        nameSearch = 'windows'
+    elif(Label == "webcam"):
+        nameSearch = 'logi'
+    elif(Label == "dymo"):
+        nameSearch = 'dymo'
     pathSearch = tempSearch + nameSearch + typeSearch 
     temp = 'temp\\'
     type = '.png'

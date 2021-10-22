@@ -1,6 +1,6 @@
 from script import xmlScript as xml
 from script import ocr as imageReader
-from script import webcam 
+
 from script import typingBot
 from script import LabelClick
 from script import SearchBot
@@ -23,7 +23,7 @@ class myThread (threading.Thread):
 
    def run(self):
       if(self.name == "Thread-1"):
-          webcam.startWebcam()
+          
           print_time(self.name, 1, self.counter)
           
       if(self.name == "Thread-2"):
@@ -33,27 +33,39 @@ class myThread (threading.Thread):
           objOcr = []
           objScreen = ''
           objLoc = []
-          labelFundt = False
+         
+          
           for trask in listOfTrask:
-              if(trask == 'webcam'):
-                  objWebcam = webcam.takePicture()
-              elif(trask == 'ocr'):
-                  objOcr = ocr(objWebcam)    
-              elif(trask == 'click'):
+              if(trask == 'click'):
                   click(objLoc)
               elif(trask == 'tast'):
                   os.system('python script/ButtonsFromArrayGUI.py')
                   text = readChooseWordXml()
                   writerBot(text)
+
+                  
               elif(trask == 'screen'):
                   objScreen = screenshot()   
-              elif(trask == 'search'):
-                 if(labelFundt == True):
+              
+              elif(trask == "textbox"):
                     objLoc = search(objScreen, 'textbox')
-                 else:
+              elif(trask == "label"):
                     objLoc = search(objScreen, 'label')
-                    labelFundt = True
-          webcam.stopWebcam()
+              elif(trask == "windows"):
+                    objLoc = search(objScreen, 'windows')
+                    click(objLoc)
+                    
+              elif(trask == "dymo"):
+                     writerBot('dymo')
+                     objScreen = screenshot()
+                     objLoc = search(objScreen, 'dymo')
+                     click(objLoc)
+              elif(trask == "webcam"):
+                    writerBot('logitech')
+                    objScreen = screenshot()
+                    objLoc = search(objScreen, 'webcam')
+                    click(objLoc)
+          
           print_time(self.name, 1, self.counter)    
 
 def print_time(threadName, counter, delay):

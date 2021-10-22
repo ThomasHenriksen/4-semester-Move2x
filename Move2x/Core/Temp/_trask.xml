@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <root>
 
-<trask>webcam</trask>
+<trask>screen/trask>
+<trask>windows/trask>
+<trask>webcam/trask>
 
 
 

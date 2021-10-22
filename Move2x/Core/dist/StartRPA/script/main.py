@@ -33,11 +33,10 @@ class myThread (threading.Thread):
           objOcr = []
           objScreen = ''
           objLoc = []
-          labelFundt = False
+         
+          
           for trask in listOfTrask:
-              if(trask == 'webcam'):
-                  objWebcam = webcam.takePicture()
-              elif(trask == 'ocr'):
+              if(trask == 'ocr'):
                   objOcr = ocr(objWebcam)    
               elif(trask == 'click'):
                   click(objLoc)
@@ -45,14 +44,29 @@ class myThread (threading.Thread):
                   os.system('python script/ButtonsFromArrayGUI.py')
                   text = readChooseWordXml()
                   writerBot(text)
+
+                  
               elif(trask == 'screen'):
                   objScreen = screenshot()   
-              elif(trask == 'search'):
-                 if(labelFundt == True):
+              else:
+                 if(trask == "textbox"):
                     objLoc = search(objScreen, 'textbox')
-                 else:
+                 elif(trask == "label"):
                     objLoc = search(objScreen, 'label')
-                    labelFundt = True
+                 if(trask == "windows"):
+                    objLoc = search(objScreen, 'windows')
+                    click(objLoc)
+                    
+                 elif(trask == "dymo"):
+                     writerBot('dymo')
+                     objScreen = screenshot()
+                     objLoc = search(objScreen, 'dymo')
+                     click(objLoc)
+                 elif(trask == "webcam"):
+                    writerBot('logitech')
+                    objScreen = screenshot()
+                    objLoc = search(objScreen, 'webcam')
+                    click(objLoc)
           webcam.stopWebcam()
           print_time(self.name, 1, self.counter)    
 

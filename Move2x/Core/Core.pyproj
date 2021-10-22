@@ -50,7 +50,6 @@
   <ItemGroup>
     <Content Include="Screenbots\Dymoimg.JPG" />
     <Content Include="Screenbots\DymoPrinter.JPG" />
-    <Content Include="resources\LabelCustomer.JPG" />
     <Content Include="Screenbots\LabelFind.JPG" />
     <Content Include="script\Screenbots.pyproj" />
     <Content Include="Screenbots\__pycache__\ScreenShotBot.cpython-37.pyc" />
