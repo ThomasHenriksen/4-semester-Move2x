@@ -5,7 +5,7 @@ block_cipher = None
 
 
 a = Analysis(['StartRPA.py'],
-             pathex=['C:\\Users\\magnu\\OneDrive\\Dokumenter\\GitHub\\4-semester-Move2x\\Move2x\\Core'],
+             pathex=['C:\\Users\\marcj\\Desktop\\ucn\\4-semester-Move2x\\Move2x\\Core'],
              binaries=[],
              datas=[],
              hiddenimports=[],
