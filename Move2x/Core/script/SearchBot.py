@@ -1,7 +1,6 @@
 import numpy as np
 import cv2 as cv
 import pyautogui as pg
-import win32com 
 import pyautogui, time
 
              

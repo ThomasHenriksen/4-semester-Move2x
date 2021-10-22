@@ -1,7 +1,7 @@
 from script import xmlScript as xml
 from script import ocr as imageReader
 
-from script import typingBot
+from script import TypingBot as typingBot
 from script import LabelClick
 from script import SearchBot
 from script import ScreenShotBot
@@ -96,8 +96,10 @@ def click(max_loc):
 
 def writerBot(text):
     typingBot.type_string_with_delay(text)
+
 def readChooseWordXml():
     return xml.readXml('choosenword')
+
 def ocr(imgName):
     temp = 'Temp\\'
     type = '.png'
