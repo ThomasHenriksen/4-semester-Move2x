@@ -59,7 +59,9 @@ def readXml(toFile, main):
     if(main == 'main'):
         path_file = 'script\_'+ toFile + '.xml'
     else:
+
         path_file ='_' + toFile + '.xml'
+        print(path_file)
    
     tree = ElementTree.parse(path_file)
     root = tree.getroot()
