@@ -94,6 +94,7 @@ def start():
         text = readChooseWordXml()
         click(objLoc)
         writerBot(text)
+        objLoc = []
         i += 1
 
 
