@@ -11,8 +11,8 @@ def find_label(take_screenshot, Label):
     nameSearch = ''
     if(Label == "label"):
         nameSearch = 'Label' 
-    elif(Label == "textBox"):
-        nameSearch = 'textBox'
+    elif(Label == "textbox"):
+        nameSearch = 'textbox'
         typeSearch = '.PNG'
     elif(Label == "windows"):
         nameSearch = 'windows'
