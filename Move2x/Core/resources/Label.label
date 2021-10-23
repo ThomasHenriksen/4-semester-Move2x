@@ -112,7 +112,7 @@ Customer:</String>
 				</Element>
 			</StyledText>
 		</TextObject>
-		<Bounds X="960" Y="57.0000000000001" Width="1417.32285593172" Height="780.272705078125" />
+		<Bounds X="538" Y="57" Width="1417.32287597656" Height="780.272705078125" />
 	</ObjectInfo>
 	<ObjectInfo>
 		<TextObject>
@@ -130,7 +130,7 @@ Customer:</String>
 			<Verticalized>False</Verticalized>
 			<StyledText />
 		</TextObject>
-		<Bounds X="1367.09094238281" Y="998.181823730469" Width="2880" Height="294.545440673828" />
+		<Bounds X="1697.09094238281" Y="1028.18188476563" Width="2880" Height="294.545440673828" />
 	</ObjectInfo>
 	<ObjectInfo>
 		<TextObject>
@@ -148,7 +148,7 @@ Customer:</String>
 			<Verticalized>False</Verticalized>
 			<StyledText />
 		</TextObject>
-		<Bounds X="1363.63635253906" Y="1401.81823730469" Width="2880" Height="283.636352539063" />
+		<Bounds X="1693.63635253906" Y="1401.81823730469" Width="2880" Height="283.636352539063" />
 	</ObjectInfo>
 	<ObjectInfo>
 		<TextObject>
@@ -166,7 +166,7 @@ Customer:</String>
 			<Verticalized>False</Verticalized>
 			<StyledText />
 		</TextObject>
-		<Bounds X="1309.09094238281" Y="1794.54541015625" Width="2880" Height="338.181823730469" />
+		<Bounds X="1699.09094238281" Y="1779.54541015625" Width="2880" Height="338.181823730469" />
 	</ObjectInfo>
 	<ObjectInfo>
 		<TextObject>
@@ -184,7 +184,7 @@ Customer:</String>
 			<Verticalized>False</Verticalized>
 			<StyledText />
 		</TextObject>
-		<Bounds X="1298.18176269531" Y="2237.9091796875" Width="2880" Height="261.818176269531" />
+		<Bounds X="1703.18176269531" Y="2222.9091796875" Width="2880" Height="294.803161621094" />
 	</ObjectInfo>
 	<ObjectInfo>
 		<TextObject>
@@ -202,6 +202,22 @@ Customer:</String>
 			<Verticalized>False</Verticalized>
 			<StyledText />
 		</TextObject>
-		<Bounds X="2104" Y="585" Width="2715" Height="240" />
+		<Bounds X="1684" Y="525" Width="2880" Height="294.803161621094" />
+	</ObjectInfo>
+	<ObjectInfo>
+		<ShapeObject>
+			<Name>SHAPE</Name>
+			<ForeColor Alpha="255" Red="0" Green="0" Blue="0" />
+			<BackColor Alpha="0" Red="255" Green="255" Blue="255" />
+			<LinkedObjectName></LinkedObjectName>
+			<Rotation>Rotation0</Rotation>
+			<IsMirrored>False</IsMirrored>
+			<IsVariable>False</IsVariable>
+			<ShapeType>VerticalLine</ShapeType>
+			<LineWidth>15</LineWidth>
+			<LineAlignment>Center</LineAlignment>
+			<FillColor Alpha="0" Red="255" Green="255" Blue="255" />
+		</ShapeObject>
+		<Bounds X="1665" Y="90" Width="15" Height="2617" />
 	</ObjectInfo>
 </DieCutLabel>
