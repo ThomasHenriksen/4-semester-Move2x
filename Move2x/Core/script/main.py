@@ -84,6 +84,13 @@ def start():
     objScreen = screenshot('windows')
     objLoc = search(objScreen, 'dymo')
     click(objLoc)
+    time.sleep(5)
+    objScreen = screenshot('windows')
+    objLoc = search(objScreen, 'textbox')
+    os.system('python script/ButtonsFromArrayGUI.py')
+    text = readChooseWordXml()
+    writerBot(text)
+
 
 def screenshot(windows):
     return ScreenShotBot.take_screenshot(windows)
