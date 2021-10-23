@@ -85,12 +85,15 @@ def start():
     objLoc = search(objScreen, 'dymo')
     click(objLoc)
     time.sleep(10)
-    objScreen = screenshot('windows')
-    objLoc = search(objScreen, 'textbox')
-    os.system('python script/ButtonsFromArrayGUI.py')
-    text = readChooseWordXml()
-    click(objLoc)
-    writerBot(text)
+    i = 0
+    while(i < 5):
+        objScreen = screenshot('windows')
+        objLoc = search(objScreen, 'textbox')
+        #os.system('python script/ButtonsFromArrayGUI.py')
+        text = readChooseWordXml()
+        click(objLoc)
+        writerBot(text)
+        i += 1
 
 
 def screenshot(windows):
