@@ -84,7 +84,7 @@ def start():
     objScreen = screenshot('windows')
     objLoc = search(objScreen, 'dymo')
     click(objLoc)
-    time.sleep(5)
+    time.sleep(10)
     objScreen = screenshot('windows')
     objLoc = search(objScreen, 'textbox')
     os.system('python script/ButtonsFromArrayGUI.py')
