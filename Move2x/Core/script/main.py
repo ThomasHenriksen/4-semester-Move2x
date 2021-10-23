@@ -87,10 +87,10 @@ def start():
     time.sleep(3)
     i = 0
     while(i < 5):
-        time.sleep(2)
+        
         objScreen = screenshot('windows')
+        os.system('python script/ButtonsFromArrayGUI.py')
         objLoc = search(objScreen, 'textbox')
-        #os.system('python script/ButtonsFromArrayGUI.py')
         text = readChooseWordXml()
         click(objLoc)
         writerBot(text)
