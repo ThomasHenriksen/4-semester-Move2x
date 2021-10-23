@@ -76,16 +76,17 @@ def print_time(threadName, counter, delay):
       
 def start():
     # Create new threads
-    
-    thread1 = myThread(1, "Thread-1", 1)
-    thread2 = myThread(2, "Thread-2", 2)
+    objScreen = screenshot('windows')
+    objLoc = search(objScreen, 'windows')
+    click(objLoc)
+    text = ['', 'dymo']
+    writerBot(text)
+    objScreen = screenshot('windows')
+    objLoc = search(objScreen, 'dymo')
+    click(objLoc)
 
-    # Start new Threads
-    thread1.start()
-    thread2.start()
-
-def screenshot():
-    return ScreenShotBot.take_screenshot()
+def screenshot(windows):
+    return ScreenShotBot.take_screenshot(windows)
 
 def search(imgName, label):
     return SearchBot.find_label(imgName, label)

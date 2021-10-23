@@ -33,7 +33,7 @@ def find_label(take_screenshot, Label):
     print('Best match top left positopn: %s' % str(max_loc))
     print('Best match confidence: %s' % str(max_val))
 # Sets the level off accepteable match with in screenshot
-    threshold = 0.8
+    threshold = 0.70
     if max_val >= threshold:
         print('Found Dymoimg')
 
