@@ -17,7 +17,7 @@ def createXml(dateFrom,toFile,main):
     if(main == 'main'):
         path_file = 'script\_'+ toFile + '.xml'
     else:
-        path_file = toFile + '.xml'
+        path_file ='_' + toFile + '.xml'
 
     with open(path_file, "w") as f:
         f.write(xml_str)
@@ -44,7 +44,7 @@ def saveToXml(dateFrom,toFile,words, main):
     if(main == 'main'):
        path_file = 'script\_'+ toFile + '.xml'
     else:
-       path_file = toFile + '.xml'
+       path_file ='_' + toFile + '.xml'
 
     root = ElementTree.parse(path_file).getroot()
     c = ElementTree.Element(dateFrom)
@@ -59,7 +59,7 @@ def readXml(toFile, main):
     if(main == 'main'):
         path_file = 'script\_'+ toFile + '.xml'
     else:
-        path_file = toFile + '.xml'
+        path_file ='_' + toFile + '.xml'
    
     tree = ElementTree.parse(path_file)
     root = tree.getroot()
