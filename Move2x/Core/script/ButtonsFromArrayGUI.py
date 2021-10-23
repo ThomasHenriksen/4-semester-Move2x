@@ -15,11 +15,11 @@ name_var=tk.StringVar()
 choosenword = ''
 def xml_Save(word):
     fileToWrite = 'choosenword'
-    xml.createXml('choosenword',fileToWrite, '')
-    xml.saveToXml('choosenword',fileToWrite, word, '')
+    xml.createXml('choosenword',fileToWrite, 'main')
+    xml.saveToXml('choosenword',fileToWrite, word, 'main')
 
 def xml_Read():
-	return xml.readXml('ocr', '')
+	return xml.readXml('ocr', 'main')
 
 	# defining a function that will
 	# get the name 
