@@ -89,6 +89,7 @@ def start():
     objLoc = search(objScreen, 'textbox')
     os.system('python script/ButtonsFromArrayGUI.py')
     text = readChooseWordXml()
+    click(objLoc)
     writerBot(text)
 
 
