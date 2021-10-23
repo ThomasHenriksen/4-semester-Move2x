@@ -84,7 +84,7 @@ def start():
     objScreen = screenshot('windows')
     objLoc = search(objScreen, 'dymo')
     click(objLoc)
-    time.sleep(10)
+    time.sleep(3)
     i = 0
     while(i < 5):
         time.sleep(1)
