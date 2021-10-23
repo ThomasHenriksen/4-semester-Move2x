@@ -106,21 +106,21 @@ def writerBot(text):
     typingBot.type_string_with_delay(text)
 
 def readChooseWordXml():
-    return xml.readXml('choosenword')
+    return xml.readXml('choosenword','main')
 
 def ocr(imgName):
     temp = 'Temp\\'
     type = '.png'
     path = temp + imgName + type 
     fileToWrite = 'ocr'
-    xml.createXml('ocr',fileToWrite)
+    xml.createXml('ocr',fileToWrite, 'main')
    
     list = imageReader.listOfWords(path)
     list.reverse()
     for f in list:
-       xml.saveToXml('ocr',fileToWrite, f)
+       xml.saveToXml('ocr',fileToWrite, f, 'main')
        
-    listFromXml = xml.readXml(fileToWrite)
+    listFromXml = xml.readXml(fileToWrite, 'main')
     print(listFromXml)
     return list
 

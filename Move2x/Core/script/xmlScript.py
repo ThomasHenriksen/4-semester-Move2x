@@ -2,7 +2,7 @@ from xml.dom import minidom
 from xml.etree import ElementTree
 import os 
 
-def createXml(dateFrom,toFile):
+def createXml(dateFrom,toFile,main):
     root = minidom.Document()
 
     xml = root.createElement('root')
@@ -13,8 +13,11 @@ def createXml(dateFrom,toFile):
 
     xml.appendChild(productChild)
     xml_str = root.toprettyxml(indent = "\t")
-
-    path_file = 'Temp\_'+ toFile + '.xml'
+    path_file = ''
+    if(main == 'main'):
+        path_file = 'script\_'+ toFile + '.xml'
+    else:
+        path_file = toFile + '.xml'
 
     with open(path_file, "w") as f:
         f.write(xml_str)
@@ -36,8 +39,13 @@ def indent(elem, level=0):
             elem.tail = j
     return elem
 
-def saveToXml(dateFrom,toFile,words):
-    path_file = 'Temp\_'+ toFile + '.xml'
+def saveToXml(dateFrom,toFile,words, main):
+    path_file = ''
+    if(main == 'main'):
+       path_file = 'script\_'+ toFile + '.xml'
+    else:
+       path_file = toFile + '.xml'
+
     root = ElementTree.parse(path_file).getroot()
     c = ElementTree.Element(dateFrom)
     c.text = words
@@ -46,8 +54,13 @@ def saveToXml(dateFrom,toFile,words):
     tree = ElementTree.ElementTree(indent(root))
     tree.write(path_file, xml_declaration=True, encoding='utf-8')
 
-def readXml(toFile):
-    path_file = 'Temp\_'+ toFile + '.xml'
+def readXml(toFile, main):
+    path_file = ''
+    if(main == 'main'):
+        path_file = 'script\_'+ toFile + '.xml'
+    else:
+        path_file = toFile + '.xml'
+   
     tree = ElementTree.parse(path_file)
     root = tree.getroot()
     data = []
