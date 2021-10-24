@@ -1,96 +1,51 @@
 from script import xmlScript as xml
 from script import ocr as imageReader
-
 from script import TypingBot as typingBot
 from script import LabelClick
 from script import SearchBot
 from script import ScreenShotBot
 
-
-import threading
 import time
-import logging
 import os
 
-exitFlag = 0
-
-class myThread (threading.Thread):
-   def __init__(self, threadID, name, counter):
-      threading.Thread.__init__(self)
-      self.threadID = threadID
-      self.name = name
-      self.counter = counter
-
-   def run(self):
-      if(self.name == "Thread-1"):
-          
-          print_time(self.name, 1, self.counter)
-          
-      if(self.name == "Thread-2"):
-          listOfTrask = xml.readXml('trask')
-          time.sleep(5)
-          objWebcam = ''
-          objOcr = []
-          objScreen = ''
-          objLoc = []
-         
-          
-          for trask in listOfTrask:
-              if(trask == 'click'):
-                  click(objLoc)
-              elif(trask == 'tast'):
-                  os.system('python script/ButtonsFromArrayGUI.py')
-                  text = readChooseWordXml()
-                  writerBot(text)
-
-                  
-              elif(trask == 'screen'):
-                  objScreen = screenshot()   
-              
-              elif(trask == "textbox"):
-                    objLoc = search(objScreen, 'textbox')
-              elif(trask == "label"):
-                    objLoc = search(objScreen, 'label')
-              elif(trask == "windows"):
-                    objLoc = search(objScreen, 'windows')
-                    click(objLoc)
-                    
-              elif(trask == "dymo"):
-                     writerBot('dymo')
-                     objScreen = screenshot()
-                     objLoc = search(objScreen, 'dymo')
-                     click(objLoc)
-              elif(trask == "webcam"):
-                    writerBot('logitech')
-                    objScreen = screenshot()
-                    objLoc = search(objScreen, 'webcam')
-                    click(objLoc)
-          
-          print_time(self.name, 1, self.counter)    
-
-def print_time(threadName, counter, delay):
-   while counter:
-      if exitFlag:
-         threadName.exit()
-      counter -= 1
-      
+ 
 def start():
-    # Create new threads
-    objScreen = screenshot('windows')
-    objLoc = search(objScreen, 'windows')
-    click(objLoc)
-    text = ['', 'dymo']
-    writerBot(text)
-    objScreen = screenshot('windows')
-    objLoc = search(objScreen, 'dymo')
-    click(objLoc)
-    time.sleep(3)
-    objScreen = screenshot('windows')
-    os.system('python script/ButtonsFromArrayGUI.py')
-    objLoc = search(objScreen, 'textbox')
-    text = readChooseWordXml()
-    click(objLoc)
-    writerBot(text)
+    listOfTrask = xml.readXml('trask')
+    objWebcam = ''
+    objOcr = []
+    objScreen = ''
+    objLoc = []   
+    for trask in listOfTrask:
+        if(trask == 'dymo'):
+          objScreen = screenshot('windows')
+          objLoc = search(objScreen, 'windows')
+          click(objLoc)
+          text = ['', 'dymo']
+          writerBot(text)
+          objScreen = screenshot('windows')
+          objLoc = search(objScreen, 'dymo')
+          click(objLoc)
+        elif(trask == 'label'):
+          time.sleep(3)
+          objScreen = screenshot('windows')
+          os.system('python script/ButtonsFromArrayGUI.py')
+          objLoc = search(objScreen, 'textbox')
+          text = readChooseWordXml()
+          click(objLoc)
+          writerBot(text)
+        elif(trask == 'webcam'):
+          objScreen = screenshot('windows')
+          objLoc = search(objScreen, 'windows')
+          click(objLoc)
+          text = ['', 'logitech']
+          writerBot(text)
+          objScreen = screenshot('windows')
+          objLoc = search(objScreen, 'webcam')
+          click(objLoc)
+          time.sleep(20)
+          objScreen = screenshot('webcam')
+        elif(trask == 'ocr'):
+          ocr(imgName)
  
     
 
@@ -112,9 +67,7 @@ def readChooseWordXml():
     return xml.readXml('choosenword','main')
 
 def ocr(imgName):
-    temp = 'Temp\\'
-    type = '.png'
-    path = temp + imgName + type 
+    
     fileToWrite = 'ocr'
     xml.createXml('ocr',fileToWrite, 'main')
    
@@ -124,8 +77,7 @@ def ocr(imgName):
        xml.saveToXml('ocr',fileToWrite, f, 'main')
        
     listFromXml = xml.readXml(fileToWrite, 'main')
-    print(listFromXml)
-    return list
+
 
 
 

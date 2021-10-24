@@ -7,7 +7,12 @@ list = []
 def imageColorRGB(image):
     return cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-def listOfWords(path):
+def listOfWords(imgName):
+    temp = 'Temp\\'
+    type = '.png'
+    path = temp + imgName + type 
+
+
     img = cv2.imread(path)
     
     img = imageColorRGB(img)
