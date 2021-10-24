@@ -26,9 +26,8 @@ def start():
           objLoc = search(objScreen, 'dymo')
           click(objLoc)
         elif(trask == 'label'):
-          time.sleep(3)
-          objScreen = screenshot('windows')
           os.system('python script/ButtonsFromArrayGUI.py')
+          objScreen = screenshot('windows')
           objLoc = search(objScreen, 'textbox')
           text = readChooseWordXml()
           click(objLoc)
