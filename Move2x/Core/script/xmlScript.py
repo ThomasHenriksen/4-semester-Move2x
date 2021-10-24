@@ -55,6 +55,7 @@ def saveToXml(dateFrom,toFile,words, main):
     tree.write(path_file, xml_declaration=True, encoding='utf-8')
 
 def readXml(toFile, main):
+    print(toFile + ' ' + main)
     path_file = ''
     if(main == 'main'):
         path_file = 'script\_'+ toFile + '.xml'
@@ -67,6 +68,7 @@ def readXml(toFile, main):
     root = tree.getroot()
     data = []
     for elem in root:
+        print(elem.text)
         data.append(elem.text) 
     return data
     
