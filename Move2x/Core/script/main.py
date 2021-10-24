@@ -32,9 +32,7 @@ def start():
           text = readChooseWordXml()
           click(objLoc)
           writerBot(text)
-          objScreen = screenshot('windows')
-          objLoc = search(objScreen, 'Print')
-          click(objLoc)
+          print()
         elif(trask == 'webcam'):
           objScreen = screenshot('windows')
           objLoc = search(objScreen, 'windows')
@@ -50,7 +48,8 @@ def start():
           ocr('webcam')
  
     
-
+def print():
+    LabelClick.print()
 
 def screenshot(windows):
     return ScreenShotBot.take_screenshot(windows)
