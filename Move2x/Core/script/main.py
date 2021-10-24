@@ -45,7 +45,7 @@ def start():
           time.sleep(20)
           objScreen = screenshot('webcam')
         elif(trask == 'ocr'):
-          ocr(imgName)
+          ocr('webcam')
  
     
 
