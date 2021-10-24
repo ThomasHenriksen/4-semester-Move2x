@@ -32,7 +32,7 @@ def start():
           text = readChooseWordXml()
           click(objLoc)
           writerBot(text)
-           objScreen = screenshot('windows')
+          objScreen = screenshot('windows')
           objLoc = search(objScreen, 'Print')
           click(objLoc)
         elif(trask == 'webcam'):
