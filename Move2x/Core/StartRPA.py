@@ -7,11 +7,15 @@ win = Tk()
 # setting the windows size
 win.geometry("200x100")
 
-def submit():
+def run():
     move.main()
-
-sub_btn=tk.Button(win,text = 'Submit', command = submit)
+    #creating a Label
+label = Label(win,  text="unchanged")
+label.pack()
+sub_btn=tk.Button(win,text = 'Run', command = run)
 sub_btn.pack()
+label.config(text="changed")
+
 
 win.mainloop()
 
