@@ -66,17 +66,15 @@ def writerBot(text):
 def readChooseWordXml():
     return xml.readXml('choosenword','main')
 
-def ocr(imgName):
-    
+def ocr(imgName):   
     fileToWrite = 'ocr'
     xml.createXml('ocr',fileToWrite, 'main')
-   
-    list = imageReader.listOfWords(path)
+    list = imageReader.listOfWords(imgName)
     list.reverse()
     for f in list:
        xml.saveToXml('ocr',fileToWrite, f, 'main')
-       
     listFromXml = xml.readXml(fileToWrite, 'main')
+    return list
 
 
 
