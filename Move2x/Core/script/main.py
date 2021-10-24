@@ -49,7 +49,7 @@ def start():
  
     
 def print():
-    LabelClick.print()
+    typingBot.print()
 
 def screenshot(windows):
     return ScreenShotBot.take_screenshot(windows)
