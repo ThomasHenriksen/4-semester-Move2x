@@ -48,9 +48,9 @@ name_entry = tk.Entry(win,textvariable = name_var, font=('calibre',10,'normal'))
 	# creating a button using the widget
 	# Button that will call the submit function
 sub_btn=tk.Button(win,text = 'Submit', command = submit)
-
-name_entry.pack()
 sub_btn.pack()
+name_entry.pack()
+
 
 
 	#Define a function to update the entry widget

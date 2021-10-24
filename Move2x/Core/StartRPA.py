@@ -7,10 +7,11 @@ win = Tk()
 # setting the windows size
 win.geometry("200x100")
 
+def submit():
+    move.main()
 
-move.main()
-
-
+sub_btn=tk.Button(win,text = 'Submit', command = submit)
+sub_btn.pack()
 
 win.mainloop()
 
