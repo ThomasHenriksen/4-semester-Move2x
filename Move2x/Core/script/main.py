@@ -10,7 +10,7 @@ import os
 
  
 def start():
-    listOfTrask = xml.readXml('trask')
+    listOfTrask = xml.readXml('trask', 'main')
     objWebcam = ''
     objOcr = []
     objScreen = ''
