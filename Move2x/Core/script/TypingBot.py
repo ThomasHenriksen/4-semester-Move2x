@@ -11,7 +11,7 @@ def type_string_with_delay(text):
     
     
     time.sleep(0.2)
-    for character in word:  # Loop over each character in the string
+    for character in enumerate(word):  # Loop over each character in the string
        print(character)
        pyautogui.press(character)
        time.sleep(0.05)  # Sleep for the amount of seconds generated
