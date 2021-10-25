@@ -26,7 +26,7 @@ def find_label(take_screenshot, Label):
 # Sets the level off accepteable match with in screenshot
     threshold = 0.70
     if max_val >= threshold:
-        print('Found Dymoimg')
+        print(Label + ' is foundt')
 
     #get dimensions of the needle image
         needle_w = needle_img.shape[1]
