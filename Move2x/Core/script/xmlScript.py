@@ -66,6 +66,7 @@ def readXml(toFile, main):
     data = []
     for elem in root:
         data.append(elem.text) 
+    print(data)
     return data
     
    
