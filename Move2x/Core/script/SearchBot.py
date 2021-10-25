@@ -8,18 +8,8 @@ import pyautogui, time
 def find_label(take_screenshot, Label): 
     tempSearch = 'resources\\'
     typeSearch = '.png'
-    nameSearch = ''
-    if(Label == "label"):
-        nameSearch = 'Label' 
-    elif(Label == "textbox"):
-        nameSearch = 'textbox'
-        typeSearch = '.PNG'
-    elif(Label == "windows"):
-        nameSearch = 'windows'
-    elif(Label == "webcam"):
-        nameSearch = 'logi'
-    elif(Label == "dymo"):
-        nameSearch = 'dymo'
+    nameSearch = label
+  
     pathSearch = tempSearch + nameSearch + typeSearch 
     temp = 'temp\\'
     type = '.png'

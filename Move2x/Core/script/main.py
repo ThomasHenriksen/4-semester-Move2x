@@ -28,6 +28,12 @@ def start():
         elif(trask == 'label'):
           os.system('python script/ButtonsFromArrayGUI.py')
           objScreen = screenshot('windows')
+          objLoc = search(objScreen, 'customerNumber')
+          text = readChooseWordXml()
+          click(objLoc)
+          writerBot(text)
+          os.system('python script/ButtonsFromArrayGUI.py')
+          objScreen = screenshot('windows')
           objLoc = search(objScreen, 'textbox')
           text = readChooseWordXml()
           click(objLoc)
