@@ -11,7 +11,7 @@ def createXml(dateFrom,toFile,main):
     productChild = root.createElement(dateFrom)
    
 
-    xml.appendChild(productChild)
+    
     xml_str = root.toprettyxml(indent = "\t")
     path_file = ''
     if(main == 'main'):
