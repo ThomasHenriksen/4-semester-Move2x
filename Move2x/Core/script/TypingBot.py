@@ -15,7 +15,7 @@ def type_string_with_delay(text):
        pyautogui.press(character)
        time.sleep(0.05)  # Sleep for the amount of seconds generated
 
-def print():
+def printLabel():
     pyautogui.keyDown('ctrl')
     pyautogui.press('p')
     pyautogui.keyUp('ctrl')

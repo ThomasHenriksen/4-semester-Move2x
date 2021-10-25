@@ -73,7 +73,7 @@ def start():
  
     
 def printLabel():
-    typingBot.print()
+    typingBot.printLabel()
 
 def screenshot(windows):
     return ScreenShotBot.take_screenshot(windows)
@@ -90,8 +90,7 @@ def writerBot(text):
 
 def readChooseWordXml():
     word = xml.readXml('choosenword','main')
-    if(len(word)< 0):
-        print(word)
+  
     return word
 
 def ocr(imgName):   
