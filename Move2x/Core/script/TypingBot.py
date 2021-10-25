@@ -7,7 +7,8 @@ import os
 
 
 def type_string_with_delay(text):
-    word = text[0]
+    print(text)
+    word = text
     
     
     time.sleep(0.2)
