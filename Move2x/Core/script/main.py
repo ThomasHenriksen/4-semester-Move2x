@@ -90,7 +90,9 @@ def writerBot(text):
     typingBot.type_string_with_delay(text)
 
 def readChooseWordXml():
-    return xml.readXml('choosenword','main')
+    word = xml.readXml('choosenword','main')
+    print(word)
+    return word
 
 def ocr(imgName):   
     fileToWrite = 'ocr'
