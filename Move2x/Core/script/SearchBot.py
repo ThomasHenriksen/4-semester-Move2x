@@ -8,7 +8,7 @@ import pyautogui, time
 def find_label(take_screenshot, Label): 
     tempSearch = 'resources\\'
     typeSearch = '.png'
-    nameSearch = label
+    nameSearch = Label
   
     pathSearch = tempSearch + nameSearch + typeSearch 
     temp = 'temp\\'
