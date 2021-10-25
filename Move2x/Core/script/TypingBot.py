@@ -7,9 +7,11 @@ import os
 
 
 def type_string_with_delay(text):
-    chooseword = text
+    word = text
+    
+    print(word)
     time.sleep(0.2)
-    for character in chooseword:  # Loop over each character in the string
+    for character in word:  # Loop over each character in the string
        pyautogui.press(character)
        time.sleep(0.05)  # Sleep for the amount of seconds generated
 
