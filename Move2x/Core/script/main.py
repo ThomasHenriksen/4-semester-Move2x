@@ -32,6 +32,7 @@ def start():
           text = readChooseWordXml()
           click(objLoc)
           writerBot(text)
+          time.sleep(3)
           os.system('python script/ButtonsFromArrayGUI.py')
           objScreen = screenshot('windows')
           objLoc = search(objScreen, 'textbox')
