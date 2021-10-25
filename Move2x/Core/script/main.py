@@ -91,7 +91,8 @@ def writerBot(text):
 
 def readChooseWordXml():
     word = xml.readXml('choosenword','main')
-    print(word)
+    if(len(word)< 0):
+        print(word)
     return word
 
 def ocr(imgName):   
