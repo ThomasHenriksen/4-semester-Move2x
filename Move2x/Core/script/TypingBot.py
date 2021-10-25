@@ -9,7 +9,7 @@ import os
 def type_string_with_delay(text):
     word = text
     
-    print(word)
+    
     time.sleep(0.2)
     for character in word:  # Loop over each character in the string
        print(character)
