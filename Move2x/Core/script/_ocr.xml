@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <root>
-  <ocr />
+  <ocr>|</ocr>
 <ocr>AWARENESS</ocr>
 <ocr>GAME</ocr>
 <ocr>INDUSTRY</ocr>
@@ -32,5 +32,4 @@
 <ocr>phone</ocr>
 <ocr>(6001)</ocr>
 <ocr>PRODUCT</ocr>
-<ocr>|</ocr>
 </root>
