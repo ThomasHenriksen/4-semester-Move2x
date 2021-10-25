@@ -7,7 +7,7 @@ import os
 
 
 def type_string_with_delay(text):
-    print(text)
+    print(text[0])
     word = text
     
     
