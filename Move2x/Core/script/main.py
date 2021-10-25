@@ -32,7 +32,6 @@ def start():
           text = readChooseWordXml()
           click(objLoc)
           writerBot(text)
-          print(text)
           os.system('python script/ButtonsFromArrayGUI.py')
           objScreen = screenshot('windows')
           objLoc = search(objScreen, 'produkt1')
@@ -57,7 +56,7 @@ def start():
           text = readChooseWordXml()
           click(objLoc)
           writerBot(text)
-          print()
+          printLabel()
         elif(trask == 'webcam'):
           objScreen = screenshot('windows')
           objLoc = search(objScreen, 'windows')
@@ -73,7 +72,7 @@ def start():
           ocr('webcam')
  
     
-def print():
+def printLabel():
     typingBot.print()
 
 def screenshot(windows):
