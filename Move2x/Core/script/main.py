@@ -20,7 +20,7 @@ def start():
           objScreen = screenshot('windows')
           objLoc = search(objScreen, 'windows')
           click(objLoc)
-          text = ['', 'dymo']
+          text = ['dymo']
           writerBot(text)
           objScreen = screenshot('windows')
           objLoc = search(objScreen, 'dymo')
@@ -61,7 +61,7 @@ def start():
           objScreen = screenshot('windows')
           objLoc = search(objScreen, 'windows')
           click(objLoc)
-          text = ['', 'logitech']
+          text = ['logitech']
           writerBot(text)
           objScreen = screenshot('windows')
           objLoc = search(objScreen, 'webcam')
