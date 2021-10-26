@@ -23,28 +23,6 @@ def copyFile():
  
     # Copy the content of
     # source to destination
- 
-    try:
-        shutil.copyfile(source, destination)
-        print("File copied successfully.")
- 
-    # If source and destination are same
-    except shutil.SameFileError:
-        print("Source and destination represents the same file.")
- 
-    # If destination is a directory.
-    except IsADirectoryError:
-        print("Destination is a directory.")
- 
-    # If there is any permission issue
-    except PermissionError:
-        print("Permission denied.")
- 
-    # For other errors
-    except:
-        print("Error occurred while copying file.")
+    shutil.copyfile(source, destination)
+  
 
-def openDymo():
-    deleteFile()
-    copyFile()
-    openDymo()

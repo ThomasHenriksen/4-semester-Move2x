@@ -8,7 +8,7 @@ from script import imageFromWebcam as getFile
 from script import openFile
 import time
 import os
-
+oneTime = False
  
 def start():
     listOfTrask = xml.readXml('trask', 'main')
@@ -18,7 +18,6 @@ def start():
     objLoc = []   
     for trask in listOfTrask:
         if(trask == 'dymo'):
-           print('here')
            dymo()
         elif(trask == 'label'):
            label()
@@ -69,11 +68,11 @@ def label():
     writerBot(text)
     printLabel()
 def dymo(): 
-    openDymo()
-    
+    openFile.deleteFile()
+    openFile.copyFile()
+    openFile.openFile()
 
-def openDymo():
-    openFile.openDymo()
+
 def windowsKey():
     typingBot.windowsKey()
 def printLabel():
