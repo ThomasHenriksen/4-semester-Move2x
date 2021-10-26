@@ -4,7 +4,7 @@ from script import TypingBot as typingBot
 from script import LabelClick
 from script import SearchBot
 from script import ScreenShotBot
-
+from script import imageFromWebcam as getFile
 import time
 import os
 
@@ -26,9 +26,7 @@ def start():
           ocr('webcam')
 
 def webcam():
-     objScreen = screenshot('windows')
-     objLoc = search(objScreen, 'windows')
-     click(objLoc)
+     windowsKey()
      text = ['logitech']
      writerBot(text)
      objScreen = screenshot('windows')
@@ -71,14 +69,14 @@ def label():
 def dymo(): 
 
     #https://pythonguides.com/python-copy-file/
-    objScreen = screenshot('windows')
-    objLoc = search(objScreen, 'windows')
-    click(objLoc)
+    windowsKey()
     text = ['dymo']
     writerBot(text)
     objScreen = screenshot('windows')
     objLoc = search(objScreen, 'dymo')
     click(objLoc)
+def windowsKey():
+    typingBot.windowsKey()
 def printLabel():
     typingBot.printLabel()
 
