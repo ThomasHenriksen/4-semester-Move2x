@@ -17,3 +17,5 @@ def openDymo():
     path_to_file = 'resources\\Label.label'
 
     subprocess.call([path_to_notepad, path_to_file])
+
+openDymo()
