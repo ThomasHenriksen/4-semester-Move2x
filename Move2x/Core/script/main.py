@@ -5,6 +5,7 @@ from script import LabelClick
 from script import SearchBot
 from script import ScreenShotBot
 from script import imageFromWebcam as getFile
+from script import openFile
 import time
 import os
 

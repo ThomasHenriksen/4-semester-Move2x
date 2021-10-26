@@ -22,7 +22,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="script\openFile.py">
+    <Compile Include="script\imageFromWebcam.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="StartRPA.py">
