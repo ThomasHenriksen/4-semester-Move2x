@@ -18,6 +18,7 @@ def start():
     objLoc = []   
     for trask in listOfTrask:
         if(trask == 'dymo'):
+           print('here')
            dymo()
         elif(trask == 'label'):
            label()
