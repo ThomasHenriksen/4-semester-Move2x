@@ -42,18 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="resources\" />
-    <Folder Include="Screenbots\" />
-    <Folder Include="Screenbots\__pycache__\" />
     <Folder Include="script\" />
     <Folder Include="Temp\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Screenbots\Dymoimg.JPG" />
-    <Content Include="Screenbots\DymoPrinter.JPG" />
-    <Content Include="Screenbots\LabelFind.JPG" />
-    <Content Include="script\Screenbots.pyproj" />
-    <Content Include="Screenbots\__pycache__\ScreenShotBot.cpython-37.pyc" />
-    <Content Include="Screenbots\__pycache__\SearchBot.cpython-37.pyc" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
