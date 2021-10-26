@@ -1,13 +1,13 @@
 import subprocess
 import shutil
 import os
+from pathlib import Path
 
 def openDymo():
-    my_file = Path("resources\\Label.label")
-    if my_file.is_file():
+    my_filePNG = Path("resources\\Label.label")
+    if my_filePNG.is_file():
         os.remove("resources\\Label.label")
-
-
+   
     src = r'resources\\newBackUp.label'
     dst =  r'resources\\Label.label'
     shutil.copyfile(src, dst)
