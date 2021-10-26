@@ -22,4 +22,5 @@ def takeImageFromWebcamFolder():
 
     list_of_files = glob.glob('Temp\\*') 
     latest_file = max(list_of_files, key=os.path.getctime)
-    print(latest_file )
+   
+
