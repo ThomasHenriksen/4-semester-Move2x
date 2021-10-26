@@ -68,14 +68,11 @@ def label():
     writerBot(text)
     printLabel()
 def dymo(): 
+    openDymo()
+    
 
-    #https://pythonguides.com/python-copy-file/
-    windowsKey()
-    text = ['dymo']
-    writerBot(text)
-    objScreen = screenshot('windows')
-    objLoc = search(objScreen, 'dymo')
-    click(objLoc)
+def openDymo():
+    openFile.openDymo()
 def windowsKey():
     typingBot.windowsKey()
 def printLabel():

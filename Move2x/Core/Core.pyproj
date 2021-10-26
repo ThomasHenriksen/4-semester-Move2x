@@ -25,6 +25,7 @@
     <Compile Include="script\imageFromWebcam.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="script\openFile.py" />
     <Compile Include="StartRPA.py">
       <SubType>Code</SubType>
     </Compile>
