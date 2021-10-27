@@ -1,57 +1,27 @@
 <?xml version='1.0' encoding='utf-8'?>
 <root>
-  <blackList>PRODUCT</blackList>
+  <blackList>AWARENESS</blackList>
 <blackList />
 <blackList />
 <blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList>1</blackList>
+<blackList>(6001)</blackList>
+<blackList>10017</blackList>
+<blackList>pe,</blackList>
+<blackList>START</blackList>
+<blackList>(HH:MM)</blackList>
 <blackList>|</blackList>
-<blackList>AWARENESS</blackList>
-<blackList>GAME</blackList>
+<blackList>TICKET</blackList>
+<blackList>4.0</blackList>
 <blackList>INDUSTRY</blackList>
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
-<blackList />
+<blackList>GAME</blackList>
+<blackList>ORDER</blackList>
+<blackList>TIME</blackList>
+<blackList>STAMP</blackList>
+<blackList>FROM</blackList>
+<blackList>(6002)</blackList>
+<blackList>PRODUCT</blackList>
+<blackList>3</blackList>
+<blackList>phone</blackList>
 <blackList />
 <blackList />
 </root>
