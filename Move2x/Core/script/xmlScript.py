@@ -9,12 +9,14 @@ def createXml(dateFrom,toFile,main):
     root.appendChild(xml)
 
     productChild = root.createElement(dateFrom)
-    
+    listOfFile = []
     
     if isinstance(toFile, str):
-        listOfFile = []
+        listOfFile.append(toFile)
+        print(isinstance(toFile, str))
     elif isinstance(toFile, str):
         listOfFile = toFile
+        print(isinstance(toFile, str))
     
     xml_str = root.toprettyxml(indent = "\t")
     path_file = ''
