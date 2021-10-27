@@ -27,29 +27,20 @@ name_var=tk.StringVar()
 
     
     
-def xml_Save(word, listOfWords):
+def xml_Save(wordXml, listOfWords):
 	fileToWrite = listOfWords
-	words = []
+	words = xml.readXml('blackList', 'main')
 	if(listOfWords == 'blackList'):
+		words.append(wordXml)
+		print(wordXml)
 
-		words = len(words.append(xml.readXml('blackList', 'main')))
-		print(words)
-		if(len(words) > 0):
-			words.append(xml.readXml('blackList', 'main'))
-		if(len(words) == 0):
-			words = word
-		else:
-			words.append(listOfWords)
-		print(words)
-	else:
-		word = listOfWords
 	xml.createXml(listOfWords,fileToWrite, 'main')
 	if(listOfWords == 'blackList'):
 		for word in words:
 			print(word)
 			xml.saveToXml(listOfWords,fileToWrite, word, 'main')
 	else:
-		xml.saveToXml(listOfWords,fileToWrite, word, 'main')
+		xml.saveToXml(listOfWords,fileToWrite, wordXml, 'main')
 
 def xml_Read():
 	listOfOptions = xml.readXml('ocr', 'main')
