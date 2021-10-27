@@ -9,25 +9,18 @@ def createXml(dateFrom,toFile,main):
     root.appendChild(xml)
 
     productChild = root.createElement(dateFrom)
-    listOfFile = []
-    
-    if isinstance(toFile, str):
-        listOfFile.append(toFile)
-        print(isinstance(toFile, str))
-    elif isinstance(toFile, str):
-        listOfFile = toFile
-        print(isinstance(toFile, str))
+   
+
     
     xml_str = root.toprettyxml(indent = "\t")
     path_file = ''
-    for item in listOfFile:
-        if(main == 'main'):
-            path_file = 'script\_'+ item + '.xml'
-        else:
-            path_file ='_' + item + '.xml'
+    if(main == 'main'):
+        path_file = 'script\_'+ toFile + '.xml'
+    else:
+        path_file ='_' + toFile + '.xml'
 
-        with open(path_file, "w") as f:
-            f.write(xml_str)
+    with open(path_file, "w") as f:
+        f.write(xml_str)
 
 def indent(elem, level=0):
     i = "\n" + level*"  "
@@ -47,21 +40,12 @@ def indent(elem, level=0):
     return elem
 
 def saveToXml(dateFrom,toFile,words, main):
-    listOfFile = []
-    
-    if isinstance(toFile, str):
-        listOfFile.append(toFile)
-        print(isinstance(toFile, str))
-    elif isinstance(toFile, str):
-        listOfFile = toFile
-        print(isinstance(toFile, str))
-    
     path_file = ''
-    for item in listOfFile:
-        if(main == 'main'):
-            path_file = 'script\_'+ item + '.xml'
-        else:
-            path_file ='_' + item + '.xml'
+    if(main == 'main'):
+       path_file = 'script\_'+ toFile + '.xml'
+    else:
+       path_file ='_' + toFile + '.xml'
+
     root = ElementTree.parse(path_file).getroot()
     c = ElementTree.Element(dateFrom)
     c.text = words

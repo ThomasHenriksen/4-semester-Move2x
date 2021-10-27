@@ -28,12 +28,13 @@ name_var=tk.StringVar()
     
     
 def xml_save(word, listOfWords):
+	fileToWrite = listOfWords
 	if(listOfWords == 'blackList'):
-		fileToWrite = []
-		fileToWrite.append(xml.readXml('blackList', 'main'))
-		fileToWrite.append(listOfWords)
+		word = []
+		word.append(xml.readXml('blackList', 'main'))
+		word.append(listOfWords)
 	else:
-		fileToWrite = listOfWords
+		word = listOfWords
 	xml.createXml(listOfWords,fileToWrite, 'main')
 	xml.saveToXml(listOfWords,fileToWrite, word, 'main')
 
