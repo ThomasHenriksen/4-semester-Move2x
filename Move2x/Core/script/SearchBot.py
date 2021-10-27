@@ -40,10 +40,10 @@ def find_label(take_screenshot, Label):
 
         return max_loc
 
-def check(take_screenshot): 
+def check(take_screenshot, whatToCheck): 
     tempSearch = 'resources\\'
     typeSearch = '.png'
-    nameSearch = 'WebcamCheck'
+    nameSearch = whatToCheck
   
     pathSearch = tempSearch + nameSearch + typeSearch 
     temp = 'temp\\'
