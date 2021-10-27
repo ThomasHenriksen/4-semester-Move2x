@@ -3,7 +3,7 @@ from tkinter import ttk
 import tkinter as tk
 import xmlScript as xml
 import math
-import os
+
 
 WindowRun = True
 
