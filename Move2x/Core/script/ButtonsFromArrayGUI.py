@@ -55,7 +55,7 @@ def xml_Read():
 			if (item == blackListedWord):
 				listOfOptions.remove(item)
 	
-	return xml.readXml('ocr', 'main')
+	return listOfOptions
 
 	# defining a function that will
 	# get the name 
