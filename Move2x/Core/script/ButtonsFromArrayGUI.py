@@ -50,12 +50,22 @@ def xml_Read():
 	except:
 		xml.createXml('blackList','blackList', 'main')
 		blackListedWords = xml.readXml('blackList', 'main')
-	for item in listOfOptions:
-		for blackListedWord in blackListedWords:
-			if (item == blackListedWord):
-				item.remove(item)
 
-	return listOfOptions
+	index = 0
+	OptionsCheck = len(listOfOptions)
+	blacklistCheck = len(blackListedWords)
+	goodList = []
+	while (index <OptionsCheck):
+		fundt = False
+		i = 0
+		while(i < blacklistCheck):
+			if(listOfOptions[index] == blackListedWords[i]):
+				fundt = True
+			i+= 1
+		if(fundt == False):
+			goodList.append(listOfOptions[index])
+		index +=1
+	return goodList
 
 	# defining a function that will
 	# get the name 
@@ -72,16 +82,14 @@ def submit():
 	win.destroy()
 
 def blacklist():
-
-		
 	name=name_var.get()
 	blackList = name
-		
-	xml_Save(blackList, 'blackList')
 
+	xml_Save(blackList, 'blackList')
 	
 	name_var.set("")
-	win.update()
+	array_frame.update()
+	
 
 
 ####Jeg skal lave 2 knapper her. Add to line knap og blacklist knap.
@@ -117,7 +125,7 @@ def entry_update(text):
 	if(len(textold)>0):
 		name_entry.insert(0,textold+' '+text)
 	else:
-		name_entry.insert(0,textold+' '+text)
+		name_entry.insert(0,text)
 
 
 	#Create Multiple Buttons with different commands
