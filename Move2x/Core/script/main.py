@@ -18,13 +18,17 @@ def start():
     objLoc = []   
     for trask in listOfTrask:
         if(trask == 'dymo'):
-           dymo()
+            takePicture()
+            #dymo()
         elif(trask == 'label'):
-           label()
+            takePicture()
+            #label()
         elif(trask == 'webcam'):
-           webcam()
+            takePicture()
+            #webcam()
         elif(trask == 'ocr'):
-          ocr('webcam')
+            takePicture()
+            #ocr('webcam')
 
 def webcam():
      windowsKey()
@@ -34,7 +38,7 @@ def webcam():
      objLoc = search(objScreen, 'webcam')
      click(objLoc)
      time.sleep(20)
-     objScreen = screenshot('webcam')
+     
 def label():
     os.system('python script/ButtonsFromArrayGUI.py')
     objScreen = screenshot('windows')
@@ -67,11 +71,23 @@ def label():
     click(objLoc)
     writerBot(text)
     printLabel()
+
 def dymo(): 
     openFile.deleteFile()
     openFile.copyFile()
     openFile.openFile()
-
+def takePicture():
+    fundet = False
+    while(fundet == False):
+        objScreen = screenshot('windows')
+        max_val = SearchBot.check(objScreen)
+        if(max_val >= 0.75):
+            fundet = True
+    objScreen = screenshot('windows')
+    objLoc = search(objScreen, 'takePicture')
+    click(objLoc)
+    time.sleep(0.1)
+    getFile.takeImageFromWebcamFolder()
 
 def windowsKey():
     typingBot.windowsKey()
