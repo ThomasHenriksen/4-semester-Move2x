@@ -33,11 +33,13 @@ def xml_Save(word, listOfWords):
 	if(listOfWords == 'blackList'):
 		words.append(xml.readXml('blackList', 'main'))
 		words.append(listOfWords)
+		print(words)
 	else:
 		word = listOfWords
 	xml.createXml(listOfWords,fileToWrite, 'main')
 	if(listOfWords == 'blackList'):
 		for word in words:
+			print(word)
 			xml.saveToXml(listOfWords,fileToWrite, word, 'main')
 	else:
 		xml.saveToXml(listOfWords,fileToWrite, word, 'main')
