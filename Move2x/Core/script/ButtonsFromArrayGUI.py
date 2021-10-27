@@ -63,10 +63,10 @@ while(WindowRun == True):
 		WindowRun = False
 		
 		name_var.set("")
-		try:
-			quit()
-		except:
-			print("FAIL")
+		
+		quit()
+		
+			
 
 	def blacklist():
 		name=name_var.get()
