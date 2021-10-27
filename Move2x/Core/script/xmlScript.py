@@ -56,7 +56,6 @@ def saveToXml(dateFrom,toFile,words, main):
         listOfFile = toFile
         print(isinstance(toFile, str))
     
-    xml_str = root.toprettyxml(indent = "\t")
     path_file = ''
     for item in listOfFile:
         if(main == 'main'):
