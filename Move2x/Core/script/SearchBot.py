@@ -23,7 +23,7 @@ def find_label(take_screenshot, Label):
 
     #print('Best match top left positopn: %s' % str(max_loc))
     #print('Best match confidence: %s' % str(max_val))
-# Sets the level off accepteable match with in screenshot
+    # Sets the level off accepteable match with in screenshot
     threshold = 0.70
     if(max_val >= threshold):
         #print(Label + ' is foundt')
@@ -50,13 +50,12 @@ def check(take_screenshot, whatToCheck):
     type = '.png'
     path = temp + take_screenshot + type 
     haystack_img = cv.imread(path) #Screenshot
-    #haystack_img = cv.resize(haystack_img, (1024, 720))
+  
     needle_img = cv.imread(pathSearch)#Label img to find with in screenshot
     result = cv.matchTemplate(haystack_img, needle_img, cv.TM_CCOEFF_NORMED) # match Screenshot and Label img 
 
     min_val, max_val, min_loc, max_loc = cv.minMaxLoc(result)
 
-    #print('Best match top left positopn: %s' % str(max_loc))
-    #print('Best match confidence: %s' % str(max_val))
+
 
     return max_val

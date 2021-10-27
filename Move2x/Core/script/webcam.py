@@ -20,7 +20,7 @@ def returnCameraIndexes():
     return i
 
 def startWebcam():
-    print(str(returnCameraIndexes()))
+    
     vc.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
     vc.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
     if vc.isOpened(): # try to get the first frame
