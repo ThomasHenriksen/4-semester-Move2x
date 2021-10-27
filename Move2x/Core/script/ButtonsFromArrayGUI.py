@@ -54,7 +54,8 @@ def xml_Read():
 		for blackListedWord in blackListedWords:
 			if (item == blackListedWord):
 				listOfOptions.remove(item)
-	
+	for item in listOfOptions:
+		print(item)
 	return listOfOptions
 
 	# defining a function that will
