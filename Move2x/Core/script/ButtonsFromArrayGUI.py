@@ -24,10 +24,18 @@ array_frame.pack(side="top", fill="both", expand=True)
 name_var=tk.StringVar()
 
 
-def xml_Save(word, listOfWords):
-    fileToWrite = listOfWords
-    xml.createXml(listOfWords,fileToWrite, 'main')
-    xml.saveToXml(listOfWords,fileToWrite, word, 'main')
+
+    
+    
+def xml_save(word, listOfWords):
+	if(listOfWords == 'blackList'):
+		fileToWrite = []
+		fileToWrite.append(xml.readXml('blackList', 'main'))
+		fileToWrite.append(listOfWords)
+	else:
+		fileToWrite = listOfWords
+	xml.createXml(listOfWords,fileToWrite, 'main')
+	xml.saveToXml(listOfWords,fileToWrite, word, 'main')
 
 def xml_Read():
 	listOfOptions = xml.readXml('ocr', 'main')

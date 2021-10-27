@@ -18,13 +18,14 @@ def start():
     objLoc = []   
     for trask in listOfTrask:
         if(trask == 'dymo'):
-            dymo()
+            takePicture()
+            #dymo()
         elif(trask == 'label'):
-            label()
+            #label()
         elif(trask == 'webcam'):
-            webcam()
+            #webcam()
         elif(trask == 'ocr'):
-            ocr('webcam')
+            #ocr('webcam')
 
 def webcam():
      windowsKey()
