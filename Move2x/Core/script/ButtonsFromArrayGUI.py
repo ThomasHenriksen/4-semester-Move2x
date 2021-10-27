@@ -27,7 +27,7 @@ name_var=tk.StringVar()
 
     
     
-def xml_save(word, listOfWords):
+def xml_Save(word, listOfWords):
 	fileToWrite = listOfWords
 	words = []
 	if(listOfWords == 'blackList'):
