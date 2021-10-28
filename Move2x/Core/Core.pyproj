@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>1098cbb4-6574-4230-89c7-61e30d01c196</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>script\ButtonsFromArrayGUI.py</StartupFile>
+    <StartupFile>StartRPA.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -48,6 +48,9 @@
     <Folder Include="resources\" />
     <Folder Include="script\" />
     <Folder Include="Temp\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="script\_trask.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

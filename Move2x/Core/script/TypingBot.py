@@ -18,5 +18,6 @@ def printLabel():
     pyautogui.keyUp('ctrl')
 
 def windowsKey():
-    pyautogui.press("win")
- 
+     pyautogui.press("win")
+def printScreen():
+     pyautogui.press("prtsc")

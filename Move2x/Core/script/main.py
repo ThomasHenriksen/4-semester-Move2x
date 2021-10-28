@@ -29,11 +29,14 @@ def start():
 def webcam():
      windowsKey()
      text = ['logitech']
+     time.sleep(0.5)
      writerBot(text)
      objScreen = screenshot('windows')
-     objLoc = search(objScreen, 'webcam')
+     objLoc = search(objScreen, 'logi')
      click(objLoc)
-     time.sleep(20)
+     takePicture()
+     objLoc = search(objScreen, 'closeWebCam')
+     click(objLoc)
      
 def label():
     os.system('python script/ButtonsFromArrayGUI.py')
@@ -85,6 +88,7 @@ def dymo():
 def takePicture():
     fundet = False
     while(fundet == False):
+        print('waiting')
         objScreen = screenshot('windows')
         max_val = SearchBot.check(objScreen, 'WebcamCheck')
         if(max_val >= 0.75):
