@@ -29,7 +29,7 @@ def start():
 def webcam():
      windowsKey()
      text = ['logitech']
-     time.sleep(0.5)
+     time.sleep(0.1)
      writerBot(text)
      objScreen = screenshot('windows')
      objLoc = search(objScreen, 'logi')
@@ -45,12 +45,15 @@ def labelMaker():
         text = readChooseWordXml()
         if(index == 0):
             writeLabel('customerNumber', text)
-        elif(text == 'done'):
-            while(5 > index):
-             removeLabelText('produkt'+index)
-             isRunning = False
         else:
-             writeLabel('produkt'+index, text)
+            print(text)
+            if(text[0] == "done"):
+             while(5 > index):
+                 removeLabelText('Produkt'+str(index))
+                 isRunning = False
+                 index += 1
+            else:
+                writeLabel('Produkt'+str(index), text)
         index += 1
     printLabel()
 
@@ -74,7 +77,7 @@ def dymo():
     openFile.copyFile()
     openFile.openFile()
     fundet = False
-    time.sleep(0.4)
+    time.sleep(0.1)
     objScreen = screenshot('windows')
     max_val = SearchBot.check(objScreen, 'newLabelCheck')
     if(max_val >= 0.75):
@@ -94,7 +97,7 @@ def takePicture():
     objScreen = screenshot('windows')
     objLoc = search(objScreen, 'takePicture')
     click(objLoc)
-    time.sleep(1)
+    time.sleep(0.5)
     getFile.takeImageFromWebcamFolder()
 
 def spacebar():

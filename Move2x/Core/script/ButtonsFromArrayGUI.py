@@ -3,7 +3,7 @@ from tkinter import ttk
 import tkinter as tk
 import xmlScript as xml
 import math
-
+import re
 
 WindowRun = True
 
@@ -57,15 +57,19 @@ while(WindowRun == True):
 		
 		name=name_var.get()
 		choosenword = name
+		def is_not_blank(s):
+		  return bool(s and not s.isspace())
+		if(is_not_blank(choosenword)):
+			
+			xml_Save(re.sub(' +', ' ', choosenword.lstrip(' ')), 'choosenword')
 		
-		xml_Save(choosenword, 'choosenword')
+			WindowRun = False
 		
-		WindowRun = False
+			name_var.set("")
 		
-		name_var.set("")
-		
-		quit()
-		
+			quit()
+		else:
+			print('empty')
 	def done():
 
 		
