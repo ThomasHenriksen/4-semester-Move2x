@@ -57,6 +57,15 @@ def labelMaker():
         index += 1
     printLabel()
 
+def exitLabel():
+    objScreen = screenshot('windows')
+    objLoc = search(objScreen, 'exitLabel')
+    click(objLoc)
+    max_val = SearchBot.check(objScreen, 'newLabelCheck')
+    if(max_val >= 0.75):
+        objScreen = screenshot('windows')
+        objLoc = search(objScreen, 'newLabelNo')
+        click(objLoc)
 def writeLabel(labelTextField, textToEnter):
     objScreen = screenshot('windows')
     objLoc = search(objScreen, labelTextField)
