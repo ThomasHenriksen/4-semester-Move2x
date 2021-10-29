@@ -96,7 +96,7 @@ def takePicture():
     objScreen = screenshot('windows')
     objLoc = search(objScreen, 'takePicture')
     click(objLoc)
-    time.sleep(0.1)
+    time.sleep(1)
     getFile.takeImageFromWebcamFolder()
 
 def windowsKey():

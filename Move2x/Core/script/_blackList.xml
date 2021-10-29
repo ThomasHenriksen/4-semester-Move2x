@@ -1,2 +1,16 @@
-<?xml version="1.0" ?>
-<root/>
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <blackList>——</blackList>
+<blackList>PRODUCT</blackList>
+<blackList>START</blackList>
+<blackList>(HH:MM)</blackList>
+<blackList>TIME</blackList>
+<blackList>ORDER</blackList>
+<blackList>Awage</blackList>
+<blackList>Oe</blackList>
+<blackList>a</blackList>
+<blackList>TICKET</blackList>
+<blackList>STAMP</blackList>
+<blackList>FROM</blackList>
+<blackList>CUSTOMER</blackList>
+</root>

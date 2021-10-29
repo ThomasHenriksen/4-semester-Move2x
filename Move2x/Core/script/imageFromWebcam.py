@@ -25,11 +25,11 @@ def takeImageFromWebcamFolder():
    
 
     print(dest_file)
-    os.rename(latest_file, "Temp\\webcam.jpg")
+    #os.rename(dest_file, "Temp\\webcam.jpg")
     im = Image.open('Temp\\webcam.jpg')
     im.save('Temp\\webcam.png')
     os.remove("Temp\\webcam.jpg")    
    
 def webcamFolder():
-    return 'D:\*.jpg'
-takeImageFromWebcamFolder()
+    return 'C:\\Users\\festo\\Videos\\Logitech\\LogiCapture\\*.jpg'
+
