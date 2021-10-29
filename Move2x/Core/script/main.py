@@ -20,7 +20,7 @@ def start():
         if(trask == 'dymo'):
             dymo()
         elif(trask == 'label'):
-            label()
+            labelMaker()
         elif(trask == 'webcam'):
             webcam()
         elif(trask == 'ocr'):
@@ -48,12 +48,13 @@ def labelMaker():
         elif(text == 'done'):
             while(5 > index):
              removeLabelText('produkt'+index)
+             isRunning = False
         else:
-            writeLabel('produkt'+index, text)
+             writeLabel('produkt'+index, text)
+        index += 1
     printLabel()
 
 def writeLabel(labelTextField, textToEnter):
-    os.system('python script/ButtonsFromArrayGUI.py')
     objScreen = screenshot('windows')
     objLoc = search(objScreen, labelTextField)
     text = readChooseWordXml()
@@ -61,7 +62,6 @@ def writeLabel(labelTextField, textToEnter):
     writerBot(text)
 
 def removeLabelText(labelTextField):
-    os.system('python script/ButtonsFromArrayGUI.py')
     objScreen = screenshot('windows')
     objLoc = search(objScreen, labelTextField)
     text = readChooseWordXml()
