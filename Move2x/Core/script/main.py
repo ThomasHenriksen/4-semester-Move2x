@@ -56,6 +56,7 @@ def labelMaker():
                 writeLabel('Produkt'+str(index), text)
         index += 1
     printLabel()
+    exitLabel()
 
 def exitLabel():
     objScreen = screenshot('windows')
