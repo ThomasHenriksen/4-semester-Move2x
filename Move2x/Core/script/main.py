@@ -11,11 +11,7 @@ import os
 oneTime = False
  
 def start():
-    listOfTrask = xml.readXml('trask', 'main')
-    objWebcam = ''
-    objOcr = []
-    objScreen = ''
-    objLoc = []   
+    listOfTrask = xml.readXml('trask', 'main') 
     for trask in listOfTrask:
         if(trask == 'dymo'):
             dymo()
@@ -62,7 +58,7 @@ def exitLabel():
     objScreen = screenshot('windows')
     objLoc = search(objScreen, 'exitLabel')
     click(objLoc)
-    time.sleep(0.1)
+    time.sleep(0.7)
     max_val = SearchBot.check(objScreen, 'newLabelCheck')
     if(max_val >= 0.75):
         objScreen = screenshot('windows')
