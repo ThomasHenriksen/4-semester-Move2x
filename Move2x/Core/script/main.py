@@ -62,6 +62,7 @@ def exitLabel():
     objScreen = screenshot('windows')
     objLoc = search(objScreen, 'exitLabel')
     click(objLoc)
+    time.sleep(0.1)
     max_val = SearchBot.check(objScreen, 'newLabelCheck')
     if(max_val >= 0.75):
         objScreen = screenshot('windows')
