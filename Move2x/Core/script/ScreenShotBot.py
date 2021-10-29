@@ -6,7 +6,7 @@ import time
 from script import TypingBot as typingBot
 
 def take_screenshot (window):
-    time.sleep(0.1)
+    time.sleep(0.2)
     name = window
     temp = 'temp\\'
     type = '.png'
