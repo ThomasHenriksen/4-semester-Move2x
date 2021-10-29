@@ -66,6 +66,19 @@ while(WindowRun == True):
 		
 		quit()
 		
+	def done():
+
+		
+		name= 'done' 
+		choosenword = name
+		
+		xml_Save(choosenword, 'choosenword')
+		
+		WindowRun = False
+		
+		name_var.set("")
+		
+		quit()
 			
 
 	def blacklist():
@@ -95,11 +108,14 @@ while(WindowRun == True):
 	name_var=tk.StringVar()
 	name_label = tk.Label(win, text = 'ProductName', font=('calibre',10, 'bold'))
 	name_entry = tk.Entry(win,textvariable = name_var, font=('calibre',10,'normal'))
+	name_entry.pack()
+
 	sub_btn=tk.Button(win,text = 'Submit', command = submit)
 	sub_btn.pack()
 	black_btn=tk.Button(win,text = 'BlackList', command = blacklist)
-	black_btn.pack()
-	name_entry.pack()
+	black_btn.pack(side=tk.LEFT)
+	done_btn=tk.Button(win,text = 'Done', command = done)
+	done_btn.pack(side=tk.RIGHT)	
 
 	option = xml_Read()
 	array_size = len(option) #Array size = 33

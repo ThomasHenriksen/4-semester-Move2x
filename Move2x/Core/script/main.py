@@ -37,39 +37,37 @@ def webcam():
      takePicture()
      objLoc = search(objScreen, 'closeWebCam')
      click(objLoc)
-     
-def label():
-    os.system('python script/ButtonsFromArrayGUI.py')
-    objScreen = screenshot('windows')
-    objLoc = search(objScreen, 'customerNumber')
-    text = readChooseWordXml()
-    click(objLoc)
-    writerBot(text)
-    os.system('python script/ButtonsFromArrayGUI.py')
-    objScreen = screenshot('windows')
-    objLoc = search(objScreen, 'produkt1')
-    text = readChooseWordXml()
-    click(objLoc)
-    writerBot(text)
-    os.system('python script/ButtonsFromArrayGUI.py')
-    objScreen = screenshot('windows')
-    objLoc = search(objScreen, 'produkt2')
-    text = readChooseWordXml()
-    click(objLoc)
-    writerBot(text)
-    os.system('python script/ButtonsFromArrayGUI.py')
-    objScreen = screenshot('windows')
-    objLoc = search(objScreen, 'produkt3')
-    text = readChooseWordXml()
-    click(objLoc)
-    writerBot(text)
-    os.system('python script/ButtonsFromArrayGUI.py')
-    objScreen = screenshot('windows')
-    objLoc = search(objScreen, 'produkt4')
-    text = readChooseWordXml()
-    click(objLoc)
-    writerBot(text)
+def labelMaker():
+    isRunning = True
+    index = 0
+    while(5 > index and isRunning == True):
+        os.system('python script/ButtonsFromArrayGUI.py')
+        text = readChooseWordXml()
+        if(index == 0):
+            writeLabel('customerNumber', text)
+        elif(text == 'done'):
+            while(5 > index):
+             removeLabelText('produkt'+index)
+        else:
+            writeLabel('produkt'+index, text)
     printLabel()
+
+def writeLabel(labelTextField, textToEnter):
+    os.system('python script/ButtonsFromArrayGUI.py')
+    objScreen = screenshot('windows')
+    objLoc = search(objScreen, labelTextField)
+    text = readChooseWordXml()
+    click(objLoc)
+    writerBot(text)
+
+def removeLabelText(labelTextField):
+    os.system('python script/ButtonsFromArrayGUI.py')
+    objScreen = screenshot('windows')
+    objLoc = search(objScreen, labelTextField)
+    text = readChooseWordXml()
+    click(objLoc)
+    spacebar()    
+    
 
 def dymo(): 
     openFile.deleteFile()
@@ -99,6 +97,8 @@ def takePicture():
     time.sleep(1)
     getFile.takeImageFromWebcamFolder()
 
+def spacebar():
+    typingBot.spacebar()
 def windowsKey():
     typingBot.windowsKey()
 def printLabel():

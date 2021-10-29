@@ -21,3 +21,5 @@ def windowsKey():
      pyautogui.press("win")
 def printScreen():
      pyautogui.press("prtsc")
+def printScreen():
+     pyautogui.press("space")
