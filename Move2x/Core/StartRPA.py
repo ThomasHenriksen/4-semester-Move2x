@@ -4,8 +4,9 @@ import tkinter as tk
 import Move2xRPA as move
 win = Tk()
 
-# setting the windows size
-win.geometry("200x100")
+# setting the windows size and name
+win.geometry("200x100+1685+885")
+win.title("Start")
 
 def run():
     label.config(text="is running")
