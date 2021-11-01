@@ -7,6 +7,7 @@ win = Tk()
 # setting the windows size and name
 win.geometry("200x100+1685+885")
 win.title("Start")
+win.wm_attributes("-topmost", 1)
 
 def run():
     label.config(text="is running")
