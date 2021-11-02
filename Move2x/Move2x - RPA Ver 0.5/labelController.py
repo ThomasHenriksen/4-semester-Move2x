@@ -78,7 +78,7 @@ def dymo():
             click(objLoc)
             fundet = True
         i+= 1
-    return 'oping DymoProgram'
+    return 'Dymo is open'
 
 def spacebar():
     return typingBot.spacebar()

@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>8440285c-2a2b-4460-8d43-66854d45f76d</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>StartRPA.py</StartupFile>
+    <StartupFile>script\SearchBot.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,6 +21,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="script\autoAlignImage.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="script\LabelGUI.py">
       <SubType>Code</SubType>
     </Compile>
@@ -47,6 +50,7 @@
     <Compile Include="StartRPA.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="resources\ref.jpg" />
     <Content Include="resources\backup.label" />
     <Content Include="resources\closeWebCam.png" />
     <Content Include="resources\customerNumber.PNG" />
@@ -69,6 +73,7 @@
     <Content Include="resources\textbox.PNG" />
     <Content Include="resources\WebcamCheck.png" />
     <Content Include="resources\windows.png" />
+    <Content Include="Temp\webcam2.jpg" />
     <Content Include="XML\_blackList.xml" />
     <Content Include="XML\_choosenword.xml" />
     <Content Include="XML\_trask.xml" />
@@ -103,8 +108,6 @@
     <Content Include="testRpaStart2.bat" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Label\" />
-    <Folder Include="NewFolder1\" />
     <Folder Include="Webcam\" />
     <Folder Include="XML\" />
     <Folder Include="resources\" />

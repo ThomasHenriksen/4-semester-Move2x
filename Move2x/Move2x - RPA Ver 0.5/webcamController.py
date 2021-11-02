@@ -39,12 +39,7 @@ def webcam():
          objScreen = screenshot('windows')
          objLoc = search(objScreen, 'logi')
          click(objLoc)
-     takePicture()
-     print('ocr')
-     list = ocr()
-     if(len(list) < 20):
-         webcam()
-     return 'Scan completion'
+     return 'Webcam is open'
 
 def takePicture():
     fundet = False
@@ -59,6 +54,8 @@ def takePicture():
     click(objLoc)
     time.sleep(0.2)
     getFile.takeImageFromWebcamFolder()
+    return 'img is completion'
+
     
 
 def ocr():   
@@ -68,5 +65,4 @@ def ocr():
     list.reverse()
     for f in list:
        xml.saveToXml('ocr',fileToWrite, f, 'main')
-    listFromXml = xml.readXml(fileToWrite)
-    return list
+    return 'OCR is completion'

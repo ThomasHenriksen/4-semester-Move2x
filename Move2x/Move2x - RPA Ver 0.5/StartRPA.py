@@ -40,11 +40,13 @@ class MainFrame(tk.Frame):
         self.buttonScanner['state'] = 'disabled'
         self.listbox.delete(0,tk.END)
         self.after(0, self.set_label_text, 'running')
-
-        text = 'Start Scanning'
+        
+        text = dymo.dymo()
         self.after(0, self.listbox_insert, text)
-        dymo.dymo()
-        dymo.labelMaker()
+        text = dymo.labelMaker()
+        self.after(0, self.listbox_insert, text)
+        
+        
 
         self.buttonDymo['state'] = 'normal'
         self.buttonScanner['state'] = 'normal'
@@ -55,11 +57,17 @@ class MainFrame(tk.Frame):
         self.buttonScanner['state'] = 'disabled'
         self.listbox.delete(0,tk.END)
         self.after(0, self.set_label_text, 'running')
-        text = 'Start printing'
-        self.after(0, self.listbox_insert, text)
+
         text = scan.webcam()   
         self.after(0, self.listbox_insert, text)
+
+        text = scan.takePicture()
+        self.after(0, self.listbox_insert, text)
+
+        #text = scan.ocr()
+        #self.after(0, self.listbox_insert, text)
         
+
         self.buttonDymo['state'] = 'normal'
         self.buttonScanner['state'] = 'normal'
         self.after(0, self.set_label_text, ' not running')    

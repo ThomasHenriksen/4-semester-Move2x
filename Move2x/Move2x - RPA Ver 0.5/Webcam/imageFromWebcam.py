@@ -31,6 +31,6 @@ def takeImageFromWebcamFolder():
     os.remove("Temp\\webcam.jpg")    
    
 def webcamFolder():
-    #return 'C:\\Users\\Ice_m\\Videos\\Logitech\\LogiCapture\\*.jpg'
-    return 'C:\\Users\\festo\\Videos\\Logitech\\LogiCapture\\*.jpg'
+    return 'C:\\Users\\Ice_m\\Videos\\Logitech\\LogiCapture\\*.jpg'
+    #return 'C:\\Users\\festo\\Videos\\Logitech\\LogiCapture\\*.jpg'
 
