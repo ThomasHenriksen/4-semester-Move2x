@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>8440285c-2a2b-4460-8d43-66854d45f76d</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Move2xRPA.py</StartupFile>
+    <StartupFile>StartRPA.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,9 +21,14 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Move2xRPA.py" />
+    <Compile Include="script\LabelGUI.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="module1.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="script\ButtonsFromArrayGUI.py" />
-    <Compile Include="script\imageFromWebcam.py" />
+    <Compile Include="Webcam\imageFromWebcam.py" />
     <Compile Include="script\LabelClick.py" />
     <Compile Include="labelController.py">
       <SubType>Code</SubType>
@@ -34,7 +39,7 @@
     <Compile Include="script\ScreenShotBot.py" />
     <Compile Include="script\SearchBot.py" />
     <Compile Include="script\TypingBot.py" />
-    <Compile Include="script\webcam.py" />
+    <Compile Include="Webcam\webcam.py" />
     <Compile Include="webcamController.py">
       <SubType>Code</SubType>
     </Compile>
@@ -64,10 +69,9 @@
     <Content Include="resources\textbox.PNG" />
     <Content Include="resources\WebcamCheck.png" />
     <Content Include="resources\windows.png" />
-    <Content Include="script\_blackList.xml" />
-    <Content Include="script\_choosenword.xml" />
-    <Content Include="script\_ocr.xml" />
-    <Content Include="script\_trask.xml" />
+    <Content Include="XML\_blackList.xml" />
+    <Content Include="XML\_choosenword.xml" />
+    <Content Include="XML\_trask.xml" />
     <Content Include="script\__pycache__\cam.cpython-37.pyc" />
     <Content Include="script\__pycache__\imageFromWebcam.cpython-37.pyc" />
     <Content Include="script\__pycache__\LabelClick.cpython-37.pyc" />
@@ -99,6 +103,9 @@
     <Content Include="testRpaStart2.bat" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Label\" />
+    <Folder Include="NewFolder1\" />
+    <Folder Include="Webcam\" />
     <Folder Include="XML\" />
     <Folder Include="resources\" />
     <Folder Include="script\" />

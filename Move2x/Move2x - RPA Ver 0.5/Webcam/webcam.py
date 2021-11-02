@@ -43,6 +43,3 @@ def takePicture():
     rval, frame = vc.read()
     cv2.imwrite(path,frame)
     return name
-     
-def stopWebcam():
-    vc.release()

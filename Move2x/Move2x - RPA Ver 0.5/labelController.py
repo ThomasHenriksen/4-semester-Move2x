@@ -8,14 +8,13 @@ from script import xmlScript as xml
 import time
 import os
 
-def start():
-    return False
 
 
 def labelMaker():
     isRunning = True
     index = 0
     while(5 > index and isRunning == True):
+        time.sleep(0.5)
         os.system('python script/ButtonsFromArrayGUI.py')
         text = readChooseWordXml()
         if(index == 0):
@@ -31,8 +30,7 @@ def labelMaker():
                 writeLabel('Produkt'+str(index), text)
         index += 1
     printLabel()
-    exitLabel()
-    return False
+    return 'Print completion'
 
 def exitLabel():
     objScreen = screenshot('windows')
@@ -67,14 +65,20 @@ def dymo():
     openFile.copyFile()
     openFile.openFile()
     fundet = False
-    time.sleep(0.1)
-    objScreen = screenshot('windows')
-    max_val = SearchBot.check(objScreen, 'newLabelCheck')
-    if(max_val >= 0.75):
+    
+    i = 0
+    while(i < 2 and fundet == False):
+        time.sleep(0.1)
         objScreen = screenshot('windows')
-        objLoc = search(objScreen, 'newLabelNo')
-        click(objLoc)
-    return False
+        max_val = SearchBot.check(objScreen, 'newLabelNo')
+        print('here')
+        if(max_val >= 0.75):
+            objScreen = screenshot('windows')
+            objLoc = search(objScreen, 'newLabelNo')
+            click(objLoc)
+            fundet = True
+        i+= 1
+    return 'oping DymoProgram'
 
 def spacebar():
     return typingBot.spacebar()
@@ -98,17 +102,9 @@ def writerBot(text):
     return typingBot.type_string_with_delay(text)
 
 def readChooseWordXml():
-    word = xml.readXml('choosenword','main')
+    word = xml.readXml('choosenword')
   
     return word
 
-def ocr(imgName):   
-    fileToWrite = 'ocr'
-    xml.createXml('ocr',fileToWrite, 'main')
-    list = imageReader.listOfWords(imgName)
-    list.reverse()
-    for f in list:
-       xml.saveToXml('ocr',fileToWrite, f, 'main')
-    listFromXml = xml.readXml(fileToWrite, 'main')
-    return list
+
 

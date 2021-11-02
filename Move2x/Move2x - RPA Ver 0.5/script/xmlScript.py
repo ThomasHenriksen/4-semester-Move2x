@@ -15,7 +15,7 @@ def createXml(dateFrom,toFile,main):
     xml_str = root.toprettyxml(indent = "\t")
     path_file = ''
     if(main == 'main'):
-        path_file = 'script\_'+ toFile + '.xml'
+        path_file = 'XML\_'+ toFile + '.xml'
     else:
         path_file ='_' + toFile + '.xml'
 
@@ -42,7 +42,7 @@ def indent(elem, level=0):
 def saveToXml(dateFrom,toFile,words, main):
     path_file = ''
     if(main == 'main'):
-       path_file = 'script\_'+ toFile + '.xml'
+       path_file = 'XML\_'+ toFile + '.xml'
     else:
        path_file ='_' + toFile + '.xml'
 
@@ -54,10 +54,11 @@ def saveToXml(dateFrom,toFile,words, main):
     tree = ElementTree.ElementTree(indent(root))
     tree.write(path_file, xml_declaration=True, encoding='utf-8')
 
-def readXml(toFile, main):
+def readXml(toFile):
     path_file = ''
+    main = 'main'
     if(main == 'main'):
-        path_file = 'script\_'+ toFile + '.xml'
+        path_file = 'XML\_'+ toFile + '.xml'
     else:
         path_file ='_' + toFile + '.xml'
 

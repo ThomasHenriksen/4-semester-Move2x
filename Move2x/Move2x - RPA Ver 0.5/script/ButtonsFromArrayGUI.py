@@ -1,18 +1,29 @@
 from tkinter import *
 from tkinter import ttk
+
 import tkinter as tk
-import xmlScript as xml
+import sys
 import math
 import re
+import os
 
+try:
+	print('try import')
+	from script import xmlScript as xml
+except:
+	print('fail import')
+	text = sys.path.insert(1, 'script')
+	print(text)
+	import xmlScript as xml
 WindowRun = True
 
 while(WindowRun == True):
+	print(os.getcwd())
 			# performing an infinite loop
 		# for the window to display
 	def xml_Save(wordXml, listOfWords):
 		fileToWrite = listOfWords
-		words = xml.readXml('blackList', 'main')
+		words = xml.readXml('blackList')
 		if(listOfWords == 'blackList'):
 			words.append(wordXml)
 			
@@ -26,13 +37,13 @@ while(WindowRun == True):
 			xml.saveToXml(listOfWords,fileToWrite, wordXml, 'main')
 
 	def xml_Read():
-		listOfOptions = xml.readXml('ocr', 'main')
+		listOfOptions = xml.readXml('ocr')
 	
 		try:
-			blackListedWords = xml.readXml('blackList', 'main')
+			blackListedWords = xml.readXml('blackList')
 		except:
 			xml.createXml('blackList','blackList', 'main')
-			blackListedWords = xml.readXml('blackList', 'main')
+			blackListedWords = xml.readXml('blackList')
 
 		index = 0
 		OptionsCheck = len(listOfOptions)

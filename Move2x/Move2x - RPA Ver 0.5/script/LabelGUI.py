@@ -1,10 +1,9 @@
 import tkinter as tk
 from concurrent import futures
 import time
-import webcamController as scan
-import labelController as dymo
-
-thread_pool_executor = futures.ThreadPoolExecutor(max_workers=3)
+import os 
+from ..script.xmlScript import readXml
+thread_pool_executor = futures.ThreadPoolExecutor(max_workers=1)
  
 class MainFrame(tk.Frame):
  
@@ -36,38 +35,30 @@ class MainFrame(tk.Frame):
         self.listbox.insert(tk.END, item)
  
     def blocking_Dymo(self):
-        self.buttonDymo['state'] = 'disabled'
         self.buttonScanner['state'] = 'disabled'
         self.listbox.delete(0,tk.END)
         self.after(0, self.set_label_text, 'running')
-
-        text = 'Start Scanning'
-        self.after(0, self.listbox_insert, text)
-        dymo.dymo()
-        dymo.labelMaker()
-
-        self.buttonDymo['state'] = 'normal'
+        print(os.getcwd())
+        for number in range(5):
+            self.after(0, self.listbox_insert, number)
+            print(number)
+            time.sleep(1)
         self.buttonScanner['state'] = 'normal'
         self.after(0, self.set_label_text, ' not running')
 
     def blocking_Scanner(self):
         self.buttonDymo['state'] = 'disabled'
-        self.buttonScanner['state'] = 'disabled'
         self.listbox.delete(0,tk.END)
         self.after(0, self.set_label_text, 'running')
-        text = 'Start printing'
-        self.after(0, self.listbox_insert, text)
-        text = scan.webcam()   
-        self.after(0, self.listbox_insert, text)
         
+        for number in range(5):
+            self.after(0, self.listbox_insert, 'test ' + str(number))
+            print(number)
+            time.sleep(1)
         self.buttonDymo['state'] = 'normal'
-        self.buttonScanner['state'] = 'normal'
         self.after(0, self.set_label_text, ' not running')    
  
 if __name__ == '__main__':
     app = tk.Tk()
     main_frame = MainFrame()
-    app.geometry("200x300+1685+685")
-    app.title("Start")
-    app.wm_attributes("-topmost", 1)
     app.mainloop()

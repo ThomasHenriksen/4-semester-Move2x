@@ -2,14 +2,16 @@ import cv2
 import pytesseract as pt
 
 pt.pytesseract.tesseract_cmd = 'Tesseract-OCR\\tesseract.exe'
-list = []
+
 
 def imageColorRGB(image):
     return cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-def listOfWords(imgName):
+def listOfWords():
+    list = []
     temp = 'Temp\\'
     type = '.png'
+    imgName = 'webcam'
     path = temp + imgName + type 
 
 
