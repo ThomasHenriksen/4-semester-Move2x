@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>8440285c-2a2b-4460-8d43-66854d45f76d</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>script\SearchBot.py</StartupFile>
+    <StartupFile>StartRPA.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>

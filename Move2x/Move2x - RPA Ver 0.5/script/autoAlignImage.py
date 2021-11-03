@@ -1,12 +1,22 @@
 from __future__ import print_function
 import cv2
 import numpy as np
-
+import os
 MAX_FEATURES = 500
 GOOD_MATCH_PERCENT = 0.40
 
-def alignImages(im1, im2):
+def alignImages():
+  tempSearch = 'temp\\'
+  typeSearch = '.jpg'
+  nameSearch = 'align'  
 
+  imFilename = tempSearch + nameSearch + typeSearch 
+  print("Reading image to align : ", imFilename);
+  im1 = cv2.imread(imFilename, cv2.IMREAD_COLOR)
+
+  refFilename = "resources\\ref.png"
+  print("Reading reference image : ", refFilename)
+  im2 = cv2.imread(refFilename, cv2.IMREAD_COLOR)
   # Convert images to grayscale
   im1Gray = cv2.cvtColor(im1, cv2.COLOR_BGR2GRAY)
   im2Gray = cv2.cvtColor(im2, cv2.COLOR_BGR2GRAY)
@@ -46,30 +56,8 @@ def alignImages(im1, im2):
   # Use homography
   height, width, channels = im2.shape
   im1Reg = cv2.warpPerspective(im1, h, (width, height))
-
-  return im1Reg, h
-
-if __name__ == '__main__':
-
-  # Read reference image
-  refFilename = "resources\\ref.jpg"
-  print("Reading reference image : ", refFilename)
-  imReference = cv2.imread(refFilename, cv2.IMREAD_COLOR)
-
-  # Read image to be aligned
-  imFilename = "temp\\2021-11-02_12-41-32.jpg"
-  print("Reading image to align : ", imFilename);
-  im = cv2.imread(imFilename, cv2.IMREAD_COLOR)
-
-  print("Aligning images ...")
-  # Registered image will be resotred in imReg.
-  # The estimated homography will be stored in h.
-  imReg, h = alignImages(im, imReference)
-
-  # Write aligned image to disk.
-  outFilename = "aligned.png"
+  outFilename = tempSearch+"webcam.png"
   print("Saving aligned image : ", outFilename);
-  cv2.imwrite(outFilename, imReg)
-
-  # Print estimated homography
-  print("Estimated homography : \n",  h)
+  os.remove(outFilename)
+  cv2.imwrite(outFilename, im1Reg)
+  

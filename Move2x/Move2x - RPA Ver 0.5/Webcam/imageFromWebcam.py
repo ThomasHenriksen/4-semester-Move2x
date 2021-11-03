@@ -27,7 +27,7 @@ def takeImageFromWebcamFolder():
     print(dest_file)
     #os.rename(dest_file, "Temp\\webcam.jpg")
     im = Image.open('Temp\\webcam.jpg')
-    im.save('Temp\\webcam.png')
+    im.save('Temp\\align.png')
     os.remove("Temp\\webcam.jpg")    
    
 def webcamFolder():

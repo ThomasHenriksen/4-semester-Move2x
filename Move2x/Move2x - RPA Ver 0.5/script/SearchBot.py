@@ -35,78 +35,67 @@ def find_label(take_screenshot, Label):
         top_left = max_loc
         bottom_right = (top_left[0] + needle_w, top_left[1] + needle_h)
         return max_loc
-def topLeft():
-    tempSearch = 'resources\\'
-    typeSearch = '.png'
-    nameSearch = 'bottomCorner'
-    pathSearch = tempSearch + nameSearch + typeSearch 
+
+def searchForAutoCrop(): 
+    topCornerResour = 'resources\\'
+    topCornerType = '.png'
+    topCornerSearch = 'topCorner'
+    topCornerpath = topCornerResour + topCornerSearch + topCornerType 
+    bottomCornerResourSearch = 'resources\\'
+    bottomCornerTypeSearch = '.png'
+    bottomCornerNameSearch = 'bottomCorner'
+    bottomCornerPathSearch = bottomCornerResourSearch + bottomCornerNameSearch + bottomCornerTypeSearch 
     temp = 'temp\\'
     type = '.png'
     path = temp + 'webcam' + type 
-    haystack_img = cv.imread(path) #Screenshot
+
+    method = cv.TM_CCOEFF_NORMED
+
+    img = cv.imread(path) #Screenshot
     #haystack_img = cv.resize(haystack_img, (1024, 720))
-    needle_img = cv.imread(pathSearch)#Label img to find with in screenshot
-    result = cv.matchTemplate(haystack_img, needle_img, cv.TM_CCOEFF_NORMED) # match Screenshot and Label img 
-
-    min_val, max_val, min_loc, max_loc = cv.minMaxLoc(result)
-
+    topCorner_img = cv.imread(topCornerpath)#Label img to find with in screenshot
+    bottomCorner_img = cv.imread(bottomCornerPathSearch)#Label img to find with in screenshot
+    topCornerResult = cv.matchTemplate(img, topCorner_img, method) # match Screenshot and Label img 
+    bottomCornerResult = cv.matchTemplate(img, bottomCorner_img, method) # match Screenshot and Label img 
+    min_val, max_val, min_loc, max_loc = cv.minMaxLoc(topCornerResult)
+    min_val, max_val, min_loc, max_loc = cv.minMaxLoc(bottomCornerResult)
     #print('Best match top left positopn: %s' % str(max_loc))
     print('Best match confidence: %s' % str(max_val))
     # Sets the level off accepteable match with in screenshot
-    threshold = 0.70
-    if(max_val >= threshold):
-        #print(Label + ' is foundt')
+    bottomCorner_w = bottomCorner_img.shape[1]
+    bottomCorner_h = bottomCorner_img.shape[0]
+    
+    
+    threshold = 0.94
+    yloc, xloc = np.where( topCornerResult >= threshold)
+    yloc2, xloc2 = np.where( bottomCornerResult >= threshold)
+    findCropCoordinates  = []
+    for(x,y) in zip(xloc, yloc):
+        fundet = False
+        Coordinates = []
+        for(x2,y2) in zip(xloc2, yloc2):
+            if(x < x2 and y < y2 and fundet == False):
+              
+                fundet = True
+                Coordinates.append(x)
+                Coordinates.append(y)
+                Coordinates.append(x2)
+                Coordinates.append(y2)
+                findCropCoordinates.append(Coordinates)
 
-    #get dimensions of the needle image
-        needle_w = needle_img.shape[1]
-        needle_h = needle_img.shape[0]
+    listOfFiles = []
+    
+    i = 0
+    for(x,y,x2,y2) in findCropCoordinates:
+        imgCrop = imgTesting.open(path)
+        img2 = imgCrop.crop((x,y,  x2+10,y2+10   ))
+        fileName = "img"+str(i)
+        img2.save(temp+fileName+type)
+        listOfFiles.append(fileName)
+        i+=1
+    return listOfFiles
 
-
-        top_left = max_loc
-        bottom_right = (top_left[0] + needle_w, top_left[1] + needle_h)
-        image = cv.circle(haystack_img, max_loc, radius=0, color=(0, 0, 255), thickness=10)
-        image = cv.circle(haystack_img, bottom_right, radius=0, color=(0, 0, 255), thickness=10)
-        return bottom_right
-
-def bottomRight(): 
-    tempSearch = 'resources\\'
-    typeSearch = '.png'
-    nameSearch = 'topCorner'
-    pathSearch = tempSearch + nameSearch + typeSearch 
-    temp = 'temp\\'
-    type = '.png'
-    path = temp + 'webcam' + type 
-    haystack_img = cv.imread(path) #Screenshot
-    #haystack_img = cv.resize(haystack_img, (1024, 720))
-    needle_img = cv.imread(pathSearch)#Label img to find with in screenshot
-    result = cv.matchTemplate(haystack_img, needle_img, cv.TM_CCOEFF_NORMED) # match Screenshot and Label img 
-
-    min_val, max_val, min_loc, max_loc = cv.minMaxLoc(result)
-
-    #print('Best match top left positopn: %s' % str(max_loc))
-    print('Best match confidence: %s' % str(max_val))
-    # Sets the level off accepteable match with in screenshot
-    threshold = 0.70
-    if(max_val >= threshold):
-        #print(Label + ' is foundt')
-
-    #get dimensions of the needle image
-        needle_w = needle_img.shape[1]
-        needle_h = needle_img.shape[0]
-
-
-        top_left = max_loc
-        bottom_right = (top_left[0] + needle_w, top_left[1] + needle_h)
-        image = cv.circle(haystack_img, max_loc, radius=0, color=(0, 0, 255), thickness=10)
-        image = cv.circle(haystack_img, topLeft(), radius=0, color=(0, 0, 255), thickness=10)
-        img = imgTesting.open(path)
-        y,h = max_loc
-        x,w = topLeft()
-        print(y,h,x,w)
-        img2 = img.crop((y,h,  x,w   ))
-        img2.save("img2.png")
-    cv.imshow('test', image)
-    cv.waitKey(0)
+   
         
 def check(take_screenshot, whatToCheck): 
     tempSearch = 'resources\\'
@@ -127,4 +116,3 @@ def check(take_screenshot, whatToCheck):
 
 
     return max_val
-bottomRight()

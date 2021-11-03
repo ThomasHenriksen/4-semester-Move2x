@@ -9,15 +9,16 @@ def imageColorRGB(image):
 def imageColorGray(image):
     return cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-def listOfWords():
+def listOfWords(img):
     list =[]
     temp = 'Temp\\'
     type = '.png'
-    imgName = 'webcam'
+    imgName = img
     path = temp + imgName + type 
     img = cv2.imread(path)
     img = imageColorGray(img)
-    img = cv2.resize(img, None, fx=2, fy=2, interpolation=cv2.INTER_LINEAR)
+
+    img = cv2.resize(img, None, fx=1.255, fy=1.256, interpolation=cv2.INTER_LINEAR)
     
 
     

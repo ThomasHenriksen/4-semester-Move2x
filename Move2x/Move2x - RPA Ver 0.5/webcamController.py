@@ -5,9 +5,10 @@ from Webcam import imageFromWebcam as getFile
 from script import TypingBot as typingBot
 from script import ocr as imageReader
 from script import xmlScript as xml
+from script import autoAlignImage
 import time
 import os
-
+import re
 
 
 def windowsKey():
@@ -56,13 +57,59 @@ def takePicture():
     getFile.takeImageFromWebcamFolder()
     return 'img is completion'
 
-    
+def alignPicture():
+    autoAlignImage.alignImages()
+    return 'Aligning image'
 
-def ocr():   
+def ocr():  
+    temp = 'temp\\'
+    type = '.png'
+    listOfWords = []
     fileToWrite = 'ocr'
     xml.createXml('ocr',fileToWrite, 'main')
-    list = imageReader.listOfWords()
-    list.reverse()
-    for f in list:
-       xml.saveToXml('ocr',fileToWrite, f, 'main')
+    checkList = []
+    i = 0
+    for img in SearchBot.searchForAutoCrop():
+        list = imageReader.listOfWords(img)
+        os.remove(temp+img+type)
+        for b in list:
+            if(b !="" and b[0].isdigit()):
+                if(len(checkList) != 0):
+                    if(b.find(checkList[i-1])):
+                        checkList.append(b)          
+                        i+=1
+                else:
+                    checkList.append(b)
+                    i+=1
+    print('')
+    print('new list checkList')
+    print('')
+    customer = 1
+    order = ''
+    clearList = []
+    check = False
+
+    for b in checkList:
+        
+        if(b[2].isdigit()):
+            if(customer != int(b)):
+                customer = int(b)
+                clearList.append(customer)
+                check = True
+                order = ''
+                
+        else:
+            if(b[2] != ':'):
+                if(order != b):
+                    order = b
+                    if(check):
+                        clearList.append(order)
+                    
+    for b in clearList:
+        print(b)
+   
+    #print(testing)
+
+    #for f in list:
+   #    xml.saveToXml('ocr',fileToWrite, f, 'main')
     return 'OCR is completion'
