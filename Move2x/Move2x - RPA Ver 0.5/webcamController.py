@@ -103,7 +103,9 @@ def ocr():
                 if(order != b):
                     order = b
                     if(check):
-                        clearList.append(order)
+                        x = order.split('.')
+                        clearList.append(x[0][0])
+                        clearList.append(x[1].lstrip())
                     
     for b in clearList:
         print(b)
