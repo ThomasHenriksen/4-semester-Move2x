@@ -81,9 +81,6 @@ def ocr():
                 else:
                     checkList.append(b)
                     i+=1
-    print('')
-    print('new list checkList')
-    print('')
     customer = 1
     order = ''
     clearList = []
@@ -107,11 +104,10 @@ def ocr():
                         clearList.append(x[0][0])
                         clearList.append(x[1].lstrip())
                     
-    for b in clearList:
-        print(b)
+    
    
     #print(testing)
 
-    #for f in list:
-   #    xml.saveToXml('ocr',fileToWrite, f, 'main')
+    for f in clearList:
+       xml.saveToXml('ocr',fileToWrite, f, 'main')
     return 'OCR is completion'
