@@ -58,12 +58,13 @@ class MainFrame(tk.Frame):
         self.listbox.delete(0,tk.END)
         self.after(0, self.set_label_text, 'running')
 
-        #text = scan.webcam()   
-        #self.after(0, self.listbox_insert, text)
+        text = scan.webcam()   
+        self.after(0, self.listbox_insert, text)
 
-        #text = scan.takePicture()
-        #self.after(0, self.listbox_insert, text)
-        scan.alignPicture()
+        text = scan.takePicture()
+        self.after(0, self.listbox_insert, text)
+        text = scan.alignPicture()
+        self.after(0, self.listbox_insert, text)
         text = scan.ocr()
         self.after(0, self.listbox_insert, text)
         
