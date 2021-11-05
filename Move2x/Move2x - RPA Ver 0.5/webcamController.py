@@ -9,7 +9,7 @@ from script import autoAlignImage
 import time
 import os
 import re
-
+from collections import Counter
 
 def windowsKey():
     typingBot.windowsKey()
@@ -72,77 +72,90 @@ def ocr():
     
     for img in SearchBot.searchForAutoCrop():
         
-        list = imageReader.listOfWords(img)
+        listW = imageReader.listOfWords(img)
         
         #os.remove(temp+img+type)
-        for b in list:
+        for b in listW:
             if(b !="" and b[0].isdigit()):
                 if(len(checkList) != 0):
                     if(b.find(checkList[i-1])):
-                        print(b)
+                        
                         checkList.append(b)          
                         i+=1
                 else:
                     checkList.append(b)
                     i+=1
-    #print('')
-    #print('new list checkList')
-    #print('')
-    #customer = 1
-    #order = ''
-    #clearList = []
-    #orders = []
-    #check = False
-
-    #for b in checkList:
-    #    if(b[2].isdigit()):
-    #      try:
-    #        if(customer != int(b[:5])):
-     #           if(customer == 1):
-     #             customer = int(b[:5])
-     #             orders.append(customer)
-    #              
-     #             order = '' 
-     #           else:
-     #             clearList.append(orders)
-     #             orders = []
-     #             customer = int(b[:5])
-     #             orders.append(customer)
-     #             
-     #             order = '' 
-    #      except:
-    #           print('fail to covnert b to int')
-    #    else:
-    #      try:
-    #       if(b[2] != ':'):
-    #          print(b)
-     #         if(order != b):
-     #            order = b
-     #            x = []
-     #            try:
-     #             x = order.split('.')
-    #             except:
-    #                x.append(order[:5])
-     #               x.append(order[5:])
-     #            orders.append(x[0][0])
-     #            orders.append(x[1].lstrip())
-     #            
-    #      except:
-    #          print('Fail in other')
-    #          print('Fail in other ' + b)
-
-        
-                    
+    print('')
+    print('new list checkList')
+    print('')
+    customer = 1
+    order = ''
+    clearList = []
+    orders = []
+    check = False
+    
     for b in checkList:
-        print(b)
         
-            
-   
-    print('here')
+        if(len(b) >2 ):
+            if(b[2].isdigit()):
+              try:
+                if(customer != int(b[:5])):
+                   
+                   if(customer == 1):
+                     orders = []
+                     customer = int(b[:5])
+                     orders.append(customer)
+                  
+                     order = '' 
+                   else:
+                     clearList.append(orders)
+                     orders = []
+                     print(b)
+                     customer = int(b[:5])
+                     orders.append(customer)
+                 
+                     order = '' 
+              except:
+                   print('fail to covnert b to int')
+            else:
+              try:
+               if(b[2] != ':'):
+                  
+                  if(order != b):
+                    order = b
+                    order = order.replace('.', '')
+                    order = order.replace('be', 'pc')
+                    orders.append(order)
+                    x = []
+                   # try:
+                   #  x = order.split('.')
+                   # except:
+                   #     x.append(order[:5])
+                   #     x.append(order[5:])
+                   # orders.append(x[0][0])
+                   # orders.append(x[1].lstrip())
+                
+              except:
+                  print('Fail in other')
+                  print('Fail in other ' + b)
+
+    clearList.append(orders)   
+    
+    
+      
+          
+ 
+        
+        
+    
 
     for f in clearList:
-        try:
-            xml.saveToXml('ocr',fileToWrite, f, 'main')
-        except:
-            print('Fail to make XL')
+        f = remove_duplicates(f)
+        for b in f:
+            print(b)
+            
+            xml.saveToXml('ocr',fileToWrite, str(b), 'main')
+           
     return 'OCR is completion'
+def remove_duplicates(l):
+    return list(dict.fromkeys(l))

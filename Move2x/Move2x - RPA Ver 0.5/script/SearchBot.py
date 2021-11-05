@@ -47,7 +47,7 @@ def searchForAutoCrop():
     bottomCornerPathSearch = bottomCornerResourSearch + bottomCornerNameSearch + bottomCornerTypeSearch 
     temp = 'temp\\'
     type = '.png'
-    path = temp + 'webcam' + type 
+    path = temp + 'align' + type 
 
     method = cv.TM_CCOEFF_NORMED
 
