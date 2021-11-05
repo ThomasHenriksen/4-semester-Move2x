@@ -87,12 +87,14 @@ def searchForAutoCrop():
     
     i = 0
     for(x,y,x2,y2) in findCropCoordinates:
+        
         imgCrop = imgTesting.open(path)
-        img2 = imgCrop.crop((x,y,  x2+10,y2+10   ))
+        img2 = imgCrop.crop((x,y,  (x2),(y2+40)  ))
         fileName = "img"+str(i)
         img2.save(temp+fileName+type)
         listOfFiles.append(fileName)
         i+=1
+    
     return listOfFiles
 
    

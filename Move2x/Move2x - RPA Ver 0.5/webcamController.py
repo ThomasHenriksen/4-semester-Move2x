@@ -69,45 +69,80 @@ def ocr():
     xml.createXml('ocr',fileToWrite, 'main')
     checkList = []
     i = 0
+    
     for img in SearchBot.searchForAutoCrop():
+        
         list = imageReader.listOfWords(img)
-        os.remove(temp+img+type)
+        
+        #os.remove(temp+img+type)
         for b in list:
             if(b !="" and b[0].isdigit()):
                 if(len(checkList) != 0):
                     if(b.find(checkList[i-1])):
+                        print(b)
                         checkList.append(b)          
                         i+=1
                 else:
                     checkList.append(b)
                     i+=1
-    customer = 1
-    order = ''
-    clearList = []
-    check = False
+    #print('')
+    #print('new list checkList')
+    #print('')
+    #customer = 1
+    #order = ''
+    #clearList = []
+    #orders = []
+    #check = False
 
-    for b in checkList:
+    #for b in checkList:
+    #    if(b[2].isdigit()):
+    #      try:
+    #        if(customer != int(b[:5])):
+     #           if(customer == 1):
+     #             customer = int(b[:5])
+     #             orders.append(customer)
+    #              
+     #             order = '' 
+     #           else:
+     #             clearList.append(orders)
+     #             orders = []
+     #             customer = int(b[:5])
+     #             orders.append(customer)
+     #             
+     #             order = '' 
+    #      except:
+    #           print('fail to covnert b to int')
+    #    else:
+    #      try:
+    #       if(b[2] != ':'):
+    #          print(b)
+     #         if(order != b):
+     #            order = b
+     #            x = []
+     #            try:
+     #             x = order.split('.')
+    #             except:
+    #                x.append(order[:5])
+     #               x.append(order[5:])
+     #            orders.append(x[0][0])
+     #            orders.append(x[1].lstrip())
+     #            
+    #      except:
+    #          print('Fail in other')
+    #          print('Fail in other ' + b)
+
         
-        if(b[2].isdigit()):
-            if(customer != int(b)):
-                customer = int(b)
-                clearList.append(customer)
-                check = True
-                order = ''
-                
-        else:
-            if(b[2] != ':'):
-                if(order != b):
-                    order = b
-                    if(check):
-                        x = order.split('.')
-                        clearList.append(x[0][0])
-                        clearList.append(x[1].lstrip())
                     
-    
+    for b in checkList:
+        print(b)
+        
+            
    
-    #print(testing)
+    print('here')
 
     for f in clearList:
-       xml.saveToXml('ocr',fileToWrite, f, 'main')
+        try:
+            xml.saveToXml('ocr',fileToWrite, f, 'main')
+        except:
+            print('Fail to make XL')
     return 'OCR is completion'

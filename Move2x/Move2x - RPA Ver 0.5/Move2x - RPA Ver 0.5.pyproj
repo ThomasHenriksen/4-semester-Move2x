@@ -36,7 +36,6 @@
     <Compile Include="labelController.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="script\main.py" />
     <Compile Include="script\ocr.py" />
     <Compile Include="script\openFile.py" />
     <Compile Include="script\ScreenShotBot.py" />

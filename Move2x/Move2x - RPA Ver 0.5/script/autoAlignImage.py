@@ -7,7 +7,7 @@ GOOD_MATCH_PERCENT = 0.40
 
 def alignImages():
   tempSearch = 'temp\\'
-  typeSearch = '.jpg'
+  typeSearch = '.png'
   nameSearch = 'align'  
 
   imFilename = tempSearch + nameSearch + typeSearch 
@@ -40,7 +40,7 @@ def alignImages():
 
   # Draw top matches
   imMatches = cv2.drawMatches(im1, keypoints1, im2, keypoints2, matches, None)
-  cv2.imwrite("matches.jpg", imMatches)
+  
 
   # Extract location of good matches
   points1 = np.zeros((len(matches), 2), dtype=np.float32)
@@ -56,8 +56,10 @@ def alignImages():
   # Use homography
   height, width, channels = im2.shape
   im1Reg = cv2.warpPerspective(im1, h, (width, height))
-  outFilename = tempSearch+"webcam.png"
+  outFilename = tempSearch+"webcam.png" 
   print("Saving aligned image : ", outFilename);
-  os.remove(outFilename)
+  #os.remove(outFilename)
+ 
   cv2.imwrite(outFilename, im1Reg)
+ 
   
