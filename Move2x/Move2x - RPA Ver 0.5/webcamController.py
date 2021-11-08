@@ -85,9 +85,7 @@ def ocr():
                 else:
                     checkList.append(b)
                     i+=1
-    print('')
-    print('new list checkList')
-    print('')
+
     customer = 1
     order = ''
     clearList = []
@@ -110,7 +108,6 @@ def ocr():
                    else:
                      clearList.append(orders)
                      orders = []
-                     print(b)
                      customer = int(b[:5])
                      orders.append(customer)
                  
@@ -148,14 +145,23 @@ def ocr():
         
         
     
-
+    i = 0
+    
     for f in clearList:
         f = remove_duplicates(f)
+        objText = 'obj' + str(i)
+        texts = objText
+        i += 1
         for b in f:
-            print(b)
             
-            xml.saveToXml('ocr',fileToWrite, str(b), 'main')
+            print(texts)
+            text = str(b)
+            print(text)
+            xml.saveToXml(texts,fileToWrite, text, 'main')
+            
+            
            
     return 'OCR is completion'
 def remove_duplicates(l):
     return list(dict.fromkeys(l))
+
