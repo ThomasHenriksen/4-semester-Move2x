@@ -1,7 +1,7 @@
 from script import LabelClick
 from script import SearchBot
 from script import ScreenShotBot
-from Webcam import imageFromWebcam as getFile
+from script import imageFromWebcam as getFile
 from script import TypingBot as typingBot
 from script import ocr as imageReader
 from script import xmlScript as xml
