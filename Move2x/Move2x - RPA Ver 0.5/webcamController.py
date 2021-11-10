@@ -45,7 +45,7 @@ def webcam():
 def takePicture():
     fundet = False
     while(fundet == False):
-        print('waiting')
+        
         objScreen = screenshot('windows')
         max_val = SearchBot.check(objScreen, 'takePicture')
         if(max_val >= 0.75):
@@ -154,9 +154,9 @@ def ocr():
         i += 1
         for b in f:
             
-            print(texts)
+            
             text = str(b)
-            print(text)
+            
             xml.saveToXml(texts,fileToWrite, text, 'main')
             
             

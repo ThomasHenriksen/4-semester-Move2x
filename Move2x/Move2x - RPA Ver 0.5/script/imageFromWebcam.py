@@ -12,7 +12,7 @@ def pathToFile():
 
 def takeImageFromWebcamFolder():
     path = pathToFile()
-    print(path)
+    
     src_dir = os.getcwd()
     dest_file = src_dir + "/temp/webcam.jpg"
 
@@ -22,9 +22,7 @@ def takeImageFromWebcamFolder():
 
     shutil.move(path, dest_file)
     #shutil.copy2(path,directory)
-   
 
-    print(dest_file)
     #os.rename(dest_file, "Temp\\webcam.jpg")
     im = Image.open('Temp\\webcam.jpg')
     im.save('Temp\\align.png')

@@ -20,7 +20,7 @@ def labelMaker():
         if(index == 0):
             writeLabel('customerNumber', text)
         else:
-            print(text)
+            
             if(text[0] == "done"):
              while(5 > index):
                  removeLabelText('Produkt'+str(index))
@@ -71,7 +71,7 @@ def dymo():
         time.sleep(0.1)
         objScreen = screenshot('windows')
         max_val = SearchBot.check(objScreen, 'newLabelNo')
-        print('here')
+        
         if(max_val >= 0.75):
             objScreen = screenshot('windows')
             objLoc = search(objScreen, 'newLabelNo')

@@ -19,23 +19,30 @@ def listOfWords(img):
     path = temp + imgName + type 
     
     img = cv2.imread(path)
+
     img = imageColorGray(img)
+    height, width = img.shape
     
-    img = cv2.resize(img, None, fx=1.255, fy=1.3, interpolation=cv2.INTER_LINEAR)
+    if(width >600):
+        img = cv2.resize(img, None, fx=1.255, fy=1.3, interpolation=cv2.INTER_LINEAR)
     
 
     
-    boxes = []
-    try:
-        boxes = pt.image_to_string(img,lang='eng', config='--psm 12 --oem 1').lower() 
-    except:
-        print('fail  to convert')
+        boxes = []
+        try:
+            boxes = pt.image_to_string(img,lang='eng', config='--psm 12 --oem 1').lower() 
+        except:
+            print('fail  to convert')
 
     
-    test = boxes.splitlines()
-    for b in test:
-        list.append(b)
+        test = boxes.splitlines()
+
+        
+        for b in test:
+            
+            list.append(b)
     
     
+
     
     return list

@@ -24,6 +24,7 @@
     <Compile Include="script\autoAlignImage.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="script\imageFromWebcam.py" />
     <Compile Include="script\LabelGUI.py">
       <SubType>Code</SubType>
     </Compile>

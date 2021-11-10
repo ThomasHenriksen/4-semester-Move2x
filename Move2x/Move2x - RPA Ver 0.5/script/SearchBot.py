@@ -21,7 +21,7 @@ def find_label(take_screenshot, Label):
     min_val, max_val, min_loc, max_loc = cv.minMaxLoc(result)
 
     #print('Best match top left positopn: %s' % str(max_loc))
-    print('Best match confidence: %s' % str(max_val))
+    #print('Best match confidence: %s' % str(max_val))
     # Sets the level off accepteable match with in screenshot
     threshold = 0.70
     if(max_val >= threshold):
@@ -60,7 +60,7 @@ def searchForAutoCrop():
     min_val, max_val, min_loc, max_loc = cv.minMaxLoc(topCornerResult)
     min_val, max_val, min_loc, max_loc = cv.minMaxLoc(bottomCornerResult)
     #print('Best match top left positopn: %s' % str(max_loc))
-    print('Best match confidence: %s' % str(max_val))
+    #print('Best match confidence: %s' % str(max_val))
     # Sets the level off accepteable match with in screenshot
     bottomCorner_w = bottomCorner_img.shape[1]
     bottomCorner_h = bottomCorner_img.shape[0]
@@ -103,7 +103,7 @@ def check(take_screenshot, whatToCheck):
     tempSearch = 'resources\\'
     typeSearch = '.png'
     nameSearch = whatToCheck
-    print(nameSearch)
+    #print(nameSearch)
     pathSearch = tempSearch + nameSearch + typeSearch 
     temp = 'temp\\'
     type = '.png'
@@ -114,7 +114,7 @@ def check(take_screenshot, whatToCheck):
     result = cv.matchTemplate(haystack_img, needle_img, cv.TM_CCOEFF_NORMED) # match Screenshot and Label img 
 
     min_val, max_val, min_loc, max_loc = cv.minMaxLoc(result)
-    print('Best match confidence: %s' % str(max_val))
+   # print('Best match confidence: %s' % str(max_val))
 
 
     return max_val

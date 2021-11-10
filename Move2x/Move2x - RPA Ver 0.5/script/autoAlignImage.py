@@ -11,11 +11,11 @@ def alignImages():
   nameSearch = 'align'  
 
   imFilename = tempSearch + nameSearch + typeSearch 
-  print("Reading image to align : ", imFilename);
+  
   im1 = cv2.imread(imFilename, cv2.IMREAD_COLOR)
 
   refFilename = "resources\\ref.png"
-  print("Reading reference image : ", refFilename)
+  
   im2 = cv2.imread(refFilename, cv2.IMREAD_COLOR)
   # Convert images to grayscale
   im1Gray = cv2.cvtColor(im1, cv2.COLOR_BGR2GRAY)
@@ -57,7 +57,7 @@ def alignImages():
   height, width, channels = im2.shape
   im1Reg = cv2.warpPerspective(im1, h, (width, height))
   outFilename = tempSearch+"webcam.png" 
-  print("Saving aligned image : ", outFilename);
+  
   #os.remove(outFilename)
  
   cv2.imwrite(outFilename, im1Reg)

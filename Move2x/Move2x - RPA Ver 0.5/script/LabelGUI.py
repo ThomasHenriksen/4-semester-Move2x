@@ -22,10 +22,10 @@ class MainFrame(tk.Frame):
         self.pack()
  
     def btnDymo(self):
-        print('Button clicked')
+        
         thread_pool_executor.submit(self.blocking_Dymo)
     def btnWebcam(self):
-        print('Button clicked')
+        
         thread_pool_executor.submit(self.blocking_Scanner)
  
     def set_label_text(self, text=''):
@@ -38,10 +38,10 @@ class MainFrame(tk.Frame):
         self.buttonScanner['state'] = 'disabled'
         self.listbox.delete(0,tk.END)
         self.after(0, self.set_label_text, 'running')
-        print(os.getcwd())
+        
         for number in range(5):
             self.after(0, self.listbox_insert, number)
-            print(number)
+            
             time.sleep(1)
         self.buttonScanner['state'] = 'normal'
         self.after(0, self.set_label_text, ' not running')
@@ -53,7 +53,7 @@ class MainFrame(tk.Frame):
         
         for number in range(5):
             self.after(0, self.listbox_insert, 'test ' + str(number))
-            print(number)
+            
             time.sleep(1)
         self.buttonDymo['state'] = 'normal'
         self.after(0, self.set_label_text, ' not running')    
