@@ -6,6 +6,7 @@
 *.ko
 *.obj
 *.elf
+*.pyc
 
 # Linker output
 *.ilk
@@ -50,3 +51,4 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+Move2x/Move2x - RPA Ver 0.5/__pycache__/labelController.cpython-37.pyc
