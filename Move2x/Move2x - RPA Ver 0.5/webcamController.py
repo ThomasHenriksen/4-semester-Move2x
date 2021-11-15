@@ -76,7 +76,7 @@ def ocr():
         
        # os.remove(temp+img+type)
         for b in listW:
-            
+            print(b)
             if(b !="" and b[0].isdigit()):
                 if(len(checkList) != 0):
                     if(b.find(checkList[i-1])):
@@ -92,11 +92,12 @@ def ocr():
     clearList = []
     orders = []
     check = False
-    
+    orderTime = ''
     for b in checkList:
-       
+        
         if(len(b) >2 ):
             if(b[2].isdigit()):
+              
               try:
                 if(customer != int(b[:5])):
                    
