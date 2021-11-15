@@ -74,8 +74,9 @@ def ocr():
         
         listW = imageReader.listOfWords(img)
         
-        #os.remove(temp+img+type)
+       # os.remove(temp+img+type)
         for b in listW:
+            
             if(b !="" and b[0].isdigit()):
                 if(len(checkList) != 0):
                     if(b.find(checkList[i-1])):
@@ -93,7 +94,7 @@ def ocr():
     check = False
     
     for b in checkList:
-        
+       
         if(len(b) >2 ):
             if(b[2].isdigit()):
               try:
@@ -103,7 +104,7 @@ def ocr():
                      orders = []
                      customer = int(b[:5])
                      orders.append(customer)
-                  
+                      
                      order = '' 
                    else:
                      clearList.append(orders)
@@ -156,7 +157,7 @@ def ocr():
             
             
             text = str(b)
-            
+            print(b)
             xml.saveToXml(texts,fileToWrite, text, 'main')
             
             

@@ -32,7 +32,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="script\ButtonsFromArrayGUI.py" />
-    <Compile Include="Webcam\imageFromWebcam.py" />
     <Compile Include="script\LabelClick.py" />
     <Compile Include="labelController.py">
       <SubType>Code</SubType>
