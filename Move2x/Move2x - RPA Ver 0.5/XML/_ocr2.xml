@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <Order>
+    <Customer>10017</Customer>
+  <Time>00:55</Time>
+  <Quality>3</Quality>
+  <Product>black 1 fuse r (1213)</Product>
+  </Order>
+<Order>
+    <Customer>10018</Customer>
+  <Time>01:00</Time>
+  <Quality>1</Quality>
+  <Product>blue phone (6002)</Product>
+  </Order>
+<Order>
+    <Customer>10019</Customer>
+  <Time>01:10</Time>
+  <Quality>1</Quality>
+  <Product>white phone (6001)</Product>
+  <Quality>1</Quality>
+  <Product>blue phone (6002)</Product>
+  </Order>
+</root>

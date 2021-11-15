@@ -14,24 +14,25 @@ class MainFrame(tk.Frame):
         self.label.pack()
         self.listbox = tk.Listbox(self)
         self.listbox.pack()
-        self.buttonScanner = tk.Button(self, text='Scan order', command=self.btnWebcam)
-        self.buttonScanner.pack(pady=5)
-        self.buttonRead = tk.Button(self, text='Scan read order', command=self.btnRead)
-        self.buttonRead.pack(pady=5)
-        self.buttonDymo = tk.Button(self, text='Dymo Print', command=self.btnDymo)
+        self.buttonDymo = tk.Button(
+            self, text='Dymo Print', command=self.btnDymo)
         self.buttonDymo.pack(pady=5)
-        
-      
+        self.buttonScanner = tk.Button(
+            self, text='Scan order', command=self.btnWebcam)
+        self.buttonScanner.pack(pady=5)
+        self.buttonRead = tk.Button(
+            self, text='Scan read order', command=self.btnRead)
+        self.buttonRead.pack(pady=5)
         self.pack()
  
     def btnDymo(self):
-        #print('Button clicked')
+        print('Button clicked')
         thread_pool_executor.submit(self.blocking_Dymo)
     def btnWebcam(self):
-       # print('Button clicked')
+        print('Button clicked')
         thread_pool_executor.submit(self.blocking_Scanner)
     def btnRead(self):
-       # print('Button clicked')
+        print('Button clicked')
         thread_pool_executor.submit(self.blocking_Read)
     def set_label_text(self, text=''):
         self.label['text'] = text

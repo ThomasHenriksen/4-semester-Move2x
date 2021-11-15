@@ -65,8 +65,8 @@ def ocr():
     temp = 'temp\\'
     type = '.png'
     listOfWords = []
-    fileToWrite = 'ocr'
-    xml.createXml('ocr',fileToWrite, 'main')
+    fileToWrite = 'ocr2'
+    xml.createXml(fileToWrite)
     checkList = []
     i = 0
     
@@ -74,9 +74,9 @@ def ocr():
         
         listW = imageReader.listOfWords(img)
         
-       # os.remove(temp+img+type)
+        os.remove(temp+img+type)
         for b in listW:
-            print(b)
+            
             if(b !="" and b[0].isdigit()):
                 if(len(checkList) != 0):
                     if(b.find(checkList[i-1])):
@@ -96,6 +96,7 @@ def ocr():
     for b in checkList:
         
         if(len(b) >2 ):
+           
             if(b[2].isdigit()):
               
               try:
@@ -133,7 +134,11 @@ def ocr():
                    #     x.append(order[5:])
                    # orders.append(x[0][0])
                    # orders.append(x[1].lstrip())
-                
+               else:
+                    if(orderTime != b):
+                        orderTime = b
+                        orders.insert(1,orderTime)
+                     
               except:
                   print('Fail in other')
                   print('Fail in other ' + b)
@@ -148,21 +153,15 @@ def ocr():
         
     
     i = 0
-    
+    clearList.reverse()
     for f in clearList:
         f = remove_duplicates(f)
-        objText = 'obj' + str(i)
-        texts = objText
-        i += 1
-        for b in f:
+        xml.saveToXmlList(f)
+                   
             
-            
-            text = str(b)
-            print(b)
-            xml.saveToXml(texts,fileToWrite, text, 'main')
-            
-            
-           
+    testlist = xml.readXml('ocr2') 
+    for e in testlist:
+        print(e)
     return 'OCR is completion'
 def remove_duplicates(l):
     return list(dict.fromkeys(l))

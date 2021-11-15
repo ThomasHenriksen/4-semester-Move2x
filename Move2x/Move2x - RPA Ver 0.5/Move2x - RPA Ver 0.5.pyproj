@@ -28,9 +28,6 @@
     <Compile Include="script\LabelGUI.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="module1.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="script\ButtonsFromArrayGUI.py" />
     <Compile Include="script\LabelClick.py" />
     <Compile Include="labelController.py">
@@ -41,6 +38,9 @@
     <Compile Include="script\ScreenShotBot.py" />
     <Compile Include="script\SearchBot.py" />
     <Compile Include="script\TypingBot.py" />
+    <Compile Include="script\xmlSciptV1.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Webcam\webcam.py" />
     <Compile Include="webcamController.py">
       <SubType>Code</SubType>
