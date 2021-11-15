@@ -1,23 +1,23 @@
 <?xml version='1.0' encoding='utf-8'?>
 <root>
-  <obj2>3 pcs black 1 fuse r (1213)<test>test</test>
-  </obj2>
-<obj2>00:55<test>test</test>
-  </obj2>
-<obj2>10017<test>test</test>
-  </obj2>
-<obj1>1 pc blue phone (6002)<test>test</test>
-  </obj1>
-<obj1>01:00<test>test</test>
-  </obj1>
-<obj1>10018<test>test</test>
-  </obj1>
-<obj0>1 pc blue phone (6002)<test>test</test>
-  </obj0>
-<obj0>1 pc white phone (6001)<test>test</test>
-  </obj0>
-<obj0>01:10<test>test</test>
-  </obj0>
-<obj0>10019<test>test</test>
-  </obj0>
+  <Order nr="10017">
+    <Customer>10017</Customer>
+  <Time>00:55</Time>
+  <Quality>3</Quality>
+  <Product>black 1 fuse r (1213)</Product>
+  </Order>
+<Order nr="10018">
+    <Customer>10018</Customer>
+  <Time>01:00</Time>
+  <Quality>1</Quality>
+  <Product>blue phone (6002)</Product>
+  </Order>
+<Order nr="10019">
+    <Customer>10019</Customer>
+  <Time>01:10</Time>
+  <Quality>1</Quality>
+  <Product>white phone (6001)</Product>
+  <Quality>1</Quality>
+  <Product>blue phone (6002)</Product>
+  </Order>
 </root>

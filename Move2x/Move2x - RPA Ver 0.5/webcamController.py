@@ -65,7 +65,7 @@ def ocr():
     temp = 'temp\\'
     type = '.png'
     listOfWords = []
-    fileToWrite = 'ocr2'
+    fileToWrite = 'ocr'
     xml.createXml(fileToWrite)
     checkList = []
     i = 0
@@ -159,9 +159,13 @@ def ocr():
         xml.saveToXmlList(f)
                    
             
-    testlist = xml.readXml('ocr2') 
-    for e in testlist:
-        print(e)
+    testlist = xml.readOrderXml('ocr') 
+    xml.deleteOrderXml('ocr', '10017')
+    for b in testlist:
+        print(b[0])
+        print(b[1])
+        print(b[2])
+       
     return 'OCR is completion'
 def remove_duplicates(l):
     return list(dict.fromkeys(l))
