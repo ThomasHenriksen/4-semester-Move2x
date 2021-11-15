@@ -119,5 +119,7 @@ def deleteOrderXml(toFile, Order):
         if(Order == value):
            root.remove(order)
     
-    ElementTree.dump(root)
+   
+    tree = ElementTree.ElementTree(indent(root))
+    tree.write(path_file, xml_declaration=True, encoding='utf-8')
     #return dataList

@@ -2,7 +2,7 @@ import tkinter as tk
 from concurrent import futures
 import time
 import os 
-from ..script.xmlScript import readXml
+
 thread_pool_executor = futures.ThreadPoolExecutor(max_workers=1)
  
 class MainFrame(tk.Frame):
