@@ -69,18 +69,13 @@ def ocr():
     xml.createXml(fileToWrite)
     checkList = []
     i = 0
-    
     for img in SearchBot.searchForAutoCrop():
-        
         listW = imageReader.listOfWords(img)
-        
         os.remove(temp+img+type)
         for b in listW:
-            
             if(b !="" and b[0].isdigit()):
                 if(len(checkList) != 0):
-                    if(b.find(checkList[i-1])):
-                        
+                    if(b.find(checkList[i-1])):                   
                         checkList.append(b)          
                         i+=1
                 else:
@@ -91,82 +86,50 @@ def ocr():
     order = ''
     clearList = []
     orders = []
-    check = False
     orderTime = ''
-    for b in checkList:
-        
+    for b in checkList: 
         if(len(b) >2 ):
-           
             if(b[2].isdigit()):
-              
               try:
                 if(customer != int(b[:5])):
-                   
                    if(customer == 1):
                      orders = []
                      customer = int(b[:5])
                      orders.append(customer)
-                      
                      order = '' 
                    else:
                      clearList.append(orders)
                      orders = []
                      customer = int(b[:5])
                      orders.append(customer)
-                 
                      order = '' 
               except:
                    print('fail to covnert b to int')
             else:
               try:
                if(b[2] != ':'):
-                  
                   if(order != b):
                     order = b
                     order = order.replace('.', '')
                     order = order.replace('be', 'pc')
                     orders.append(order)
-                    x = []
-                   # try:
-                   #  x = order.split('.')
-                   # except:
-                   #     x.append(order[:5])
-                   #     x.append(order[5:])
-                   # orders.append(x[0][0])
-                   # orders.append(x[1].lstrip())
                else:
                     if(orderTime != b):
                         orderTime = b
                         orders.insert(1,orderTime)
-                     
               except:
                   print('Fail in other')
                   print('Fail in other ' + b)
 
     clearList.append(orders)   
-    
-    
-      
-          
- 
-        
-        
-    
-    i = 0
+
     clearList.reverse()
     for f in clearList:
         f = remove_duplicates(f)
         xml.saveToXmlList(f)
-                   
-            
-    testlist = xml.readOrderXml('ocr') 
-    xml.deleteOrderXml('ocr', '10017')
-    for b in testlist:
-        print(b[0])
-        print(b[1])
-        print(b[2])
-       
+
     return 'OCR is completion'
+
 def remove_duplicates(l):
     return list(dict.fromkeys(l))
 

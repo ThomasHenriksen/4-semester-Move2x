@@ -3,6 +3,7 @@ from xml.etree import ElementTree
 import os 
 
 def createXml(toFile):
+    
     root = minidom.Document()
     xml = root.createElement('root')
     root.appendChild(xml)
@@ -29,13 +30,11 @@ def indent(elem, level=0):
             elem.tail = j
     return elem
 
-def saveToXml(dateFrom,toFile,words):
+def saveToXml(toFile,words):
     path_file = 'XML\_'+ toFile + '.xml'
     root = ElementTree.parse(path_file).getroot()
-    c = ElementTree.Element(dateFrom)
+    c = ElementTree.Element('OCR')
     c.text = words
-    test = ElementTree.SubElement(c,'test')
-    test.text = 'test'
     root.insert(0, c)
     tree = ElementTree.ElementTree(indent(root))
     tree.write(path_file, xml_declaration=True, encoding='utf-8')
@@ -59,10 +58,10 @@ def saveToXmlList(orderList):
             except:
                  x.append(word[:5])
                  x.append(word[5:])
-                 product = ElementTree.SubElement(c,'Quality')
-                 product.text = str(x[0][0])
-                 product = ElementTree.SubElement(c,'Product')
-                 product.text = x[1].lstrip()
+            product = ElementTree.SubElement(c,'Quality')
+            product.text = str(x[0][0])
+            product = ElementTree.SubElement(c,'Product')
+            product.text = x[1].lstrip()
         
     
     root.insert(0, c)
@@ -102,24 +101,33 @@ def readXml(toFile):
     tree = ElementTree.parse(path_file)
     root = tree.getroot()
     data = []
-    for elem in root.iter():
+    for elem in root.iter('OCR'):
         data.append(elem.text) 
-   
+      
     return data   
 
 def deleteOrderXml(toFile, Order):
     path_file = 'XML\_'+ toFile + '.xml'
     tree = ElementTree.parse(path_file)
     root = tree.getroot()
-    
-    
 
     for order in root.findall('Order'):
         value = order.get('nr')
         if(Order == value):
            root.remove(order)
-    
-   
+
     tree = ElementTree.ElementTree(indent(root))
     tree.write(path_file, xml_declaration=True, encoding='utf-8')
-    #return dataList
+
+def findOrderXml(toFile, Order):
+    path_file = 'XML\_'+ toFile + '.xml'
+    tree = ElementTree.parse(path_file)
+    root = tree.getroot()
+    data = []
+    for order in root.findall('Order'):
+        value = order.get('nr')
+        if(Order == value):
+           data.append(elem.text) 
+    return data
+
+    
