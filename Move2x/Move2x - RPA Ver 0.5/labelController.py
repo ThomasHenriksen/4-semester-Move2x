@@ -13,14 +13,13 @@ import os
 def labelMaker():
     isRunning = True
     index = 0
-    while(5 > index and isRunning == True):
+    while(5 > index and isRunning == True and text[0] != "done"):
         time.sleep(0.5)
         os.system('python script/ButtonsFromArrayGUI.py')
         text = readChooseWordXml()
         if(index == 0):
             writeLabel('customerNumber', text)
         else:
-            
             if(text[0] == "done"):
              while(5 > index):
                  removeLabelText('Produkt'+str(index))
