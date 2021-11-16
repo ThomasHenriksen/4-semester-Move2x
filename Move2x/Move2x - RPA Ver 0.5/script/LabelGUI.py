@@ -74,5 +74,6 @@ class MainFrame(tk.Frame):
 if __name__ == '__main__':
     app = tk.Tk()
     app.geometry("650x350")
+    app.resizable(width=False, height=False)
     main_frame = MainFrame()
     app.mainloop()
