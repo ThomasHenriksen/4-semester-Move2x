@@ -13,26 +13,26 @@ class MainFrame(tk.Frame):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.label = tk.Label(self, text='not running')
-        self.label.pack(side="top", pady=5, anchor="nw")
+        self.label.pack(side="top", pady=5, padx=5, anchor="w")
         self.listbox = tk.Listbox(self)
-        self.listbox.pack(side="left", padx=20, pady=20, anchor="n")
+        self.listbox.pack(side="left", padx=5, pady=5, anchor="nw")
         self.buttonDymo = tk.Button(
             self, text='Dymo Print', command=self.btnDymo)
-        self.buttonDymo.pack( anchor="s", side="left", pady=5)
+        self.buttonDymo.place(y=230, x=45, anchor='s')
         self.buttonScanner = tk.Button(
             self, text='Scan order', command=self.btnWebcam)
-        self.buttonScanner.pack( anchor="s",side="left", pady=5,)
+        self.buttonScanner.place(y=260, x=45, anchor='s')
         backgroundImg = ImageTk.PhotoImage(Image.open("resources\\Label.png").resize((341, 198)))
         self.lblBgImg=tk.Label(self, image = backgroundImg)
         self.lblBgImg.image = backgroundImg
         self.lblBgImg.pack(side="top")
-        self.lblCustomer = tk.Label(self, bg="gray", text='test')
-        self.lblCustomer.pack(side="top", pady=20, padx= 50)
-        self.lblTime = tk.Label(self, bg="gray", text='test på hvor meget der kan være af text i et label')
-        self.lblTime.place(relx=0.5, rely=0.5, anchor='s')
-        self.lblProduct = tk.Label(self, text='Some Plain Text', compound='center')
-        self.lblProduct.pack(pady=59, anchor="n")
-        self.pack(fill='none', expand=1)
+        self.lblCustomer = tk.Label(self, bg="white", text='Customer')
+        self.lblCustomer.place(y=110, x=440, anchor='s') # y=120, x=470, anchor='s'
+        self.lblTime = tk.Label(self, bg="white", text='Product')
+        self.lblTime.place(y=141, x=471, anchor='s')
+        self.lblProduct = tk.Label(self, bg="white", text='time', compound='center')
+        self.lblProduct.place(y=110, x=511, anchor='s')
+        self.pack(fill=BOTH, expand=1)
  
     def btnDymo(self):
         
