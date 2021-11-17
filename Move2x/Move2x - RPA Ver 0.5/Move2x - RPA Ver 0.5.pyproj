@@ -35,6 +35,9 @@
     </Compile>
     <Compile Include="script\ocr.py" />
     <Compile Include="script\openFile.py" />
+    <Compile Include="script\ReadEmail.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="script\ScreenShotBot.py" />
     <Compile Include="script\SearchBot.py" />
     <Compile Include="script\TypingBot.py" />
