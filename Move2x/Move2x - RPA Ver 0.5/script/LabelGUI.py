@@ -27,11 +27,11 @@ class MainFrame(tk.Frame):
         self.lblBgImg.image = backgroundImg
         self.lblBgImg.pack(side="top")
         self.lblCustomer = tk.Label(self, bg="white", text='Customer')
-        self.lblCustomer.place(y=110, x=440, anchor='s') # y=120, x=470, anchor='s'
-        self.lblTime = tk.Label(self, bg="white", text='Product')
-        self.lblTime.place(y=141, x=471, anchor='s')
+        self.lblCustomer.place(y=110, x=370, anchor='s') # y=120, x=470, anchor='s'
+        self.lblTime = tk.Label(self, bg="white", text='Product ')
+        self.lblTime.place(y=141, x=370, anchor='s')
         self.lblProduct = tk.Label(self, bg="white", text='time', compound='center')
-        self.lblProduct.place(y=110, x=511, anchor='s')
+        self.lblProduct.place(y=110, x=440, anchor='s')
         self.pack(fill=BOTH, expand=1)
  
     def btnDymo(self):
