@@ -21,7 +21,7 @@ mail.login(username, app_password)
 mail.select("INBOX")
 
 #select specific mails
-_, selected_mails = mail.search(None, '(FROM "info@boligportal.dk")')
+_, selected_mails = mail.search(None,'UNSEEN', '(FROM "marcj2010@live.dk")')
 
 #total number of mails from specific user
 print("Total Messages from noreply@kaggle.com:" , len(selected_mails[0].split()))
