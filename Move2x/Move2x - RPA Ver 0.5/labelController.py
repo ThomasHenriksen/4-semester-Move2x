@@ -15,7 +15,7 @@ def labelMaker():
     index = 0
     while(5 > index and isRunning == True and text[0] != "done"):
         time.sleep(0.5)
-        os.system('python script/ButtonsFromArrayGUI.py')
+        os.system('python script/LabelGUI.py')
         text = readChooseWordXml()
         if(index == 0):
             writeLabel('customerNumber', text)
