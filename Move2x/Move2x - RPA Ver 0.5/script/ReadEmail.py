@@ -24,7 +24,7 @@ mail.select("INBOX")
 _, selected_mails = mail.search(None,'UNSEEN', '(FROM "marcj2010@live.dk")')
 
 #total number of mails from specific user
-print("Total Messages from noreply@kaggle.com:" , len(selected_mails[0].split()))
+print("Total messages from selected Email:" , len(selected_mails[0].split()))
 
 for num in selected_mails[0].split():
     _, data = mail.fetch(num , '(RFC822)')
