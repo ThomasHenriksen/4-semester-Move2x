@@ -79,26 +79,8 @@ def readOrderXml(toFile):
     dataList = []
 
     for order in root.findall('Order'):
-        data = []
-        customer = order.find('Customer').text
-        orderTime = order.find('Time').text
-        
-        qualitys = order.findall('Quality')
-        products = order.findall('Product')
-        
-        i = 0
-        for product in products:
-            quality = qualitys[i].text
-            productText = product.text
-            data.append(customer)
-            data.append(orderTime)
-            data.append(quality)
-            data.append(productText)
-            
-            dataList.append(data)
-            i += 1
-        
-        
+        dataList.append(buildOrder(order))
+   
     return dataList
     
 def readXml(toFile):
@@ -128,30 +110,25 @@ def findOrderXml(toFile, orderFind):
     path_file = 'XML\_'+ toFile + '.xml'
     tree = ElementTree.parse(path_file)
     root = tree.getroot()
-    dataList = []
+
     for order in root.findall('Order'):
         value = order.get('nr')
-        products = order.findall('Product')
         if(orderFind == value ):
-            data = []
-            customer = order.find('Customer').text
-            orderTime = order.find('Time').text
-        
-            qualitys = order.findall('Quality')
-            
-            
-            i = 0
-            for product in products:
-                data = []
-                quality = qualitys[i].text
-                productText = product.text
-                data.append(customer)
-                data.append(orderTime)
-                data.append(quality)
-                data.append(productText)
-                print(customer,orderTime,quality,productText)
+          data = buildOrder(order)
 
-                i+= 1
-    
     return data
-   
+def buildOrder(order):
+    data = []
+    customer = order.find('Customer').text
+    orderTime = order.find('Time').text
+    qualitys = order.findall('Quality')
+    products = order.findall('Product')
+    i = 0
+    for product in products:
+        quality = qualitys[i].text
+        productText = product.text
+        data.append(customer)
+        data.append(orderTime)
+        data.append(quality)
+        data.append(productText)
+    return data

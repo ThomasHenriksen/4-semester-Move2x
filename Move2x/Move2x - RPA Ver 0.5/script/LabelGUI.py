@@ -28,19 +28,13 @@ class MainFrame(tk.Frame):
         self.lblBgImg.image = backgroundImg
         self.lblBgImg.pack(side="top")
         self.lblCustomer = tk.Label(self, bg="white", text='Customer')
-<<<<<<< Updated upstream
-        self.lblCustomer.place(y=110, x=370, anchor='s') # y=120, x=470, anchor='s'
-        self.lblTime = tk.Label(self, bg="white", text='Product ')
-        self.lblTime.place(y=141, x=370, anchor='s')
-        self.lblProduct = tk.Label(self, bg="white", text='time', compound='center')
-        self.lblProduct.place(y=110, x=440, anchor='s')
-=======
         self.lblCustomer.place(y=112, x=370, anchor='s') # y=120, x=470, anchor='s'
-        self.lblProduct = tk.Label(self, bg="white", text='Product')
-        self.lblProduct.place(y=141, x=335, anchor='s')
+        self.lblProduct = tk.Label(self, bg="white", text=' ')
+        self.lblProduct.place(y=141, x=350, anchor='s')
         self.lblTime = tk.Label(self, bg="white", text='time', compound='center')
         self.lblTime.place(y=112, x=450, anchor='s')
->>>>>>> Stashed changes
+        
+
         self.pack(fill=BOTH, expand=1)
         self.xmlOrder()
 
@@ -51,15 +45,26 @@ class MainFrame(tk.Frame):
         
         thread_pool_executor.submit(self.blocking_Scanner)
     def xmlOrder(self):
-         orderList = xml.readOrderXml('ocr')
-         
-         for b in orderList:
-             self.after(0, self.listbox_insert, b[0])
+         orderList = self.getOrder()
+         for order in orderList:
+             self.after(0, self.listbox_insert, order[0])
          self.after(0, self.set_lblCustomer_text, orderList[0][0])
          self.after(0, self.set_lblTime_text, orderList[0][1])
          self.after(0, self.set_lblProduct_text, orderList[0][3])
          return orderList
 
+    def getOrder(self):
+        orderList = xml.readOrderXml('ocr')
+        order = []
+        for b in orderList:
+            if(len(b) > 4):
+               order.append(b[:4])
+               order.append(b[4:])
+            else:
+               order.append(b)
+        
+
+        return order
     def set_label_text(self, text=''):
         self.label['text'] = text
 
@@ -74,15 +79,16 @@ class MainFrame(tk.Frame):
 
     def listbox_insert(self, item):
         self.listbox.insert(tk.END, item)
+
     def getElement(self, event):
         selection = event.widget.curselection()
         index = selection[0]
         value = event.widget.get(index)
-        order = xml.findOrderXml('ocr',value)
-        
-        self.after(0, self.set_lblCustomer_text, order[0][0])
-        self.after(0, self.set_lblTime_text, order[0][1])
-        self.after(0, self.set_lblProduct_text, order[0][3])
+        order = self.getOrder()
+     
+        self.after(0, self.set_lblCustomer_text, order[index][0])
+        self.after(0, self.set_lblTime_text, order[index][1])
+        self.after(0, self.set_lblProduct_text, order[index][3])
 
     def blocking_Dymo(self):
         self.buttonScanner['state'] = 'disabled'
@@ -95,7 +101,8 @@ class MainFrame(tk.Frame):
             time.sleep(1)
         self.buttonScanner['state'] = 'normal'
         self.after(0, self.set_label_text, ' not running')
-
+    
+    
     def blocking_Scanner(self):
         self.buttonDymo['state'] = 'disabled'
         self.listbox.delete(0,tk.END)
@@ -107,6 +114,7 @@ class MainFrame(tk.Frame):
             time.sleep(1)
         self.buttonDymo['state'] = 'normal'
         self.after(0, self.set_label_text, ' not running')    
+
  
 if __name__ == '__main__':
     app = tk.Tk()
@@ -114,3 +122,4 @@ if __name__ == '__main__':
     app.resizable(width=False, height=False)
     main_frame = MainFrame()
     app.mainloop()
+
