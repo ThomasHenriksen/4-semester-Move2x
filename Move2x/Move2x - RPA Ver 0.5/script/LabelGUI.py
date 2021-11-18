@@ -5,7 +5,7 @@ import time
 import os 
 from PIL import Image, ImageTk
 from pathlib import Path
-
+from script import xmlScript as xml
 thread_pool_executor = futures.ThreadPoolExecutor(max_workers=1)
  
 class MainFrame(tk.Frame):
@@ -15,6 +15,7 @@ class MainFrame(tk.Frame):
         self.label = tk.Label(self, text='not running')
         self.label.pack(side="top", pady=5, padx=5, anchor="w")
         self.listbox = tk.Listbox(self)
+        self.listbox.bind('<<ListboxSelect>>', self.getElement)
         self.listbox.pack(side="left", padx=5, pady=5, anchor="nw")
         self.buttonDymo = tk.Button(
             self, text='Dymo Print', command=self.btnDymo)
@@ -27,26 +28,62 @@ class MainFrame(tk.Frame):
         self.lblBgImg.image = backgroundImg
         self.lblBgImg.pack(side="top")
         self.lblCustomer = tk.Label(self, bg="white", text='Customer')
+<<<<<<< Updated upstream
         self.lblCustomer.place(y=110, x=370, anchor='s') # y=120, x=470, anchor='s'
         self.lblTime = tk.Label(self, bg="white", text='Product ')
         self.lblTime.place(y=141, x=370, anchor='s')
         self.lblProduct = tk.Label(self, bg="white", text='time', compound='center')
         self.lblProduct.place(y=110, x=440, anchor='s')
+=======
+        self.lblCustomer.place(y=112, x=370, anchor='s') # y=120, x=470, anchor='s'
+        self.lblProduct = tk.Label(self, bg="white", text='Product')
+        self.lblProduct.place(y=141, x=335, anchor='s')
+        self.lblTime = tk.Label(self, bg="white", text='time', compound='center')
+        self.lblTime.place(y=112, x=450, anchor='s')
+>>>>>>> Stashed changes
         self.pack(fill=BOTH, expand=1)
- 
+        self.xmlOrder()
+
     def btnDymo(self):
         
         thread_pool_executor.submit(self.blocking_Dymo)
     def btnWebcam(self):
         
         thread_pool_executor.submit(self.blocking_Scanner)
- 
+    def xmlOrder(self):
+         orderList = xml.readOrderXml('ocr')
+         
+         for b in orderList:
+             self.after(0, self.listbox_insert, b[0])
+         self.after(0, self.set_lblCustomer_text, orderList[0][0])
+         self.after(0, self.set_lblTime_text, orderList[0][1])
+         self.after(0, self.set_lblProduct_text, orderList[0][3])
+         return orderList
+
     def set_label_text(self, text=''):
         self.label['text'] = text
- 
+
+    def set_lblCustomer_text(self, text=''):
+        self.lblCustomer['text'] = text
+
+    def set_lblProduct_text(self, text=''):
+        self.lblProduct['text'] = text
+
+    def set_lblTime_text(self, text=''):
+        self.lblTime['text'] = text
+
     def listbox_insert(self, item):
         self.listbox.insert(tk.END, item)
- 
+    def getElement(self, event):
+        selection = event.widget.curselection()
+        index = selection[0]
+        value = event.widget.get(index)
+        order = xml.findOrderXml('ocr',value)
+        
+        self.after(0, self.set_lblCustomer_text, order[0][0])
+        self.after(0, self.set_lblTime_text, order[0][1])
+        self.after(0, self.set_lblProduct_text, order[0][3])
+
     def blocking_Dymo(self):
         self.buttonScanner['state'] = 'disabled'
         self.listbox.delete(0,tk.END)

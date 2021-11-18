@@ -43,7 +43,9 @@ def saveToXmlList(orderList):
     path_file = 'XML\_ocr.xml'
     root = ElementTree.parse(path_file).getroot()
     c = ElementTree.Element('Order')
+
     for word in orderList:   
+
         if(isinstance(word, int)):
             customer = ElementTree.SubElement(c, 'Customer')
             customer.text = str(word) 
@@ -62,6 +64,7 @@ def saveToXmlList(orderList):
             product.text = str(x[0][0])
             product = ElementTree.SubElement(c,'Product')
             product.text = x[1].lstrip()
+
         
     
     root.insert(0, c)
@@ -82,18 +85,20 @@ def readOrderXml(toFile):
         
         qualitys = order.findall('Quality')
         products = order.findall('Product')
-        listProducts = []
+        
         i = 0
         for product in products:
             quality = qualitys[i].text
             productText = product.text
-            listProducts.append(quality)
-            listProducts.append(productText)
+            data.append(customer)
+            data.append(orderTime)
+            data.append(quality)
+            data.append(productText)
+            
+            dataList.append(data)
             i += 1
-        data.append(customer)
-        data.append(orderTime)
-        data.append(listProducts)
-        dataList.append(data)
+        
+        
     return dataList
     
 def readXml(toFile):
@@ -119,15 +124,34 @@ def deleteOrderXml(toFile, Order):
     tree = ElementTree.ElementTree(indent(root))
     tree.write(path_file, xml_declaration=True, encoding='utf-8')
 
-def findOrderXml(toFile, Order):
+def findOrderXml(toFile, orderFind):
     path_file = 'XML\_'+ toFile + '.xml'
     tree = ElementTree.parse(path_file)
     root = tree.getroot()
-    data = []
+    dataList = []
     for order in root.findall('Order'):
         value = order.get('nr')
-        if(Order == value):
-           data.append(elem.text) 
-    return data
+        products = order.findall('Product')
+        if(orderFind == value ):
+            data = []
+            customer = order.find('Customer').text
+            orderTime = order.find('Time').text
+        
+            qualitys = order.findall('Quality')
+            
+            
+            i = 0
+            for product in products:
+                data = []
+                quality = qualitys[i].text
+                productText = product.text
+                data.append(customer)
+                data.append(orderTime)
+                data.append(quality)
+                data.append(productText)
+                print(customer,orderTime,quality,productText)
 
+                i+= 1
     
+    return data
+   
