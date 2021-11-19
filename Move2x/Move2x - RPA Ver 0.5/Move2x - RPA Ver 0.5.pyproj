@@ -25,7 +25,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="script\imageFromWebcam.py" />
-    <Compile Include="script\LabelGUI.py">
+    <Compile Include="LabelGUI.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="script\ButtonsFromArrayGUI.py" />

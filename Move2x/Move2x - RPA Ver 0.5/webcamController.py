@@ -71,7 +71,7 @@ def ocr():
     i = 0
     for img in SearchBot.searchForAutoCrop():
         listW = imageReader.listOfWords(img)
-        os.remove(temp+img+type)
+        #os.remove(temp+img+type)
         for b in listW:
             if(b !="" and b[0].isdigit()):
                 if(len(checkList) != 0):
