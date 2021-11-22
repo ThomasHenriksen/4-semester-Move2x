@@ -9,26 +9,16 @@ import time
 import os
 
 
-
-def labelMaker():
-    isRunning = True
-    index = 0
-    while(5 > index and isRunning == True ):
-        time.sleep(0.5)
-        os.system('python LabelGUI.py')
-        text = readChooseWordXml()
-        if(index == 0):
-            writeLabel('customerNumber', text)
-        else:
-            if(text[0] == "done"):
-             while(5 > index):
-                 removeLabelText('Produkt'+str(index))
-                 isRunning = False
-                 index += 1
-            else:
-                writeLabel('Produkt'+str(index), text)
-        index += 1
-    printLabel()
+def labelMaker(customer, time, product,quality):
+    size = int(quality)   
+    i = 0
+    while(i < size):
+        #writeLabel('customerNumber', text)
+       # writeLabel('Time', text)
+       # writeLabel('Produkt1', text)
+       # printLabel()
+       print(i)
+       i+=1
     return 'Print completion'
 
 def exitLabel():

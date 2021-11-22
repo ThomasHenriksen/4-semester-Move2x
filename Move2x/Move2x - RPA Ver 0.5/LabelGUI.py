@@ -6,50 +6,67 @@ import os
 from PIL import Image, ImageTk
 from pathlib import Path
 from script import xmlScript as xml
+import labelController 
 thread_pool_executor = futures.ThreadPoolExecutor(max_workers=1)
  
 class MainFrame(tk.Frame):
  
     def __init__(self, *args, **kwargs):
+        btnY = 265
         super().__init__(*args, **kwargs)
-        self.label = tk.Label(self, text='not running')
+        self.label = tk.Label(self, text='')
         self.label.pack(side="top", pady=5, padx=5, anchor="w")
+        sb = Scrollbar(self, orient=VERTICAL)
+        sb.pack(side=RIGHT, fill=Y)
         self.listbox = tk.Listbox(self)
         self.listbox.bind('<<ListboxSelect>>', self.getElement)
-        self.listbox.pack(side="left", padx=5, pady=5, anchor="nw")
-        self.buttonDymo = tk.Button(
-            self, text='Dymo Print', command=self.btnDymo)
-        self.buttonDymo.place(y=230, x=45, anchor='s')
-        self.buttonScanner = tk.Button(
-            self, text='Scan order', command=self.btnWebcam)
-        self.buttonScanner.place(y=260, x=45, anchor='s')
+        self.listbox.configure(yscrollcommand=sb.set)
+        sb.config(command=self.listbox.yview)
+        self.listbox.pack(side="left", padx=0, pady=0, anchor="nw", fill=tk.X,expand=True)
         backgroundImg = ImageTk.PhotoImage(Image.open("resources\\Label.png").resize((341, 198)))
         self.lblBgImg=tk.Label(self, image = backgroundImg)
         self.lblBgImg.image = backgroundImg
         self.lblBgImg.pack(side="top")
-        self.lblCustomer = tk.Label(self, bg="white", text='Customer')
-        self.lblCustomer.place(y=112, x=370, anchor='s') # y=120, x=470, anchor='s'
-        self.lblProduct = tk.Label(self, bg="white", text=' ')
-        self.lblProduct.place(y=141, x=350, anchor='s')
-        self.lblTime = tk.Label(self, bg="white", text='time', compound='center')
-        self.lblTime.place(y=112, x=450, anchor='s')
-        
 
+        self.btnCancel = tk.Button(self, text='Cancel Order', command=self.btnCancel)
+        self.btnCancel.place(y=btnY, x=300, anchor='s')
+        self.btnPrint = tk.Button(self, text='Print Order', command=self.btnPrint)
+        self.btnPrint.place(y=btnY, x=400, anchor='s')
+       
+        self.lblCustomer = tk.Label(self, bg="white", text='Customer')
+        self.lblCustomer.place(y=112, x=430, anchor='s') # y=120, x=470, anchor='s'
+        self.lblProduct = tk.Label(self, bg="white", text=' ')
+        self.lblProduct.place(y=141, x=420, anchor='s')
+        self.lblTime = tk.Label(self, bg="white", text='time', compound='center')
+        self.lblTime.place(y=112, x=515, anchor='s')
+        self.options = tk.StringVar(self) # variable 
+        global qualityList 
+        qualityList = ["1"]
+
+        self.om_variable = tk.StringVar(self)
+        self.om_variable.set(qualityList[0])
+        self.om_variable.trace('w', self.option_select)
+
+        self.options.set(qualityList[0]) # default value
+        self.om1 =tk.OptionMenu(self, self.om_variable, *qualityList)
+        
+        self.om1.place(y=btnY+2, x=465, anchor='s')
         self.pack(fill=BOTH, expand=1)
         self.xmlOrder()
 
-    def btnDymo(self):
+    def btnCancel(self):
         
-        thread_pool_executor.submit(self.blocking_Dymo)
-    def btnWebcam(self):
+        thread_pool_executor.submit(self.blocking_Cancel)
+    def btnPrint(self):
         
-        thread_pool_executor.submit(self.blocking_Scanner)
+        thread_pool_executor.submit(self.blocking_Print)
     def xmlOrder(self):
          orderList = self.getOrder()
          for order in orderList:
-             self.after(0, self.listbox_insert, order[0])
+             self.after(0, self.listbox_insert, order[0] +' '+ order[3] )
          self.after(0, self.set_lblCustomer_text, orderList[0][0])
          self.after(0, self.set_lblTime_text, orderList[0][1])
+         self.after(0, self.set_size_options(orderList[0][2]))
          self.after(0, self.set_lblProduct_text, orderList[0][3])
          return orderList
 
@@ -65,6 +82,26 @@ class MainFrame(tk.Frame):
         
 
         return order
+    def set_size_options(self, quality):
+        
+        size =int(quality)   
+        
+        i = 0
+        qualityList = []
+        while(i < size):
+           i+=1
+           qualityList.append(i)
+           
+        qualityList.reverse()
+        menu = self.om1["menu"]
+        menu.delete(0, "end")
+        self.om_variable.set(qualityList[0])
+        for string in qualityList:
+            menu.add_command(label=string, 
+                             command=lambda value=string: self.om_variable.set(value))
+    
+    def option_select(self, *args):
+        return self.om_variable.get()    
     def set_label_text(self, text=''):
         self.label['text'] = text
 
@@ -88,37 +125,22 @@ class MainFrame(tk.Frame):
      
         self.after(0, self.set_lblCustomer_text, order[index][0])
         self.after(0, self.set_lblTime_text, order[index][1])
+        self.after(0, self.set_size_options(order[index][2]))
         self.after(0, self.set_lblProduct_text, order[index][3])
 
-    def blocking_Dymo(self):
-        self.buttonScanner['state'] = 'disabled'
-        self.listbox.delete(0,tk.END)
-        self.after(0, self.set_label_text, 'running')
-        
-        for number in range(5):
-            self.after(0, self.listbox_insert, number)
-            
-            time.sleep(1)
-        self.buttonScanner['state'] = 'normal'
-        self.after(0, self.set_label_text, ' not running')
+    def blocking_Cancel(self):
+        NUll
     
     
-    def blocking_Scanner(self):
-        self.buttonDymo['state'] = 'disabled'
-        self.listbox.delete(0,tk.END)
-        self.after(0, self.set_label_text, 'running')
+    
+    def blocking_Print(self):
         
-        for number in range(5):
-            self.after(0, self.listbox_insert, 'test ' + str(number))
-            
-            time.sleep(1)
-        self.buttonDymo['state'] = 'normal'
-        self.after(0, self.set_label_text, ' not running')    
+        labelController.labelMaker(self.lblCustomer['text'],self.lblTime['text'], self.lblProduct['text'],self.option_select())
 
  
 if __name__ == '__main__':
     app = tk.Tk()
-    app.geometry("650x350")
+    app.geometry("650x275")
     app.resizable(width=False, height=False)
     main_frame = MainFrame()
     app.mainloop()

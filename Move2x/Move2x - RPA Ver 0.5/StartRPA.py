@@ -3,7 +3,7 @@ from concurrent import futures
 import time
 import webcamController as scan
 import labelController as dymo
-
+import os 
 thread_pool_executor = futures.ThreadPoolExecutor(max_workers=3)
  
 class MainFrame(tk.Frame):
@@ -46,10 +46,7 @@ class MainFrame(tk.Frame):
         self.listbox.delete(0,tk.END)
         self.after(0, self.set_label_text, 'running')
         
-        text = dymo.dymo()
-        self.after(0, self.listbox_insert, text)
-        text = dymo.labelMaker()
-        self.after(0, self.listbox_insert, text)
+        os.system('python LabelGUI.py')
         
         
 
