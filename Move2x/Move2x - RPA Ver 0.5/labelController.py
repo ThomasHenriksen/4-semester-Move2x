@@ -13,9 +13,9 @@ def labelMaker(customer, time, product,quality):
     size = int(quality)   
     i = 0
     while(i < size):
-        #writeLabel('customerNumber', text)
-       # writeLabel('Time', text)
-       # writeLabel('Produkt1', text)
+        #writeLabel('customerNumber', customer)
+       # writeLabel('Time', time)
+       # writeLabel('Produkt1', product)
        # printLabel()
        print(i)
        i+=1

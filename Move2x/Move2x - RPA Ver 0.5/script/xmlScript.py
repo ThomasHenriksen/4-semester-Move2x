@@ -1,5 +1,6 @@
 from xml.dom import minidom
 from xml.etree import ElementTree
+
 import os 
 
 def createXml(toFile):
@@ -43,27 +44,33 @@ def saveToXmlList(orderList):
     path_file = 'XML\_ocr.xml'
     root = ElementTree.parse(path_file).getroot()
     c = ElementTree.Element('Order')
-
+    
     for word in orderList:   
 
         if(isinstance(word, int)):
             customer = ElementTree.SubElement(c, 'Customer')
             customer.text = str(word) 
             c.set('nr',customer.text)
+            
         elif(word[2] == ':'):
             orderTime = ElementTree.SubElement(c, 'Time')
             orderTime.text = word 
         else:
+
             x = []
             try:
                  x = order.split('.')
             except:
                  x.append(word[:5])
                  x.append(word[5:])
-            product = ElementTree.SubElement(c,'Quality')
+            productOrder = ElementTree.SubElement(c,'ProductOrder')
+            
+            product = ElementTree.SubElement(productOrder,'Quality')
             product.text = str(x[0][0])
-            product = ElementTree.SubElement(c,'Product')
+            product = ElementTree.SubElement(productOrder,'Product')
             product.text = x[1].lstrip()
+            productOrder.set('orderId',customer.text +' '+ product.text )
+            productOrder.set('Status','Waiting' )
 
         
     
@@ -79,8 +86,9 @@ def readOrderXml(toFile):
     dataList = []
 
     for order in root.findall('Order'):
+        
         dataList.append(buildOrder(order))
-   
+    
     return dataList
     
 def readXml(toFile):
@@ -93,15 +101,17 @@ def readXml(toFile):
       
     return data   
 
-def deleteOrderXml(toFile, Order):
+def changeStatusOnOrderXml(toFile, orderFind, status):
     path_file = 'XML\_'+ toFile + '.xml'
     tree = ElementTree.parse(path_file)
     root = tree.getroot()
+    orders = root.findall('.//ProductOrder')
+    listForSave = []
+    for order in orders:
+        value = order.get('orderId')    
+        if(orderFind == value ):
 
-    for order in root.findall('Order'):
-        value = order.get('nr')
-        if(Order == value):
-           root.remove(order)
+            order.set('Status',status)
 
     tree = ElementTree.ElementTree(indent(root))
     tree.write(path_file, xml_declaration=True, encoding='utf-8')
@@ -117,18 +127,54 @@ def findOrderXml(toFile, orderFind):
           data = buildOrder(order)
 
     return data
+
+def getOrder():
+        orderList = readOrderXml('ocr')
+        orderL = []
+        for b in orderList:
+            
+            if(len(b) > 5):
+               orderL.append(b[:5])
+               orderL.append(b[5:])
+            else:
+               orderL.append(b)
+        order = []
+        for o in orderL:
+            
+            status = o[0]
+            product = o[4]
+            
+            if(status == 'Done' or status == 'Cancel'):
+                lala = '2'
+                
+            else:
+                order.append(o)
+        if(len(order) == 0):
+            test=[]
+            test.append('')
+            test.append('000000')
+            test.append('')
+            test.append('1')
+            test.append('No Order')
+            order.append(test)
+        
+        return order
 def buildOrder(order):
     data = []
+    
     customer = order.find('Customer').text
     orderTime = order.find('Time').text
-    qualitys = order.findall('Quality')
-    products = order.findall('Product')
-    i = 0
-    for product in products:
-        quality = qualitys[i].text
-        productText = product.text
+    status = order.findall('ProductOrder')
+
+    for productOrder in status:
+        status = productOrder.get('Status')      
+        quality = productOrder[0].text
+        productText = productOrder[1].text
+        data.append(status)
         data.append(customer)
         data.append(orderTime)
         data.append(quality)
         data.append(productText)
+        
+        
     return data

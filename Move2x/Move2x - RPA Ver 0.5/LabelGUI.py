@@ -4,7 +4,6 @@ from concurrent import futures
 import time
 import os 
 from PIL import Image, ImageTk
-from pathlib import Path
 from script import xmlScript as xml
 import labelController 
 thread_pool_executor = futures.ThreadPoolExecutor(max_workers=1)
@@ -61,27 +60,16 @@ class MainFrame(tk.Frame):
         
         thread_pool_executor.submit(self.blocking_Print)
     def xmlOrder(self):
-         orderList = self.getOrder()
+         orderList = xml.getOrder()
          for order in orderList:
-             self.after(0, self.listbox_insert, order[0] +' '+ order[3] )
-         self.after(0, self.set_lblCustomer_text, orderList[0][0])
-         self.after(0, self.set_lblTime_text, orderList[0][1])
-         self.after(0, self.set_size_options(orderList[0][2]))
-         self.after(0, self.set_lblProduct_text, orderList[0][3])
+             self.after(0, self.listbox_insert, order[1] +' '+ order[4] )
+         self.after(0, self.set_lblCustomer_text, orderList[0][1])
+         self.after(0, self.set_lblTime_text, orderList[0][2])
+         self.after(0, self.set_size_options(orderList[0][3]))
+         self.after(0, self.set_lblProduct_text, orderList[0][4])
          return orderList
 
-    def getOrder(self):
-        orderList = xml.readOrderXml('ocr')
-        order = []
-        for b in orderList:
-            if(len(b) > 4):
-               order.append(b[:4])
-               order.append(b[4:])
-            else:
-               order.append(b)
-        
-
-        return order
+    
     def set_size_options(self, quality):
         
         size =int(quality)   
@@ -97,11 +85,11 @@ class MainFrame(tk.Frame):
         menu.delete(0, "end")
         self.om_variable.set(qualityList[0])
         for string in qualityList:
-            menu.add_command(label=string, 
-                             command=lambda value=string: self.om_variable.set(value))
+            menu.add_command(label=string, command=lambda value=string: self.om_variable.set(value))
     
     def option_select(self, *args):
         return self.om_variable.get()    
+
     def set_label_text(self, text=''):
         self.label['text'] = text
 
@@ -121,22 +109,28 @@ class MainFrame(tk.Frame):
         selection = event.widget.curselection()
         index = selection[0]
         value = event.widget.get(index)
-        order = self.getOrder()
-     
-        self.after(0, self.set_lblCustomer_text, order[index][0])
-        self.after(0, self.set_lblTime_text, order[index][1])
-        self.after(0, self.set_size_options(order[index][2]))
-        self.after(0, self.set_lblProduct_text, order[index][3])
+        order = xml.getOrder()
+        
+        self.after(0, self.set_lblCustomer_text, order[index][1])
+        self.after(0, self.set_lblTime_text, order[index][2])
+        self.after(0, self.set_size_options(order[index][3]))
+        self.after(0, self.set_lblProduct_text, order[index][4])
 
     def blocking_Cancel(self):
-        NUll
-    
-    
+        xml.changeStatusOnOrderXml('ocr', self.lblCustomer['text']+' '+ self.lblProduct['text'], 'Cancel')
+        print('blocking_Cancel')
+        self.listbox.delete(0,tk.END)
+        order = orderList = xml.getOrder()
+        for order in orderList:
+             self.after(0, self.listbox_insert, order[1] +' '+ order[4] )
     
     def blocking_Print(self):
-        
         labelController.labelMaker(self.lblCustomer['text'],self.lblTime['text'], self.lblProduct['text'],self.option_select())
-
+        xml.changeStatusOnOrderXml('ocr', self.lblCustomer['text']+' '+ self.lblProduct['text'], 'Done')
+        self.listbox.delete(0,tk.END)
+        orderList = xml.getOrder()
+        for order in orderList:
+            self.after(0, self.listbox_insert, order[1] +' '+ order[4] )
  
 if __name__ == '__main__':
     app = tk.Tk()
