@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import *
+
 from concurrent import futures
 import time
 import os 
@@ -11,7 +12,7 @@ thread_pool_executor = futures.ThreadPoolExecutor(max_workers=1)
 class MainFrame(tk.Frame):
  
     def __init__(self, *args, **kwargs):
-        btnY = 265
+        btnY = 235
 
         super().__init__(*args, **kwargs)
 
@@ -80,7 +81,7 @@ class MainFrame(tk.Frame):
                 self.btnCancel['state'] = 'normal'
                 self.btnPrint['state'] = 'normal'
                 self.om1['state'] = 'normal'
-            self.after(0, self.listbox_insert, order[1] +' '+ order[4] )
+            self.after(0, self.listbox_insert,order[2] +' - '+ order[1] +' - '+ order[3] +' - '+ order[4] )
         self.after(0, self.set_lblCustomer_text, orderList[0][1])
         self.after(0, self.set_lblTime_text, orderList[0][2])
         self.after(0, self.set_size_options(orderList[0][3]))
@@ -148,7 +149,7 @@ class MainFrame(tk.Frame):
 if __name__ == '__main__':
     app = tk.Tk()
     app.title("Move2x")
-    app.geometry("650x275")
+    app.geometry("650x245")
     app.resizable(width=False, height=False)
     main_frame = MainFrame()
     app.mainloop()
