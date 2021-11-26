@@ -3,10 +3,10 @@ import imaplib
 import email
 
 #credentials - uses my own email atm, will be changed to another
-username ="marcj894@gmail.com"
+username ="move2produktion@gmail.com"
 
 #generated app password - save this
-app_password= "xgbhjdlnejwtdkag"
+app_password= "mevjwvrqbwmcxtdn"
 
 # https://www.systoolsgroup.com/imap/
 gmail_host= 'imap.gmail.com'
@@ -21,7 +21,7 @@ mail.login(username, app_password)
 mail.select("INBOX")
 
 #select specific mails
-_, selected_mails = mail.search(None,'UNSEEN', '(FROM "marcj2010@live.dk")')
+_, selected_mails = mail.search(None,'UNSEEN', '(FROM "move2ordre@gmail.com")')
 
 #total number of mails from specific user
 print("Total messages from selected Email:" , len(selected_mails[0].split()))
@@ -35,10 +35,10 @@ for num in selected_mails[0].split():
     print("\n===========================================")
 
     #access data
-    print("Subject: ",email_message["subject"])
     print("To:", email_message["to"])
     print("From: ",email_message["from"])
     print("Date: ",email_message["date"])
+    print("Subject: ",email_message["subject"])
     for part in email_message.walk():
         if part.get_content_type()=="text/plain" or part.get_content_type()=="text/html":
             message = part.get_payload(decode=True)
