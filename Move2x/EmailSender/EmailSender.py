@@ -30,9 +30,24 @@ def sendemail():
     sender = "move2ordre@gmail.com"
     # The sender's Password
     pWord = "nfoyyuadbnrxzbic"
+    # The receiver's E-mail
+    # recepient ="move2produktion@gmail.com"
     recepient = receiver.get()
+    # The subject of the E-mail
     sub = subject.get()
-    message = txt_Area.get('1.0', 'end-1c')
+    # The "body" of the E-mail
+    message = list_Area.get(list_Area.curselection())
+
+    # The predefined text for the email
+
+    # message = 
+    # Dear Smarter Production inc.
+    # l would like to ordre:
+
+    #list_Area.get(list_Area.curselection())
+    
+    # Best regards 
+    # Name Surname (Customer number)
 
     msg.set_content(message)
 
@@ -63,9 +78,14 @@ lbl_Subject.grid(row = 5, column = 0)
 subject_Entry = Entry(app,  width = 30, font=large_font, textvariable = subject)
 subject_Entry.grid(row = 5, column = 1)
 
-# Text area for the messages also known as the message_body
-txt_Area = scrolledtext.ScrolledText(app, wrap=WORD, width=50, height=10, font=("Times New Roman",15))
-txt_Area.grid(row = 6, columnspan = 2, pady=10, padx = 10)
+# List area for the messages also known as the message_body
+list_Area = Listbox(app, width=50, height=10, font=("Times New Roman",15))
+list_Area.grid(row = 6, columnspan = 2, pady=10, padx = 10)
+
+list_Area.insert(1,"00:55 - 10017 - 3 - black 1 fuse r (1213)")
+list_Area.insert(2,"01:00 - 10018 - 1 - blue phone (6002)")
+list_Area.insert(3,"01:10 - 10019 - 1 - white phone (6001)")
+list_Area.insert(4,"01:10 - 10019 - 1 - blue phone (6002)")
 
 # The send button
 send_Button = Button(app, text = "Send",  relief='groove', width  = 10, command = sendemail)
