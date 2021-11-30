@@ -12,3 +12,5 @@ def getProducts():
     return Access.selectAllOrders()
     
 
+list = getProducts()
+print(list)

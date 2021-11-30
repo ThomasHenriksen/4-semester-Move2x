@@ -35,9 +35,10 @@ def sendemail():
     
     # The subject of the E-mail
     sub = subject.get()
+    print(sub)
     # The "body" of the E-mail
     message = list_Area.get(list_Area.curselection())
-
+    print(message)
     # The predefined text for the email
 
     # message = 
