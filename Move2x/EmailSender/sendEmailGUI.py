@@ -10,7 +10,7 @@ thread_pool_executor = futures.ThreadPoolExecutor(max_workers=1)
 class MainFrame(tk.Frame):
  
     def __init__(self, *args, **kwargs):
-        btnY = 235
+        btnY = 225
 
         super().__init__(*args, **kwargs)
 
@@ -28,8 +28,8 @@ class MainFrame(tk.Frame):
 
 
         self.btnSend = tk.Button(self, text='Send', command=self.btnSend)
-        self.btnSend.place(y=btnY, x=300, anchor='s')
-
+        self.btnSend.place(y=btnY, x=100, anchor='s')
+        self.pack(fill=BOTH, expand=1)
         
         
 
@@ -48,7 +48,7 @@ class MainFrame(tk.Frame):
 if __name__ == '__main__':
     app = tk.Tk()
     app.title("Move2x")
-    app.geometry("650x245")
+    app.geometry("650x300")
     app.resizable(width=False, height=False)
     main_frame = MainFrame()
     app.mainloop()
