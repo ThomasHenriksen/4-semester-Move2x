@@ -31,8 +31,8 @@ def sendemail():
     # The sender's Password
     pWord = "nfoyyuadbnrxzbic"
     # The receiver's E-mail
-    # recepient ="move2produktion@gmail.com"
-    recepient = receiver.get()
+    recepient ="move2produktion@gmail.com"
+    
     # The subject of the E-mail
     sub = subject.get()
     # The "body" of the E-mail
