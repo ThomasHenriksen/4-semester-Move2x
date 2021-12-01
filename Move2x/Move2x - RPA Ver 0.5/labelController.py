@@ -12,11 +12,14 @@ import os
 def labelMaker(customer, time, product,quality):
     size = int(quality)   
     i = 0
+      
+    dymo()
+    
+    writeLabel('customerNumber', customer)
+    writeLabel('Time', time)
+    writeLabel('Produkt1', product)
     while(i < size):
-        #writeLabel('customerNumber', customer)
-       # writeLabel('Time', time)
-       # writeLabel('Produkt1', product)
-       # printLabel()
+       printLabel()
        print(i)
        i+=1
     return 'Print completion'
@@ -36,7 +39,8 @@ def exitLabel():
 def writeLabel(labelTextField, textToEnter):
     objScreen = screenshot('windows')
     objLoc = search(objScreen, labelTextField)
-    text = readChooseWordXml()
+    print(textToEnter)
+    text = textToEnter
     click(objLoc)
     writerBot(text)
     return False
@@ -57,7 +61,7 @@ def dymo():
     
     i = 0
     while(i < 2 and fundet == False):
-        time.sleep(0.1)
+        time.sleep(0.4)
         objScreen = screenshot('windows')
         max_val = SearchBot.check(objScreen, 'newLabelNo')
         

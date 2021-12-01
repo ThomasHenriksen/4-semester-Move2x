@@ -21,7 +21,7 @@ def find_label(take_screenshot, Label):
     min_val, max_val, min_loc, max_loc = cv.minMaxLoc(result)
 
     #print('Best match top left positopn: %s' % str(max_loc))
-    #print('Best match confidence: %s' % str(max_val))
+    print('Best match confidence: %s' % str(max_val))
     # Sets the level off accepteable match with in screenshot
     threshold = 0.70
     if(max_val >= threshold):

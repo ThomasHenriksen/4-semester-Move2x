@@ -39,6 +39,8 @@ class MainFrame(tk.Frame):
         self.btnPrint.place(y=btnY, x=400, anchor='s')
         self.btnRefresh = tk.Button(self, text='Refresh Orders', command=self.btnRefresh)
         self.btnRefresh.place(y=btnY, x=190, anchor='s')
+        self.btnRefresh = tk.Button(self, text='Open Dymo', command=self.btnOpenDymo)
+        self.btnRefresh.place(y=btnY, x=90, anchor='s')
 
         self.lblCustomer = tk.Label(self, bg="white", text='Customer')
         self.lblCustomer.place(y=82, x=430, anchor='s') # y=120, x=470, anchor='s'
@@ -61,9 +63,12 @@ class MainFrame(tk.Frame):
         self.om1.place(y=btnY+2, x=465, anchor='s')
         self.pack(fill=BOTH, expand=1)
         self.xmlOrder()
+        
 
     def btnCancel(self):
         thread_pool_executor.submit(self.blocking_Cancel)
+    def btnOpenDymo(self):
+        thread_pool_executor.submit(self.blocking_OpenDymo)
 
     def btnPrint(self):
         thread_pool_executor.submit(self.blocking_Print)
@@ -137,20 +142,27 @@ class MainFrame(tk.Frame):
     def blocking_Cancel(self):
         xml.changeStatusOnOrderXml('ocr', self.lblCustomer['text']+' '+ self.lblProduct['text'], 'Cancel')
         self.xmlOrder()
-    
+    def blocking_OpenDymo(self):
+        labelController.dymo() 
     def blocking_Print(self):
+        self.btnCancel['state'] = 'disabled'
+        self.btnPrint['state'] = 'disabled'
+        self.om1['state'] = 'disabled'
         labelController.labelMaker(self.lblCustomer['text'],self.lblTime['text'], self.lblProduct['text'],self.option_select())
         xml.changeStatusOnOrderXml('ocr', self.lblCustomer['text']+' '+ self.lblProduct['text'], 'Done')
         self.xmlOrder()
-
+        self.btnCancel['state'] = 'normal'
+        self.btnPrint['state'] = 'normal'
+        self.om1['state'] = 'normal'
     def blocking_refresh(self):
         self.xmlOrder()    
 
 if __name__ == '__main__':
     app = tk.Tk()
     app.title("Move2x")
-    app.geometry("650x245")
+    app.geometry("650x245+1250+0")
     app.resizable(width=False, height=False)
+    app.wm_attributes("-topmost", 1)
     main_frame = MainFrame()
     app.mainloop()
 

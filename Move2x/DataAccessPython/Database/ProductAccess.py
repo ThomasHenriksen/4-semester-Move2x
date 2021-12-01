@@ -30,11 +30,12 @@ def addNewOrder(order):
     cursor.commit()
     
 def connect():
-    server = 'tcp:DESKTOP-ULH1RFG' 
+    server1 = 'tcp:DESKTOP-ULH1RFG' 
+    server2 = 'LAPTOP-K8V4GCVI\SQLEXPRESS'
     database = 'move2x_dk_db_app' 
     #password = '210210ht' 
     cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};'
-                      'Server=DESKTOP-ULH1RFG;'
+                      'Server=' + server2 + ';'
                       'Database=move2x_dk_db_app;'
                       'Trusted_Connection=yes;')
     cursor = cnxn.cursor()
@@ -54,7 +55,11 @@ def getOrderFromDataBase():
      order = []
 
      timeExp = row[0]
-     theTimeExp = timeExp.strftime("%H:%M")
+     try:
+         theTimeExp = timeExp.strftime("%H:%M")
+     except:
+         theTimeExp = timeExp
+
      customer = row[1]
      amount = row[2]
      cover = row[3]
