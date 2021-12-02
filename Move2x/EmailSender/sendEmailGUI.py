@@ -7,6 +7,7 @@ from PIL import Image, ImageTk
 #from script import xmlScript as xml
 import sendEmail
 import ProductAccess
+import generateEmailDetails
 thread_pool_executor = futures.ThreadPoolExecutor(max_workers=1)
  
 class MainFrame(tk.Frame):
@@ -68,20 +69,22 @@ class MainFrame(tk.Frame):
         
     #sendEmail(subject, message):
     def blocking_Send(self):
+        
         curselectedOrder = listOfOrders[self.listbox.curselection()[0]]
-        subject = " Dear Smarter Production inc. l would like to ordre:"
-        print(curselectedOrder)
-        sendEmail.sendEmail("New Order", message = self.listbox.get(self.listbox.curselection()))
+        text = self.emailBuilder(curselectedOrder,generateEmailDetails.returnCompany())
+        
+        sendEmail.sendEmail(text[0],text[1])
         listOfOrders.pop(self.listbox.curselection()[0])
         self.listbox.delete(ACTIVE)
 
-    def emailBuilder(order, companyName):
+    def emailBuilder(self,order, companyName):
         curOrder = order
-        curCompanyName = company
-        subject = " Dear Smarter Production inc. l would like to ordre:"
-        if(curOrder[2] == 1):
-            "I would like to buy:" + []
-        messageText = subject + + ""
+        curCompanyName = companyName
+        subject = "Dear Smarter Production inc. l would like to ordre "
+    
+        messageText = subject + str(order[2]) + ' ' + curOrder[3] + ' ' + curOrder[4] + ' ' + curOrder[5] +'\n'+'Best regards'+'\n'+ curCompanyName+ ' ('+ str(order[1])+')'
+        return subject, messageText
+        
         
 
 if __name__ == '__main__':

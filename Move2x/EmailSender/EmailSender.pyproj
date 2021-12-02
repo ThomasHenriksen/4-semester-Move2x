@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>959891b9-a6fb-4b6d-8537-c698f4098664</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>EmailSender.py</StartupFile>
+    <StartupFile>sendEmailGUI.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,7 +21,6 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="EmailSender.py" />
     <Compile Include="generateEmailDetails.py">
       <SubType>Code</SubType>
     </Compile>
