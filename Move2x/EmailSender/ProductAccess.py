@@ -17,7 +17,7 @@ def connect():
     database = 'move2x_dk_db_app' 
     #password = '210210ht' 
     cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};'
-                      'Server=' + server1 + ';'
+                      'Server=' + server3 + ';'
                       'Database=move2x_dk_db_app;'
                       'Trusted_Connection=yes;')
     cursor = cnxn.cursor()

@@ -82,7 +82,7 @@ class MainFrame(tk.Frame):
         curCompanyName = companyName
         subject = "Dear Smarter Production inc. l would like to ordre "
     
-        messageText = subject + str(order[2]) + ' ' + curOrder[3] + ' ' + curOrder[4] + ' ' + curOrder[5] +'\n'+'Best regards'+'\n'+ curCompanyName+ ' ('+ str(order[1])+')'
+        messageText = subject + str(order[2]) + ' ' + curOrder[3] + ' ' + curOrder[4] + ' ' + curOrder[5] +'\n'+'By the time: '+ curOrder[0] + '\n'+'Best regards'+'\n'+ curCompanyName+ ' ('+ str(order[1])+')'
         return subject, messageText
         
         

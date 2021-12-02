@@ -2,7 +2,7 @@
 import imaplib
 import email
 
-#credentials - uses my own email atm, will be changed to another
+#credentials - E-mail for reading
 username ="move2produktion@gmail.com"
 
 #generated app password - save this
