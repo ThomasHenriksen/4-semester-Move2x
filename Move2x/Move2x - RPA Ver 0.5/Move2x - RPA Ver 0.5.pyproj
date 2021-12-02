@@ -21,6 +21,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="EmailSender\EmailSender.py" />
+    <Compile Include="EmailSender\sendEmail.py" />
+    <Compile Include="EmailSender\sendEmailGUI.py" />
     <Compile Include="script\autoAlignImage.py">
       <SubType>Code</SubType>
     </Compile>
@@ -49,6 +52,8 @@
     <Compile Include="StartRPA.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="EmailSender\EmailSender.pyproj" />
+    <Content Include="EmailSender\__pycache__\sendEmail.cpython-37.pyc" />
     <Content Include="resources\ref.jpg" />
     <Content Include="resources\backup.label" />
     <Content Include="resources\closeWebCam.png" />
@@ -107,6 +112,8 @@
     <Content Include="testRpaStart2.bat" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="EmailSender\" />
+    <Folder Include="EmailSender\__pycache__\" />
     <Folder Include="Webcam\" />
     <Folder Include="XML\" />
     <Folder Include="resources\" />

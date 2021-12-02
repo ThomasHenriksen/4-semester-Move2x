@@ -13,11 +13,12 @@ def sendEmail(subject, message):
         # The subject of the E-mail
         sub = subject
         # The "body" of the E-mail
-        #message = listbox.get(listbox.curselection())
+        # message = list_Area.get(list_Area.curselection())
 
         # The predefined text for the email
-        msg.set_content(message)
 
+        msg.set_content(message)
+   
         msg['Subject'] = sub
         msg['From'] = sender
         msg['To'] = recepient
@@ -32,7 +33,6 @@ def sendEmail(subject, message):
         server.send_message(msg)
         # Quits the session
         server.quit()
-        print("Email sent successfully!")
         # After sending the email, deletes the subject, sender and recepient, so a new mail can be sent
         del msg['Subject']
         del msg['From']

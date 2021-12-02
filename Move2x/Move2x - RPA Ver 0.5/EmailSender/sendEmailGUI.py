@@ -2,11 +2,10 @@ import tkinter as tk
 from tkinter import *
 from concurrent import futures
 import time
-import os
+import os 
 from PIL import Image, ImageTk
-#from script import xmlScript as xml
+from script import xmlScript as xml
 import sendEmail
-import ProductAccess
 thread_pool_executor = futures.ThreadPoolExecutor(max_workers=1)
  
 class MainFrame(tk.Frame):
@@ -49,36 +48,41 @@ class MainFrame(tk.Frame):
    
     # Xml order for the data to show
     def xmlOrder(self):
-        global listOfOrders
-        listOfOrders =[]
         self.listbox.delete(0,tk.END)
-        orderList = ProductAccess.getOrderFromDataBase()
+        orderList = xml.getOrder()
         for order in orderList:
             if(order[1] == '000000'):
                 self.btnSend['state'] = 'disabled'
             else:
                 self.btnSend['state'] = 'normal'
-            self.after(0, self.listbox_insert,order[0] +' - '+ str(order[1]) +' - '+ str(order[2]) +' - '+ order[3] +' - '+ order[4] )
-        listOfOrders = orderList
+            self.after(0, self.listbox_insert,order[2] +' - '+ order[1] +' - '+ order[3] +' - '+ order[4] )
         return orderList
+
+    # Shows the data in the list
+    def getElement(self, event):
+        selection = event.widget.curselection()
+        index = selection[0]
+        value = event.widget.get(index)
+        order = xml.getOrder()
+        
+        self.after(0, self.set_lblCustomer_text, order[index][1])
+        self.after(0, self.set_lblTime_text, order[index][2])
+        self.after(0, self.set_size_options(order[index][3]))
+        self.after(0, self.set_lblProduct_text, order[index][4])
+
 
     
     def listbox_insert(self, item):
         self.listbox.insert(tk.END, item)
-        
-    #sendEmail(subject, message):
-    def blocking_Send(self):
-        curselectedOrder = listOfOrders[self.listbox.curselection()[0]]
-        subject = " Dear Smarter Production inc. l would like to ordre:"
-        print(curselectedOrder)
-        sendEmail.sendEmail("New Order", message = self.listbox.get(self.listbox.curselection()))
-        listOfOrders.pop(self.listbox.curselection()[0])
-        self.listbox.delete(ACTIVE)
 
-    def emailBuilder(order, companyName):
-        curOrder = order
-        curCompanyName = company
+    #sendEmail(subject, message, order, endMessage):
+    def blocking_Send(self):
+        sendEmail.sendEmail("New Order", message = self.listbox.get(self.listbox.curselection()))
         
+        
+        
+#sendEmail.sendEmail("New Order", message = "", self.listbox.get(self.listbox.curselection()))
+    
 
 if __name__ == '__main__':
     app = tk.Tk()
