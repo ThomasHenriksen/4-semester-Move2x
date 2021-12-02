@@ -78,6 +78,10 @@ class MainFrame(tk.Frame):
     def emailBuilder(order, companyName):
         curOrder = order
         curCompanyName = company
+        subject = " Dear Smarter Production inc. l would like to ordre:"
+        if(curOrder[2] == 1):
+            "I would like to buy:" + []
+        messageText = subject + + ""
         
 
 if __name__ == '__main__':
