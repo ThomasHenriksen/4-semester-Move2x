@@ -7,8 +7,9 @@ import os
 from PIL import Image, ImageTk
 from script import xmlScript as xml
 import labelController 
-thread_pool_executor = futures.ThreadPoolExecutor(max_workers=1)
- 
+import emailController
+thread_pool_executor = futures.ThreadPoolExecutor(max_workers=2)
+
 class MainFrame(tk.Frame):
  
     def __init__(self, *args, **kwargs):
@@ -32,7 +33,8 @@ class MainFrame(tk.Frame):
         self.lblBgImg=tk.Label(self, image = backgroundImg)
         self.lblBgImg.image = backgroundImg
         self.lblBgImg.pack(side="top")
-
+        global var1
+        var1 = tk.IntVar()
         self.btnCancel = tk.Button(self, text='Cancel Order', command=self.btnCancel)
         self.btnCancel.place(y=btnY, x=300, anchor='s')
         self.btnPrint = tk.Button(self, text='Print Order', command=self.btnPrint)
@@ -41,14 +43,16 @@ class MainFrame(tk.Frame):
         self.btnRefresh.place(y=btnY, x=190, anchor='s')
         self.btnRefresh = tk.Button(self, text='Open Dymo', command=self.btnOpenDymo)
         self.btnRefresh.place(y=btnY, x=90, anchor='s')
-
+        self.c1 = tk.Checkbutton(self, text='Email check',variable=var1, onvalue=1, offvalue=0, command=self.c1Check)
+        self.c1.place(y=btnY, x=540, anchor='s')
         self.lblCustomer = tk.Label(self, bg="white", text='Customer')
         self.lblCustomer.place(y=82, x=430, anchor='s') # y=120, x=470, anchor='s'
         self.lblProduct = tk.Label(self, bg="white", text=' ')
         self.lblProduct.place(y=111, x=420, anchor='s')
         self.lblTime = tk.Label(self, bg="white", text='time', compound='center')
         self.lblTime.place(y=82, x=515, anchor='s')
-
+        global iemail
+        iemail = 0
         self.options = tk.StringVar(self) # variable 
         global qualityList 
         qualityList = ["1"]
@@ -63,10 +67,13 @@ class MainFrame(tk.Frame):
         self.om1.place(y=btnY+2, x=465, anchor='s')
         self.pack(fill=BOTH, expand=1)
         self.xmlOrder()
-        
 
+    def c1Check(self):
+        thread_pool_executor.submit(self.blocking_email)
+         
     def btnCancel(self):
         thread_pool_executor.submit(self.blocking_Cancel)
+
     def btnOpenDymo(self):
         thread_pool_executor.submit(self.blocking_OpenDymo)
 
@@ -156,7 +163,16 @@ class MainFrame(tk.Frame):
         self.om1['state'] = 'normal'
     def blocking_refresh(self):
         self.xmlOrder()    
+    def blocking_email(self):
+        while(var1.get() == 1):
+            update = emailController.getOrderFromEmail()
+            print(update)
+            if(update):
+                self.xmlOrder()
+            time.sleep(2)
+               
 
+         
 if __name__ == '__main__':
     app = tk.Tk()
     app.title("Move2x")

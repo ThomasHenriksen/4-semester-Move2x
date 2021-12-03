@@ -78,6 +78,40 @@ def saveToXmlList(orderList):
     tree = ElementTree.ElementTree(indent(root))
     tree.write(path_file, xml_declaration=True, encoding='utf-8')
 
+def saveToXmlFromEmail(orderList):
+    path_file = 'XML\_ocr.xml'
+    root = ElementTree.parse(path_file).getroot()
+    print(orderList)
+    c = ElementTree.Element('Order')
+    
+   
+    customer = ElementTree.SubElement(c, 'Customer')
+    customer.text = str(orderList[0]) 
+    c.set('nr',customer.text)
+           
+       
+    orderTime = ElementTree.SubElement(c, 'Time')
+    orderTime.text = orderList[1] 
+        
+
+    x = []   
+    x.append(orderList[2][:1])
+    x.append(orderList[2][2:])
+    print(x)
+    productOrder = ElementTree.SubElement(c,'ProductOrder')
+    product = ElementTree.SubElement(productOrder,'Quality')
+    product.text = str(x[0][0])
+    product = ElementTree.SubElement(productOrder,'Product')
+    product.text = x[1].lstrip()
+    productOrder.set('orderId',customer.text +' '+ product.text )
+    productOrder.set('Status','Waiting' )
+
+        
+    
+    root.insert(0, c)
+    tree = ElementTree.ElementTree(indent(root))
+    tree.write(path_file, xml_declaration=True, encoding='utf-8')
+
 def readOrderXml(toFile):
     path_file = 'XML\_'+ toFile + '.xml'
     tree = ElementTree.parse(path_file)

@@ -17,7 +17,7 @@ def connect():
     database = 'move2x_dk_db_app' 
     #password = '210210ht' 
     cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};'
-                      'Server=' + server3 + ';'
+                      'Server=' + server1 + ';'
                       'Database=move2x_dk_db_app;'
                       'Trusted_Connection=yes;')
     cursor = cnxn.cursor()
@@ -40,7 +40,7 @@ def getOrderFromDataBase():
      try:
          theTimeExp = timeExp.strftime("%H:%M")
      except:
-         theTimeExp = timeExp
+         theTimeExp = timeExp[:5]
 
      customer = row[1]
      amount = row[2]

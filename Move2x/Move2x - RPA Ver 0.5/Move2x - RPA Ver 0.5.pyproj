@@ -21,6 +21,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="emailController.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="EmailSender\EmailSender.py" />
     <Compile Include="EmailSender\sendEmail.py" />
     <Compile Include="EmailSender\sendEmailGUI.py" />

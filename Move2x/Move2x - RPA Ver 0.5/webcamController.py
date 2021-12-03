@@ -127,7 +127,8 @@ def ocr():
     for f in clearList:
         f = remove_duplicates(f)
         xml.saveToXmlList(f)
-
+        print(f)
+        
     return 'OCR is completion'
 
 def remove_duplicates(l):

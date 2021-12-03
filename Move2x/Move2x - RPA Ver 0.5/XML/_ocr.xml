@@ -1,9 +1,457 @@
 <?xml version='1.0' encoding='utf-8'?>
 <root>
-  <Order nr="10017">
+  <Order nr="10004">
+    <Customer>10004</Customer>
+  <Time>00:15</Time>
+  <ProductOrder Status="Waiting" orderId="10004 Black 1 fuse">
+      <Quality>1</Quality>
+    <Product>Black 1 fuse</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10003">
+    <Customer>10003</Customer>
+  <Time>00:08</Time>
+  <ProductOrder Status="Waiting" orderId="10003 Black 1 fuse">
+      <Quality>1</Quality>
+    <Product>Black 1 fuse</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10003">
+    <Customer>10003</Customer>
+  <Time>00:08</Time>
+  <ProductOrder Status="Waiting" orderId="10003 Black fuses None">
+      <Quality>1</Quality>
+    <Product>Black fuses None</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10002">
+    <Customer>10002</Customer>
+  <Time>00:06</Time>
+  <ProductOrder Status="Waiting" orderId="10002 Black 2 fuses">
+      <Quality>1</Quality>
+    <Product>Black 2 fuses</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10001">
+    <Customer>10001</Customer>
+  <Time>00:05</Time>
+  <ProductOrder Status="Waiting" orderId="10001 Black 1 fuse">
+      <Quality>1</Quality>
+    <Product>Black 1 fuse</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10041">
+    <Customer>10041</Customer>
+  <Time>02:50</Time>
+  <ProductOrder Status="Waiting" orderId="10041 Blue 1 fuse">
+      <Quality>1</Quality>
+    <Product>Blue 1 fuse</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10041">
+    <Customer>10041</Customer>
+  <Time>02:50</Time>
+  <ProductOrder Status="Waiting" orderId="10041 White 1 fuse">
+      <Quality>1</Quality>
+    <Product>White 1 fuse</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10042">
+    <Customer>10042</Customer>
+  <Time>02:59</Time>
+  <ProductOrder Status="Waiting" orderId="10042 Black 1 fuse">
+      <Quality>2</Quality>
+    <Product>Black 1 fuse</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10042">
+    <Customer>10042</Customer>
+  <Time>02:59</Time>
+  <ProductOrder Status="Waiting" orderId="10042 Black fuses None">
+      <Quality>2</Quality>
+    <Product>Black fuses None</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10030">
+    <Customer>10030</Customer>
+  <Time>01:50</Time>
+  <ProductOrder Status="Waiting" orderId="10030 Black 1 fuse">
+      <Quality>1</Quality>
+    <Product>Black 1 fuse</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10040">
+    <Customer>10040</Customer>
+  <Time>02:42</Time>
+  <ProductOrder Status="Cancel" orderId="10040 Black 1 fuse">
+      <Quality>2</Quality>
+    <Product>Black 1 fuse</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10041">
+    <Customer>10041</Customer>
+  <Time>02:50</Time>
+  <ProductOrder Status="Cancel" orderId="10041 White 1 fuse">
+      <Quality>1</Quality>
+    <Product>White 1 fuse</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10042">
+    <Customer>10042</Customer>
+  <Time>02:59</Time>
+  <ProductOrder Status="Cancel" orderId="10042 Black fuses None">
+      <Quality>2</Quality>
+    <Product>Black fuses None</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10002">
+    <Customer>10002</Customer>
+  <Time>00:06</Time>
+  <ProductOrder Status="Cancel" orderId="10002 Black 2 fuses">
+      <Quality>1</Quality>
+    <Product>Black 2 fuses</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10001">
+    <Customer>10001</Customer>
+  <Time>00:05</Time>
+  <ProductOrder Status="Cancel" orderId="10001 Black 1 fuse">
+      <Quality>1</Quality>
+    <Product>Black 1 fuse</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10003">
+    <Customer>10003</Customer>
+  <Time>00:08</Time>
+  <ProductOrder Status="Cancel" orderId="10003 Black 1 fuse">
+      <Quality>1</Quality>
+    <Product>Black 1 fuse</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10010">
+    <Customer>10010</Customer>
+  <Time>00:27</Time>
+  <ProductOrder Status="Cancel" orderId="10010 Black 2 fuses">
+      <Quality>2</Quality>
+    <Product>Black 2 fuses</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10006">
+    <Customer>10006</Customer>
+  <Time>00:25</Time>
+  <ProductOrder Status="Cancel" orderId="10006 Black fuses None">
+      <Quality>1</Quality>
+    <Product>Black fuses None</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10005">
+    <Customer>10005</Customer>
+  <Time>00:20</Time>
+  <ProductOrder Status="Cancel" orderId="10005 Black 1 fuse">
+      <Quality>1</Quality>
+    <Product>Black 1 fuse</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10003">
+    <Customer>10003</Customer>
+  <Time>00:08</Time>
+  <ProductOrder Status="Cancel" orderId="10003 Black fuses None">
+      <Quality>1</Quality>
+    <Product>Black fuses None</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10023">
+    <Customer>10023</Customer>
+  <Time>01:22</Time>
+  <ProductOrder Status="Cancel" orderId="10023 Black 1 fuse">
+      <Quality>1</Quality>
+    <Product>Black 1 fuse</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10023">
+    <Customer>10023</Customer>
+  <Time>01:22</Time>
+  <ProductOrder Status="Cancel" orderId="10023 Black 1 fuse">
+      <Quality>1</Quality>
+    <Product>Black 1 fuse</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10022">
+    <Customer>10022</Customer>
+  <Time>01:20</Time>
+  <ProductOrder Status="Cancel" orderId="10022 Black 2 fuses">
+      <Quality>1</Quality>
+    <Product>Black 2 fuses</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10020">
+    <Customer>10020</Customer>
+  <Time>01:15</Time>
+  <ProductOrder Status="Cancel" orderId="10020 Black 2 fuses">
+      <Quality>2</Quality>
+    <Product>Black 2 fuses</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10019">
+    <Customer>10019</Customer>
+  <Time>01:10</Time>
+  <ProductOrder Status="Cancel" orderId="10019 White phone (6001)">
+      <Quality>1</Quality>
+    <Product>White phone (6001)</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10022">
+    <Customer>10022</Customer>
+  <Time>01:20</Time>
+  <ProductOrder Status="Cancel" orderId="10022 Black 1 fuse">
+      <Quality>2</Quality>
+    <Product>Black 1 fuse</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10021">
+    <Customer>10021</Customer>
+  <Time>01:17</Time>
+  <ProductOrder Status="Cancel" orderId="10021 Black fuses None">
+      <Quality>1</Quality>
+    <Product>Black fuses None</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10019">
+    <Customer>10019</Customer>
+  <Time>01:10</Time>
+  <ProductOrder Status="Cancel" orderId="10019 White phone (6001)">
+      <Quality>1</Quality>
+    <Product>White phone (6001)</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10018">
+    <Customer>10018</Customer>
+  <Time>01:00</Time>
+  <ProductOrder Status="Cancel" orderId="10018 Blue phone (6002)">
+      <Quality>1</Quality>
+    <Product>Blue phone (6002)</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10018">
+    <Customer>10018</Customer>
+  <Time>01:00</Time>
+  <ProductOrder Status="Cancel" orderId="10018 Blue phone (6002)">
+      <Quality>1</Quality>
+    <Product>Blue phone (6002)</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10017">
     <Customer>10017</Customer>
   <Time>00:55</Time>
-  <ProductOrder Status="" orderId="10017 black 1 fuse r (1213)">
+  <ProductOrder Status="Cancel" orderId="10017 Black 1 fuse">
+      <Quality>3</Quality>
+    <Product>Black 1 fuse</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10015">
+    <Customer>10015</Customer>
+  <Time>00:47</Time>
+  <ProductOrder Status="Cancel" orderId="10015 Black 2 fuses">
+      <Quality>1</Quality>
+    <Product>Black 2 fuses</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10016">
+    <Customer>10016</Customer>
+  <Time>00:50</Time>
+  <ProductOrder Status="Done" orderId="10016 Black fuses None">
+      <Quality>1</Quality>
+    <Product>Black fuses None</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10014">
+    <Customer>10014</Customer>
+  <Time>00:45</Time>
+  <ProductOrder Status="Cancel" orderId="10014 Black 1 fuse">
+      <Quality>1</Quality>
+    <Product>Black 1 fuse</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10013">
+    <Customer>10013</Customer>
+  <Time>00:49</Time>
+  <ProductOrder Status="Cancel" orderId="10013 White phone (6001)">
+      <Quality>1</Quality>
+    <Product>White phone (6001)</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10013">
+    <Customer>10013</Customer>
+  <Time>00:49</Time>
+  <ProductOrder Status="Cancel" orderId="10013 Black 2 fuses">
+      <Quality>1</Quality>
+    <Product>Black 2 fuses</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10011">
+    <Customer>10011</Customer>
+  <Time>00:40</Time>
+  <ProductOrder Status="Cancel" orderId="10011 Blue phone (6002)">
+      <Quality>1</Quality>
+    <Product>Blue phone (6002)</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10012">
+    <Customer>10012</Customer>
+  <Time>00:47</Time>
+  <ProductOrder Status="Cancel" orderId="10012 Black fuses None">
+      <Quality>1</Quality>
+    <Product>Black fuses None</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10011">
+    <Customer>10011</Customer>
+  <Time>00:40</Time>
+  <ProductOrder Status="Cancel" orderId="10011 Black 1 fuse">
+      <Quality>1</Quality>
+    <Product>Black 1 fuse</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10010">
+    <Customer>10010</Customer>
+  <Time>00:27</Time>
+  <ProductOrder Status="Cancel" orderId="10010 Black 2 fuses">
+      <Quality>2</Quality>
+    <Product>Black 2 fuses</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10004">
+    <Customer>10004</Customer>
+  <Time>00:15</Time>
+  <ProductOrder Status="Cancel" orderId="10004 Black 1 fuse">
+      <Quality>1</Quality>
+    <Product>Black 1 fuse</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10006">
+    <Customer>10006</Customer>
+  <Time>00:25</Time>
+  <ProductOrder Status="Cancel" orderId="10006 Black fuses None">
+      <Quality>1</Quality>
+    <Product>Black fuses None</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10005">
+    <Customer>10005</Customer>
+  <Time>00:20</Time>
+  <ProductOrder Status="Cancel" orderId="10005 Black 1 fuse">
+      <Quality>1</Quality>
+    <Product>Black 1 fuse</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10024">
+    <Customer>10024</Customer>
+  <Time>01:26</Time>
+  <ProductOrder Status="Cancel" orderId="10024 Blue 1 fuse">
+      <Quality>1</Quality>
+    <Product>Blue 1 fuse</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10024">
+    <Customer>10024</Customer>
+  <Time>01:26</Time>
+  <ProductOrder Status="Cancel" orderId="10024 Black 2 fuses">
+      <Quality>1</Quality>
+    <Product>Black 2 fuses</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10023">
+    <Customer>10023</Customer>
+  <Time>01:22</Time>
+  <ProductOrder Status="Cancel" orderId="10023 Black 1 fuse">
+      <Quality>1</Quality>
+    <Product>Black 1 fuse</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10003">
+    <Customer>10003</Customer>
+  <Time>00:08</Time>
+  <ProductOrder Status="Cancel" orderId="10003 Black fuses None">
+      <Quality>1</Quality>
+    <Product>Black fuses None</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10002">
+    <Customer>10002</Customer>
+  <Time>00:06</Time>
+  <ProductOrder Status="Cancel" orderId="10002 Black 2 fuses">
+      <Quality>1</Quality>
+    <Product>Black 2 fuses</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10001">
+    <Customer>10001</Customer>
+  <Time>00:05</Time>
+  <ProductOrder Status="Cancel" orderId="10001 Black 1 fuse">
+      <Quality>1</Quality>
+    <Product>Black 1 fuse</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10009">
+    <Customer>10009</Customer>
+  <Time>00:40</Time>
+  <ProductOrder Status="Cancel" orderId="10009 White phone (6001)">
+      <Quality>1</Quality>
+    <Product>White phone (6001)</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10009">
+    <Customer>10009</Customer>
+  <Time>00:40</Time>
+  <ProductOrder Status="Cancel" orderId="10009 Black 2 fuses">
+      <Quality>1</Quality>
+    <Product>Black 2 fuses</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10008">
+    <Customer>10008</Customer>
+  <Time>00:38</Time>
+  <ProductOrder Status="Cancel" orderId="10008 Black fuses None">
+      <Quality>1</Quality>
+    <Product>Black fuses None</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10007">
+    <Customer>10007</Customer>
+  <Time>00:35</Time>
+  <ProductOrder Status="Cancel" orderId="10007 Blue phone (6002)">
+      <Quality>1</Quality>
+    <Product>Blue phone (6002)</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10007">
+    <Customer>10007</Customer>
+  <Time>00:35</Time>
+  <ProductOrder Status="Cancel" orderId="10007 Black 1 fuse">
+      <Quality>1</Quality>
+    <Product>Black 1 fuse</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10003">
+    <Customer>10003</Customer>
+  <Time>00:08</Time>
+  <ProductOrder Status="Cancel" orderId="10003 Black 1 fuse">
+      <Quality>1</Quality>
+    <Product>Black 1 fuse</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10003">
+    <Customer>10003</Customer>
+  <Time>00:08</Time>
+  <ProductOrder Status="Cancel" orderId="10003 Black fuses None">
+      <Quality>1</Quality>
+    <Product>Black fuses None</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10017">
+    <Customer>10017</Customer>
+  <Time>00:55</Time>
+  <ProductOrder Status="Cancel" orderId="10017 black 1 fuse r (1213)">
       <Quality>3</Quality>
     <Product>black 1 fuse r (1213)</Product>
     </ProductOrder>
@@ -11,7 +459,7 @@
 <Order nr="10018">
     <Customer>10018</Customer>
   <Time>01:00</Time>
-  <ProductOrder Status="" orderId="10018 blue phone (6002)">
+  <ProductOrder Status="Cancel" orderId="10018 blue phone (6002)">
       <Quality>1</Quality>
     <Product>blue phone (6002)</Product>
     </ProductOrder>
@@ -19,11 +467,11 @@
 <Order nr="10019">
     <Customer>10019</Customer>
   <Time>01:10</Time>
-  <ProductOrder Status="" orderId="10019 white phone (6001)">
+  <ProductOrder Status="Cancel" orderId="10019 white phone (6001)">
       <Quality>1</Quality>
     <Product>white phone (6001)</Product>
     </ProductOrder>
-  <ProductOrder Status="" orderId="10019 blue phone (6002)">
+  <ProductOrder Status="Cancel" orderId="10019 blue phone (6002)">
       <Quality>1</Quality>
     <Product>blue phone (6002)</Product>
     </ProductOrder>
