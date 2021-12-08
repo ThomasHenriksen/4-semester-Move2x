@@ -84,6 +84,8 @@ class MainFrame(tk.Frame):
     def xmlOrder(self):
         self.listbox.delete(0,tk.END)
         orderList = xml.getOrder()
+        
+        orderList = sorted(orderList, key = lambda i: i[2])
         for order in orderList:
             if(order[1] == '000000'):
                 self.btnCancel['state'] = 'disabled'
@@ -166,7 +168,7 @@ class MainFrame(tk.Frame):
     def blocking_email(self):
         while(var1.get() == 1):
             update = emailController.getOrderFromEmail()
-            print(update)
+            
             if(update):
                 self.xmlOrder()
             time.sleep(2)

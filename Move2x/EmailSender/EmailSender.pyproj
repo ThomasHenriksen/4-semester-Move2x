@@ -25,6 +25,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ProductAccess.py" />
+    <Compile Include="ProductAccessMysql.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="sendEmail.py" />
     <Compile Include="sendEmailGUI.py" />
   </ItemGroup>

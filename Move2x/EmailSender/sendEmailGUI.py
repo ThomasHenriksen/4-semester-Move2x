@@ -5,10 +5,11 @@ import time
 import os
 from PIL import Image, ImageTk
 #from script import xmlScript as xml
-import sendEmail
-import ProductAccess
+import sendEmailController as sendEmail
+import ProductAccessMysql as ProductAccess
 import generateEmailDetails
-thread_pool_executor = futures.ThreadPoolExecutor(max_workers=1)
+
+thread_pool_executor = futures.ThreadPoolExecutor(max_workers=20)
  
 class MainFrame(tk.Frame):
  
@@ -16,7 +17,8 @@ class MainFrame(tk.Frame):
         btnY = 200
 
         super().__init__(*args, **kwargs)
-
+        self.listOfOrders = ProductAccess.getOrderFromDataBase()
+        self.listOfOrders = sorted(self.listOfOrders, key = lambda i: i[0])
         
         sb = Scrollbar(self, orient=VERTICAL)
         sb.pack(side=RIGHT, fill=Y)
@@ -34,8 +36,10 @@ class MainFrame(tk.Frame):
         self.lblCustomer = tk.Label(self)
         self.lblProduct = tk.Label(self)
         self.lblTime = tk.Label(self)
-        self.xmlOrder()
-
+        
+        self.getOrderFromDatabase()
+        
+        
     def set_lblCustomer_text(self, text=''):
         self.lblCustomer['text'] = text
     def set_lblProduct_text(self, text=''):
@@ -47,21 +51,18 @@ class MainFrame(tk.Frame):
     # Send button
     def btnSend(self):
         thread_pool_executor.submit(self.blocking_Send)
-   
+
+
     # Xml order for the data to show
-    def xmlOrder(self):
-        global listOfOrders
-        listOfOrders =[]
+    def getOrderFromDatabase(self):
+        orderlist = self.listOfOrders
         self.listbox.delete(0,tk.END)
-        orderList = ProductAccess.getOrderFromDataBase()
-        for order in orderList:
-            if(order[1] == '000000'):
-                self.btnSend['state'] = 'disabled'
-            else:
-                self.btnSend['state'] = 'normal'
+        
+        for order in orderlist:
             self.after(0, self.listbox_insert,order[0] +' - '+ str(order[1]) +' - '+ str(order[2]) +' - '+ order[3] +' - '+ order[4] )
-        listOfOrders = orderList
-        return orderList
+        
+        
+        return orderlist
 
     
     def listbox_insert(self, item):
@@ -69,19 +70,20 @@ class MainFrame(tk.Frame):
         
     #sendEmail(subject, message):
     def blocking_Send(self):
+        curselectedOrder = self.listOfOrders[self.listbox.curselection()[0]]
         
-        curselectedOrder = listOfOrders[self.listbox.curselection()[0]]
-        text = self.emailBuilder(curselectedOrder,generateEmailDetails.returnCompany())
+        matches = [x for x in self.listOfOrders if curselectedOrder[1] == x[1]]
         
-        sendEmail.sendEmail(text[0],text[1])
-        listOfOrders.pop(self.listbox.curselection()[0])
-        self.listbox.delete(ACTIVE)
+        for order in matches:
+            subject, message = self.emailBuilder(order,generateEmailDetails.returnCompany())
+            sendEmail.sendEmail( subject, message)
+            self.listOfOrders.remove(order)
+        self.getOrderFromDatabase()
 
     def emailBuilder(self,order, companyName):
         curOrder = order
         curCompanyName = companyName
         subject = "Dear Smarter Production inc. l would like to ordre "
-    
         messageText = subject + str(order[2]) + ' ' + curOrder[3] + ' ' + curOrder[4] + ' ' + curOrder[5] +'\n'+'By the time: '+ curOrder[0] + '\n'+'Best regards'+'\n'+ curCompanyName+ ' ('+ str(order[1])+')'
         return subject, messageText
         

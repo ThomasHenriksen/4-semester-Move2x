@@ -71,4 +71,6 @@ def getOrderFromDataBase():
     return orderList
     
 
-
+ordlist = getOrderFromDataBase()
+for b in ordlist:
+    print(b)
