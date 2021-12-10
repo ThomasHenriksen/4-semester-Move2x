@@ -1,4 +1,15 @@
 <?xml version='1.0' encoding='utf-8'?>
 <root>
-  <Order />
+  <Order nr="10018">
+    <Customer>10018</Customer>
+  <Time>01:10</Time>
+  <ProductOrder Status="Waiting" orderId="10018 blue phone (6002)">
+      <Quality>1</Quality>
+    <Product>blue phone (6002)</Product>
+    </ProductOrder>
+  <ProductOrder Status="Waiting" orderId="10018 white phone (6001)">
+      <Quality>1</Quality>
+    <Product>white phone (6001)</Product>
+    </ProductOrder>
+  </Order>
 </root>

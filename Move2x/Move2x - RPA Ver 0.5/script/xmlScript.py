@@ -191,7 +191,7 @@ def getOrder():
             test.append('1')
             test.append('No Order')
             order.append(test)
-        
+        order = sorted(order, key = lambda i: i[2])
         return order
 def buildOrder(order):
     data = []
