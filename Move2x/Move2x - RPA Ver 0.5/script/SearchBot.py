@@ -58,7 +58,7 @@ def searchForAutoCrop():
     topCornerResult = cv.matchTemplate(img, topCorner_img, method) # match Screenshot and Label img 
     bottomCornerResult = cv.matchTemplate(img, bottomCorner_img, method) # match Screenshot and Label img 
     min_val, max_val, min_loc, max_loc = cv.minMaxLoc(topCornerResult)
-    min_val, max_val, min_loc, max_loc = cv.minMaxLoc(bottomCornerResult)
+    min_val2, max_val2, min_loc2, max_loc2 = cv.minMaxLoc(bottomCornerResult)
     #print('Best match top left positopn: %s' % str(max_loc))
     #print('Best match confidence: %s' % str(max_val))
     # Sets the level off accepteable match with in screenshot
@@ -66,16 +66,21 @@ def searchForAutoCrop():
     bottomCorner_h = bottomCorner_img.shape[0]
     
     
-    threshold = 0.94
+    threshold = 0.70
+    print(max_val)
+    print(max_val2)
     yloc, xloc = np.where( topCornerResult >= threshold)
     yloc2, xloc2 = np.where( bottomCornerResult >= threshold)
     findCropCoordinates  = []
+    
     for(x,y) in zip(xloc, yloc):
+        
         fundet = False
         Coordinates = []
         for(x2,y2) in zip(xloc2, yloc2):
+            
             if(x < x2 and y < y2 and fundet == False):
-              
+                print('here')
                 fundet = True
                 Coordinates.append(x)
                 Coordinates.append(y)
@@ -92,6 +97,7 @@ def searchForAutoCrop():
         img2 = imgCrop.crop((x,y,  (x2),(y2+5)  ))
         fileName = "img"+str(i)
         img2.save(temp+fileName+type)
+        print(fileName)
         listOfFiles.append(fileName)
         i+=1
     
@@ -118,3 +124,4 @@ def check(take_screenshot, whatToCheck):
 
 
     return max_val
+searchForAutoCrop()

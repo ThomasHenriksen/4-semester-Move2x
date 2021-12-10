@@ -69,7 +69,9 @@ def ocr():
     xml.createXml(fileToWrite)
     checkList = []
     i = 0
+    print('here')
     for img in SearchBot.searchForAutoCrop():
+        
         listW = imageReader.listOfWords(img)
         #os.remove(temp+img+type)
         for b in listW:
