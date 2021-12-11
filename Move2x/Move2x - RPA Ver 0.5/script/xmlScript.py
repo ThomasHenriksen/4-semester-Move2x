@@ -43,35 +43,34 @@ def saveToXml(toFile,words):
 def saveToXmlList(orderList):
     path_file = 'XML\_ocr.xml'
     root = ElementTree.parse(path_file).getroot()
+    
     c = ElementTree.Element('Order')
     
-    for word in orderList:   
-
-        if(isinstance(word, int)):
-            customer = ElementTree.SubElement(c, 'Customer')
-            customer.text = str(word) 
-            c.set('nr',customer.text)
-            
-        elif(word[2] == ':'):
-            orderTime = ElementTree.SubElement(c, 'Time')
-            orderTime.text = word 
-        else:
-
-            x = []
-            try:
-                 x = order.split('.')
-            except:
-                 x.append(word[:5])
-                 x.append(word[5:])
-            productOrder = ElementTree.SubElement(c,'ProductOrder')
-            
-            product = ElementTree.SubElement(productOrder,'Quality')
-            product.text = str(x[0][0])
-            product = ElementTree.SubElement(productOrder,'Product')
-            product.text = x[1].lstrip()
-            productOrder.set('orderId',customer.text +' '+ product.text )
-            productOrder.set('Status','Waiting' )
-
+   
+    customer = ElementTree.SubElement(c, 'Customer')
+    customer.text = str(orderList[0]) 
+    c.set('nr',customer.text)
+           
+       
+    orderTime = ElementTree.SubElement(c, 'Time')
+    orderTime.text = orderList[1] 
+        
+    for b in orderList[2]:
+        
+        x = []   
+        x.append(b[:1])
+        x.append(b[2:])
+    
+        productOrder = ElementTree.SubElement(c,'ProductOrder')
+    
+    
+        product = ElementTree.SubElement(productOrder,'Quality')
+        product.text = str(x[0][0])
+        product = ElementTree.SubElement(productOrder,'Product')
+        product.text = x[1].lstrip()
+        productOrder.set('orderId',customer.text +' '+ product.text )
+        productOrder.set('Status','Waiting' )
+        productOrder.set('amount', str(x[0][0]))
         
     
     root.insert(0, c)
@@ -81,7 +80,7 @@ def saveToXmlList(orderList):
 def saveToXmlFromEmail(orderList):
     path_file = 'XML\_ocr.xml'
     root = ElementTree.parse(path_file).getroot()
-    print(orderList)
+    
     c = ElementTree.Element('Order')
     
    
@@ -97,15 +96,17 @@ def saveToXmlFromEmail(orderList):
     x = []   
     x.append(orderList[2][:1])
     x.append(orderList[2][2:])
-    print(x)
+    
     productOrder = ElementTree.SubElement(c,'ProductOrder')
+    
+    
     product = ElementTree.SubElement(productOrder,'Quality')
     product.text = str(x[0][0])
     product = ElementTree.SubElement(productOrder,'Product')
     product.text = x[1].lstrip()
     productOrder.set('orderId',customer.text +' '+ product.text )
     productOrder.set('Status','Waiting' )
-
+    productOrder.set('amount', str(x[0][0]))
         
     
     root.insert(0, c)
@@ -135,7 +136,7 @@ def readXml(toFile):
       
     return data   
 
-def changeStatusOnOrderXml(toFile, orderFind, status):
+def changeStatusOnOrderXml(toFile, orderFind,status ,amount):
     path_file = 'XML\_'+ toFile + '.xml'
     tree = ElementTree.parse(path_file)
     root = tree.getroot()
@@ -144,7 +145,13 @@ def changeStatusOnOrderXml(toFile, orderFind, status):
     for order in orders:
         value = order.get('orderId')    
         if(orderFind == value ):
-
+            
+            #amountOfPrints = int(order.get('amount'))
+            #cala = int(amount)-amountOfPrints
+            #order.set('amount',cala)
+            
+            #if(cala == 0):
+                
             order.set('Status',status)
 
     tree = ElementTree.ElementTree(indent(root))
@@ -174,8 +181,9 @@ def getOrder():
                orderL.append(b)
         order = []
         for o in orderL:
-            
+            print(o)
             status = o[0]
+            
             product = o[4]
             
             if(status == 'Done' or status == 'Cancel'):
@@ -202,7 +210,7 @@ def buildOrder(order):
 
     for productOrder in status:
         status = productOrder.get('Status')      
-        quality = productOrder[0].text
+        quality = productOrder.get('amount')    
         productText = productOrder[1].text
         data.append(status)
         data.append(customer)

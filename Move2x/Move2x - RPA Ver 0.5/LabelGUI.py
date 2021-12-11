@@ -149,7 +149,7 @@ class MainFrame(tk.Frame):
         self.after(0, self.set_lblProduct_text, order[index][4])
 
     def blocking_Cancel(self):
-        xml.changeStatusOnOrderXml('ocr', self.lblCustomer['text']+' '+ self.lblProduct['text'], 'Cancel')
+        xml.changeStatusOnOrderXml('ocr', self.lblCustomer['text']+' '+ self.lblProduct['text'],'Cancel' ,self.option_select())
         self.xmlOrder()
     def blocking_OpenDymo(self):
         labelController.dymo() 
@@ -158,7 +158,7 @@ class MainFrame(tk.Frame):
         self.btnPrint['state'] = 'disabled'
         self.om1['state'] = 'disabled'
         labelController.labelMaker(self.lblCustomer['text'],self.lblTime['text'], self.lblProduct['text'],self.option_select())
-        xml.changeStatusOnOrderXml('ocr', self.lblCustomer['text']+' '+ self.lblProduct['text'], 'Done')
+        xml.changeStatusOnOrderXml('ocr', self.lblCustomer['text']+' '+ self.lblProduct['text'],'Done',self.option_select())
         self.xmlOrder()
         self.btnCancel['state'] = 'normal'
         self.btnPrint['state'] = 'normal'

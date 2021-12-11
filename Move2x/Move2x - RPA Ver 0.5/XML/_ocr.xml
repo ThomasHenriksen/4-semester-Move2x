@@ -1,15 +1,23 @@
 <?xml version='1.0' encoding='utf-8'?>
 <root>
-  <Order nr="10018">
-    <Customer>10018</Customer>
-  <Time>01:10</Time>
-  <ProductOrder Status="Waiting" orderId="10018 blue phone (6002)">
+  <Order nr="00:49">
+    <Customer>00:49</Customer>
+  <Time>10013</Time>
+  <ProductOrder Status="Waiting" amount="1" orderId="00:49 pc. black 2 fuses (1214)">
       <Quality>1</Quality>
-    <Product>blue phone (6002)</Product>
+    <Product>pc. black 2 fuses (1214)</Product>
     </ProductOrder>
-  <ProductOrder Status="Waiting" orderId="10018 white phone (6001)">
+  <ProductOrder Status="Waiting" amount="1" orderId="00:49 pc. white phones (6001)">
       <Quality>1</Quality>
-    <Product>white phone (6001)</Product>
+    <Product>pc. white phones (6001)</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="00:47">
+    <Customer>00:47</Customer>
+  <Time>10012</Time>
+  <ProductOrder Status="Waiting" amount="1" orderId="00:47 pc. black no fuses (1211)">
+      <Quality>1</Quality>
+    <Product>pc. black no fuses (1211)</Product>
     </ProductOrder>
   </Order>
 </root>

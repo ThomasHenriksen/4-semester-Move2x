@@ -2,6 +2,7 @@ from __future__ import print_function
 import cv2
 import numpy as np
 import os
+from script import SearchBot
 MAX_FEATURES = 500
 GOOD_MATCH_PERCENT = 0.40
 
@@ -61,5 +62,6 @@ def alignImages():
   #os.remove(outFilename)
  
   cv2.imwrite(outFilename, im1Reg)
+  print(SearchBot.check('webcam','ref'))
  
   

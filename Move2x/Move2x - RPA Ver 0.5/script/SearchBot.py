@@ -47,11 +47,12 @@ def searchForAutoCrop():
     bottomCornerPathSearch = bottomCornerResourSearch + bottomCornerNameSearch + bottomCornerTypeSearch 
     temp = 'temp\\'
     type = '.png'
-    path = temp + 'webcam' + type 
+    path = temp + 'align' + type 
 
     method = cv.TM_CCOEFF_NORMED
 
     img = cv.imread(path) #Screenshot
+    height, width, __ = img.shape
     #haystack_img = cv.resize(haystack_img, (1024, 720))
     topCorner_img = cv.imread(topCornerpath)#Label img to find with in screenshot
     bottomCorner_img = cv.imread(bottomCornerPathSearch)#Label img to find with in screenshot
@@ -64,27 +65,36 @@ def searchForAutoCrop():
     # Sets the level off accepteable match with in screenshot
     bottomCorner_w = bottomCorner_img.shape[1]
     bottomCorner_h = bottomCorner_img.shape[0]
-    
-    
-    threshold = 0.94
+
+    threshold = 0.95
     yloc, xloc = np.where( topCornerResult >= threshold)
     yloc2, xloc2 = np.where( bottomCornerResult >= threshold)
     findCropCoordinates  = []
     for(x,y) in zip(xloc, yloc):
+        
         fundet = False
         Coordinates = []
         for(x2,y2) in zip(xloc2, yloc2):
             if(x < x2 and y < y2 and fundet == False):
-              
-                fundet = True
-                Coordinates.append(x)
-                Coordinates.append(y)
-                Coordinates.append(x2)
-                Coordinates.append(y2)
-                findCropCoordinates.append(Coordinates)
+                if(x2 > 1250):
+                    if(x < 400):
+                        
+                        fundet = True
+                        Coordinates.append(x)
+                        Coordinates.append(y)
+                        Coordinates.append(x2)
+                        Coordinates.append(y2)
+                        findCropCoordinates.append(Coordinates)
+    #index = 0 
+
+    #while(index < len(findCropCoordinates)-1):
+        
+        #if((findCropCoordinates[index+1][1]-findCropCoordinates[index][1])> 5):
+        #    findCropCoordinates.remove(findCropCoordinates[index])
+        #index+=1
+
 
     listOfFiles = []
-    
     i = 0
     for(x,y,x2,y2) in findCropCoordinates:
         

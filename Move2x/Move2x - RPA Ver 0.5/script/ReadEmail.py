@@ -7,7 +7,7 @@ def getEmail():
     username ="move2produktion@gmail.com"
     
     #generated app password - save this
-    app_password= "mevjwvrqbwmcxtdn"
+    app_password= "igjbgewbhipccxes"
     
     # https://www.systoolsgroup.com/imap/
     gmail_host= 'imap.gmail.com'

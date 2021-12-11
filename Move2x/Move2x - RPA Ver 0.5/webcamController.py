@@ -60,76 +60,16 @@ def takePicture():
 def alignPicture():
     autoAlignImage.alignImages()
     return 'Aligning image'
-
-def ocr():  
-    temp = 'temp\\'
-    type = '.png'
-    listOfWords = []
-    fileToWrite = 'ocr'
-    xml.createXml(fileToWrite)
-    checkList = []
-    i = 0
-    print('here')
+def saveXml(order):
+    xml.saveToXmlList(order)
+def ocr():   
     for img in SearchBot.searchForAutoCrop():
-        
-        listW = imageReader.listOfWords(img)
+        order = imageReader.listOfWords(img)
         #os.remove(temp+img+type)
-        for b in listW:
-            if(b !="" and b[0].isdigit()):
-                if(len(checkList) != 0):
-                    if(b.find(checkList[i-1])):                   
-                        checkList.append(b)          
-                        i+=1
-                else:
-                    checkList.append(b)
-                    i+=1
+        if order:
+            saveXml(order)
+            print(order)
 
-    customer = 1
-    order = ''
-    clearList = []
-    orders = []
-    orderTime = ''
-    for b in checkList: 
-        if(len(b) >2 ):
-            if(b[2].isdigit()):
-              try:
-                if(customer != int(b[:5])):
-                   if(customer == 1):
-                     orders = []
-                     customer = int(b[:5])
-                     orders.append(customer)
-                     order = '' 
-                   else:
-                     clearList.append(orders)
-                     orders = []
-                     customer = int(b[:5])
-                     orders.append(customer)
-                     order = '' 
-              except:
-                   print('fail to covnert b to int')
-            else:
-              try:
-               if(b[2] != ':'):
-                  if(order != b):
-                    order = b
-                    order = order.replace('.', '')
-                    order = order.replace('be', 'pc')
-                    orders.append(order)
-               else:
-                    if(orderTime != b):
-                        orderTime = b
-                        orders.insert(1,orderTime)
-              except:
-                  print('Fail in other')
-                  print('Fail in other ' + b)
-
-    clearList.append(orders)   
-
-    clearList.reverse()
-    for f in clearList:
-        f = remove_duplicates(f)
-        xml.saveToXmlList(f)
-        print(f)
         
     return 'OCR is completion'
 

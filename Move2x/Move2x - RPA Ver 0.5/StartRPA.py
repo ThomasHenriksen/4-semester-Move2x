@@ -3,7 +3,9 @@ from concurrent import futures
 import time
 import webcamController as scan
 import labelController as dymo
-import os 
+import os
+from script import xmlScript as xml
+
 thread_pool_executor = futures.ThreadPoolExecutor(max_workers=3)
  
 class MainFrame(tk.Frame):
@@ -14,15 +16,17 @@ class MainFrame(tk.Frame):
         self.label.pack()
         self.listbox = tk.Listbox(self)
         self.listbox.pack()
-        self.buttonDymo = tk.Button(
-            self, text='Dymo Print', command=self.btnDymo)
-        self.buttonDymo.pack(pady=5)
+        xml.createXml('ocr')
+        xml.createXml('mail')
         self.buttonScanner = tk.Button(
             self, text='Scan order', command=self.btnWebcam)
         self.buttonScanner.pack(pady=5)
         self.buttonRead = tk.Button(
             self, text='Scan read order', command=self.btnRead)
         self.buttonRead.pack(pady=5)
+        self.buttonDymo = tk.Button(
+            self, text='Dymo Print', command=self.btnDymo)
+        self.buttonDymo.pack(pady=5)
         self.pack()
  
     def btnDymo(self):
