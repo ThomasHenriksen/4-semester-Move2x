@@ -31,82 +31,66 @@ def indent(elem, level=0):
             elem.tail = j
     return elem
 
-def saveToXml(toFile,words):
-    path_file = 'XML\_'+ toFile + '.xml'
-    root = ElementTree.parse(path_file).getroot()
-    c = ElementTree.Element('OCR')
-    c.text = words
-    root.insert(0, c)
-    tree = ElementTree.ElementTree(indent(root))
-    tree.write(path_file, xml_declaration=True, encoding='utf-8')
+def saveOrder(orderList):
+    time = orderList[0]
+    customer = orderList[1]
+    productOrder = orderList[2]
+    amount = ''
+    product = ''
+    
+    if isinstance(productOrder, list):
+        for item in productOrder:
+            amount = item[:1]
+            product = item[2:]
+            if(product[:2] == 'pc'):
+                product = product[3:].lstrip().capitalize().rstrip()
+                index = len(product)
+                if(product[index-8] == 'r' or product[index-8] == 'l'):
+                    product = product[:index-8] +  product[index-8].upper()+product[index-7:]
 
-def saveToXmlList(orderList):
+            fundet = findOrderXml('ocr', str(customer) + ' ' + product)
+        
+            if not fundet:
+
+                saveToXml(time,customer,amount,product)
+
+    else:  
+        amount = productOrder[:1]
+        product = productOrder[2:].capitalize().rstrip() 
+
+        index = len(product)
+        if(product[index-8] == 'r' or product[index-8] == 'l'):
+           product = product[:index-8] +  product[index-8].upper()+product[index-7:]
+        
+        fundet = findOrderXml('ocr', customer + ' ' + product)
+
+
+        if not fundet:
+            saveToXml(time,customer,amount,product)
+
+
+def saveToXml(time,customer,amount,product):
     path_file = 'XML\_ocr.xml'
     root = ElementTree.parse(path_file).getroot()
     
     c = ElementTree.Element('Order')
     
-   
-    customer = ElementTree.SubElement(c, 'Customer')
-    customer.text = str(orderList[1]) 
-    c.set('nr',customer.text)
-           
+    customerXml = ElementTree.SubElement(c, 'Customer')
+    customerXml.text = str(customer) 
+    c.set('nr',customerXml.text)    
        
     orderTime = ElementTree.SubElement(c, 'Time')
-    orderTime.text = str(orderList[0]) 
-        
-    for b in orderList[2]:
-        
-        x = []   
-        x.append(b[:1])
-        x.append(b[2:])
-    
-        productOrder = ElementTree.SubElement(c,'ProductOrder')
-    
-    
-        product = ElementTree.SubElement(productOrder,'Quality')
-        product.text = str(x[0][0])
-        product = ElementTree.SubElement(productOrder,'Product')
-        product.text = x[1].lstrip()
-        productOrder.set('orderId',customer.text +' '+ product.text )
-        productOrder.set('Status','Waiting' )
-        productOrder.set('amount', str(x[0][0]))
-        
-    
-    root.insert(0, c)
-    tree = ElementTree.ElementTree(indent(root))
-    tree.write(path_file, xml_declaration=True, encoding='utf-8')
+    orderTime.text = str(time)
 
-def saveToXmlFromEmail(orderList):
-    path_file = 'XML\_ocr.xml'
-    root = ElementTree.parse(path_file).getroot()
-    
-    c = ElementTree.Element('Order')
-    
-   
-    customer = ElementTree.SubElement(c, 'Customer')
-    customer.text = str(orderList[0]) 
-    c.set('nr',customer.text)
-           
-       
-    orderTime = ElementTree.SubElement(c, 'Time')
-    orderTime.text = orderList[1] 
-        
-
-    x = []   
-    x.append(orderList[2][:1])
-    x.append(orderList[2][2:])
-    
     productOrder = ElementTree.SubElement(c,'ProductOrder')
-    
-    
-    product = ElementTree.SubElement(productOrder,'Quality')
-    product.text = str(x[0][0])
-    product = ElementTree.SubElement(productOrder,'Product')
-    product.text = x[1].lstrip()
-    productOrder.set('orderId',customer.text +' '+ product.text )
+
+    productXml = ElementTree.SubElement(productOrder,'Amount')
+    productXml.text = str(amount)
+    productXml = ElementTree.SubElement(productOrder,'Product')
+    productXml.text = str(product)
+    productOrder.set('orderId',customerXml.text +' '+ productXml.text )
     productOrder.set('Status','Waiting' )
-    productOrder.set('amount', str(x[0][0]))
+    productOrder.set('Amount', str(amount))
         
     
     root.insert(0, c)
@@ -121,9 +105,10 @@ def readOrderXml(toFile):
     dataList = []
 
     for order in root.findall('Order'):
-        
-        dataList.append(buildOrder(order))
-    
+        try:
+            dataList.append(buildOrder(order))
+        except:
+            dontdoany = ''
     return dataList
     
 def readXml(toFile):
@@ -136,38 +121,35 @@ def readXml(toFile):
       
     return data   
 
-def changeStatusOnOrderXml(toFile, orderFind,status ,amount):
+def changeStatusOnOrderXml(toFile, orderFind,status):
     path_file = 'XML\_'+ toFile + '.xml'
     tree = ElementTree.parse(path_file)
     root = tree.getroot()
     orders = root.findall('.//ProductOrder')
-    listForSave = []
+    
     for order in orders:
-        value = order.get('orderId')    
+        value = order.get('orderId') 
+        
         if(orderFind == value ):
-            
-            #amountOfPrints = int(order.get('amount'))
-            #cala = int(amount)-amountOfPrints
-            #order.set('amount',cala)
-            
-            #if(cala == 0):
-                
             order.set('Status',status)
-
+    
     tree = ElementTree.ElementTree(indent(root))
     tree.write(path_file, xml_declaration=True, encoding='utf-8')
 
 def findOrderXml(toFile, orderFind):
+    find = False
+
     path_file = 'XML\_'+ toFile + '.xml'
     tree = ElementTree.parse(path_file)
     root = tree.getroot()
-
-    for order in root.findall('Order'):
-        value = order.get('nr')
+    orders = root.findall('.//ProductOrder')
+    
+    for order in orders:
+        value = order.get('orderId') 
         if(orderFind == value ):
-          data = buildOrder(order)
-
-    return data
+            find = True
+    
+    return find
 def getOrder():
         orderList = readOrderXml('ocr')
         orderL = []
@@ -188,7 +170,9 @@ def getOrder():
             if(status == 'Done' or status == 'Cancel'):
                 lala = '2'
                 
+                
             else:
+
                 order.append(o)
         if(len(order) == 0):
             test=[]
@@ -208,17 +192,19 @@ def buildOrder(order):
     data = []
     
     customer = order.find('Customer').text
+    if(len(customer)<5):
+        int(customer+'fd')
     orderTime = order.find('Time').text
     status = order.findall('ProductOrder')
 
     for productOrder in status:
         status = productOrder.get('Status')      
-        quality = productOrder.get('amount')    
+        amount = productOrder.get('Amount')    
         productText = productOrder[1].text
         data.append(status)
         data.append(customer)
         data.append(orderTime)
-        data.append(quality)
+        data.append(amount)
         data.append(productText)
         
         

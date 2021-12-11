@@ -37,7 +37,9 @@ def listOfWords(img):
         for b in words:
             if len(b) > 2:
                 b = b.replace('|', '')
-                b = b.replace(',', '.')
+                b = b.replace(',', '')
+                b = b.replace('.', '')
+                b = b.replace('pe', 'pc')
                 b = b.lstrip()
                 
                 if(b[2] == ':' and len(b) > 10):

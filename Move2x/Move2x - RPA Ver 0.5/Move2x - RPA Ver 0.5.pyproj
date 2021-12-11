@@ -1,0 +1,135 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>8440285c-2a2b-4460-8d43-66854d45f76d</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>StartRPA.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>Move2x - RPA Ver 0.5</Name>
+    <RootNamespace>Move2x - RPA Ver 0.5</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="emailController.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EmailSender\EmailSender.py" />
+    <Compile Include="EmailSender\sendEmail.py" />
+    <Compile Include="EmailSender\sendEmailGUI.py" />
+    <Compile Include="script\autoAlignImage.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="script\imageFromWebcam.py" />
+    <Compile Include="LabelGUI.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="script\LabelClick.py" />
+    <Compile Include="labelController.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="script\ocr.py" />
+    <Compile Include="script\openFile.py" />
+    <Compile Include="script\ReadEmail.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="script\ScreenShotBot.py" />
+    <Compile Include="script\SearchBot.py" />
+    <Compile Include="script\TypingBot.py" />
+    <Compile Include="Webcam\webcam.py" />
+    <Compile Include="webcamController.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="script\xmlScript.py" />
+    <Compile Include="StartRPA.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EmailSender\EmailSender.pyproj" />
+    <Content Include="EmailSender\__pycache__\sendEmail.cpython-37.pyc" />
+    <Content Include="resources\ref.jpg" />
+    <Content Include="resources\backup.label" />
+    <Content Include="resources\closeWebCam.png" />
+    <Content Include="resources\customerNumber.PNG" />
+    <Content Include="resources\dymo.png" />
+    <Content Include="resources\dymoIron.png" />
+    <Content Include="resources\exitLabel.png" />
+    <Content Include="resources\Label.label" />
+    <Content Include="resources\Label.png" />
+    <Content Include="resources\logi.png" />
+    <Content Include="resources\newBackUp.label" />
+    <Content Include="resources\newLabelCheck.PNG" />
+    <Content Include="resources\newLabelNo.PNG" />
+    <Content Include="resources\Print.PNG" />
+    <Content Include="resources\Produkt1.PNG" />
+    <Content Include="resources\Produkt2.PNG" />
+    <Content Include="resources\Produkt3.PNG" />
+    <Content Include="resources\Produkt4.PNG" />
+    <Content Include="resources\takePicture.png" />
+    <Content Include="resources\testing.png" />
+    <Content Include="resources\textbox.PNG" />
+    <Content Include="resources\WebcamCheck.png" />
+    <Content Include="resources\windows.png" />
+    <Content Include="Temp\webcam2.jpg" />
+    <Content Include="XML\_blackList.xml" />
+    <Content Include="XML\_choosenword.xml" />
+    <Content Include="XML\_trask.xml" />
+    <Content Include="script\__pycache__\cam.cpython-37.pyc" />
+    <Content Include="script\__pycache__\imageFromWebcam.cpython-37.pyc" />
+    <Content Include="script\__pycache__\LabelClick.cpython-37.pyc" />
+    <Content Include="script\__pycache__\LabelClick.cpython-39.pyc" />
+    <Content Include="script\__pycache__\main.cpython-310.pyc" />
+    <Content Include="script\__pycache__\main.cpython-37.pyc" />
+    <Content Include="script\__pycache__\main.cpython-39.pyc" />
+    <Content Include="script\__pycache__\ocr.cpython-310.pyc" />
+    <Content Include="script\__pycache__\ocr.cpython-37.pyc" />
+    <Content Include="script\__pycache__\ocr.cpython-39.pyc" />
+    <Content Include="script\__pycache__\openFile.cpython-37.pyc" />
+    <Content Include="script\__pycache__\saveToXml.cpython-37.pyc" />
+    <Content Include="script\__pycache__\ScreenShotBot.cpython-37.pyc" />
+    <Content Include="script\__pycache__\ScreenShotBot.cpython-39.pyc" />
+    <Content Include="script\__pycache__\SearchBot.cpython-37.pyc" />
+    <Content Include="script\__pycache__\SearchBot.cpython-39.pyc" />
+    <Content Include="script\__pycache__\typingBot.cpython-37.pyc" />
+    <Content Include="script\__pycache__\TypingBot.cpython-39.pyc" />
+    <Content Include="script\__pycache__\webcam.cpython-37.pyc" />
+    <Content Include="script\__pycache__\xml.cpython-310.pyc" />
+    <Content Include="script\__pycache__\xml.cpython-37.pyc" />
+    <Content Include="script\__pycache__\xml.cpython-39.pyc" />
+    <Content Include="script\__pycache__\xmlScript.cpython-37.pyc" />
+    <Content Include="script\__pycache__\xmlScript.cpython-39.pyc" />
+    <Content Include="Temp\test.png" />
+    <Content Include="Temp\webcam.jpg" />
+    <Content Include="Temp\webcam3.png" />
+    <Content Include="Temp\windows.png" />
+    <Content Include="Move2x RPA.bat" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="EmailSender\" />
+    <Folder Include="EmailSender\__pycache__\" />
+    <Folder Include="Webcam\" />
+    <Folder Include="XML\" />
+    <Folder Include="resources\" />
+    <Folder Include="script\" />
+    <Folder Include="script\__pycache__\" />
+    <Folder Include="Temp\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>

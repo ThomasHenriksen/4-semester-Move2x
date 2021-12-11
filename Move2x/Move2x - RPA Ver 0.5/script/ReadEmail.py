@@ -25,7 +25,7 @@ def getEmail():
     _, selected_mails = mail.search(None,'UNSEEN', '(FROM "move2ordre@gmail.com")')
     
     #total number of mails from specific user
-    print("Total messages from selected Email:" , len(selected_mails[0].split()))
+    #print("Total messages from selected Email:" , len(selected_mails[0].split()))
 
     listOfEmail =[]
     for num in selected_mails[0].split():
@@ -37,16 +37,16 @@ def getEmail():
         print("\n===========================================")
     
         #access data
-        print("To:", email_message["to"])
-        print("From: ",email_message["from"])
-        print("Date: ",email_message["date"])
-        print("Subject: ",email_message["subject"])
+       # print("To:", email_message["to"])
+        #print("From: ",email_message["from"])
+       #print("Date: ",email_message["date"])
+       # print("Subject: ",email_message["subject"])
         for part in email_message.walk():
             if part.get_content_type()=="text/plain" or part.get_content_type()=="text/html":
                 message = part.get_payload(decode=True)
-                print("Message: \n", message.decode())
+              #  print("Message: \n", message.decode())
                 messageText = message.decode()
-                print("==========================================\n")
+              #  print("==========================================\n")
                 listOfEmail.append(messageText)
                 break
     return listOfEmail

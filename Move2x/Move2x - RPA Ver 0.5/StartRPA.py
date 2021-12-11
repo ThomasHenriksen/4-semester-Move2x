@@ -17,15 +17,12 @@ class MainFrame(tk.Frame):
         self.listbox = tk.Listbox(self)
         self.listbox.pack()
         xml.createXml('ocr')
-        xml.createXml('mail')
-        self.buttonScanner = tk.Button(
-            self, text='Scan order', command=self.btnWebcam)
+        self.buttonScanner = tk.Button(self, text='Scan order', command=self.btnWebcam)
         self.buttonScanner.pack(pady=5)
         self.buttonRead = tk.Button(
             self, text='Scan read order', command=self.btnRead)
         self.buttonRead.pack(pady=5)
-        self.buttonDymo = tk.Button(
-            self, text='Dymo Print', command=self.btnDymo)
+        self.buttonDymo = tk.Button(self, text='Dymo Print', command=self.btnDymo)
         self.buttonDymo.pack(pady=5)
         self.pack()
  
@@ -45,22 +42,16 @@ class MainFrame(tk.Frame):
         self.listbox.insert(tk.END, item)
  
     def blocking_Dymo(self):
-        self.buttonDymo['state'] = 'disabled'
-        self.buttonScanner['state'] = 'disabled'
+
         self.listbox.delete(0,tk.END)
         self.after(0, self.set_label_text, 'running')
         
         os.system('python LabelGUI.py')
-        
-        
 
-        self.buttonDymo['state'] = 'normal'
-        self.buttonScanner['state'] = 'normal'
         self.after(0, self.set_label_text, ' not running')
 
     def blocking_Scanner(self):
-        self.buttonDymo['state'] = 'disabled'
-        self.buttonScanner['state'] = 'disabled'
+
         self.listbox.delete(0,tk.END)
         self.after(0, self.set_label_text, 'running')
 
@@ -71,23 +62,16 @@ class MainFrame(tk.Frame):
         self.after(0, self.listbox_insert, text)
         text = scan.alignPicture()
         self.after(0, self.listbox_insert, text)
-       
-        self.buttonDymo['state'] = 'normal'
-        self.buttonScanner['state'] = 'normal'
+        text = scan.ocr()
+        self.after(0, self.listbox_insert, text)
         self.after(0, self.set_label_text, ' not running')   
         
     def blocking_Read(self):
-        self.buttonDymo['state'] = 'disabled'
-        self.buttonScanner['state'] = 'disabled'
         self.listbox.delete(0,tk.END)
         self.after(0, self.set_label_text, 'running')
 
         text = scan.ocr()
-        self.after(0, self.listbox_insert, text)
         
-
-        self.buttonDymo['state'] = 'normal'
-        self.buttonScanner['state'] = 'normal'
         self.after(0, self.set_label_text, ' not running')    
 if __name__ == '__main__':
     app = tk.Tk()

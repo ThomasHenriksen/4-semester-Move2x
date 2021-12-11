@@ -1,3 +1,4 @@
 @echo off
-start /min python StartRPA.py %*
+python StartRPA.py %*
+
 pause

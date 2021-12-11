@@ -54,7 +54,7 @@ def dataRow(row):
      elif(productId == 6001 or productId == 6002):
          order.append('phone')
      else:
-         order.append('fuses '+fuse)
+         order.append('no fuses')
 
      order.append('('+str(productId)+')')
 

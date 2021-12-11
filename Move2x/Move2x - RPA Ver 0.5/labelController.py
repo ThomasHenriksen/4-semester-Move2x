@@ -12,16 +12,26 @@ import os
 def labelMaker(customer, time, product,quality):
     size = int(quality)   
     i = 0
-      
+
+    fundet = False
+    print('test')
     dymo()
-    
-    writeLabel('customerNumber', customer)
-    writeLabel('Time', time)
-    writeLabel('Produkt1', product)
-    while(i < size):
-       printLabel()
-       print(i)
-       i+=1
+    print('test')
+    while(fundet == False):
+        objScreen = screenshot('windows')
+        max_val = SearchBot.check(objScreen, 'customerNumber')
+        
+        print(max_val)
+        if(max_val >= 0.75):
+            fundet = True
+        if(fundet):
+            writeLabel('customerNumber', customer)
+            writeLabel('Time', time)
+            writeLabel('Produkt1', product)
+            while(i < size):
+               printLabel()
+               print(i)
+               i+=1
     return 'Print completion'
 
 def exitLabel():
@@ -60,8 +70,8 @@ def dymo():
     fundet = False
     
     i = 0
-    while(i < 2 and fundet == False):
-        time.sleep(0.4)
+    while(i < 5 and fundet == False):
+        
         objScreen = screenshot('windows')
         max_val = SearchBot.check(objScreen, 'newLabelNo')
         
@@ -70,7 +80,7 @@ def dymo():
             objLoc = search(objScreen, 'newLabelNo')
             click(objLoc)
             fundet = True
-        i+= 1
+        i += 1
     return 'Dymo is open'
 
 def spacebar():

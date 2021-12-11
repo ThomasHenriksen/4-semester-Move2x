@@ -62,7 +62,7 @@ def alignPicture():
     return 'Aligning image'
 
 def saveXml(order):
-    xml.saveToXmlList(order)
+    xml.saveOrder(order)
 
 def ocr():   
     for img in SearchBot.searchForAutoCrop():
