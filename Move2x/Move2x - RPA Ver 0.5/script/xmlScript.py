@@ -48,12 +48,12 @@ def saveToXmlList(orderList):
     
    
     customer = ElementTree.SubElement(c, 'Customer')
-    customer.text = str(orderList[0]) 
+    customer.text = str(orderList[1]) 
     c.set('nr',customer.text)
            
        
     orderTime = ElementTree.SubElement(c, 'Time')
-    orderTime.text = orderList[1] 
+    orderTime.text = str(orderList[0]) 
         
     for b in orderList[2]:
         
@@ -168,7 +168,6 @@ def findOrderXml(toFile, orderFind):
           data = buildOrder(order)
 
     return data
-
 def getOrder():
         orderList = readOrderXml('ocr')
         orderL = []
@@ -181,7 +180,7 @@ def getOrder():
                orderL.append(b)
         order = []
         for o in orderL:
-            print(o)
+            
             status = o[0]
             
             product = o[4]
@@ -200,7 +199,11 @@ def getOrder():
             test.append('No Order')
             order.append(test)
         order = sorted(order, key = lambda i: i[2])
-        return order
+        s = []
+        for i in order:
+             if i not in s:
+                 s.append(i)
+        return s
 def buildOrder(order):
     data = []
     

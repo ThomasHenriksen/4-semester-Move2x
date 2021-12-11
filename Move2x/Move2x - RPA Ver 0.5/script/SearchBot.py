@@ -47,7 +47,7 @@ def searchForAutoCrop():
     bottomCornerPathSearch = bottomCornerResourSearch + bottomCornerNameSearch + bottomCornerTypeSearch 
     temp = 'temp\\'
     type = '.png'
-    path = temp + 'align' + type 
+    path = temp + 'webcam' + type 
 
     method = cv.TM_CCOEFF_NORMED
 
@@ -66,7 +66,7 @@ def searchForAutoCrop():
     bottomCorner_w = bottomCorner_img.shape[1]
     bottomCorner_h = bottomCorner_img.shape[0]
 
-    threshold = 0.95
+    threshold = 0.930
     yloc, xloc = np.where( topCornerResult >= threshold)
     yloc2, xloc2 = np.where( bottomCornerResult >= threshold)
     findCropCoordinates  = []
@@ -85,13 +85,13 @@ def searchForAutoCrop():
                         Coordinates.append(x2)
                         Coordinates.append(y2)
                         findCropCoordinates.append(Coordinates)
-    #index = 0 
+    index = 0 
 
-    #while(index < len(findCropCoordinates)-1):
+    while(index < len(findCropCoordinates)-1):
         
-        #if((findCropCoordinates[index+1][1]-findCropCoordinates[index][1])> 5):
-        #    findCropCoordinates.remove(findCropCoordinates[index])
-        #index+=1
+        if((findCropCoordinates[index+1][1]-findCropCoordinates[index][1])> 5):
+            findCropCoordinates.remove(findCropCoordinates[index])
+        index+=1
 
 
     listOfFiles = []

@@ -1,23 +1,83 @@
 <?xml version='1.0' encoding='utf-8'?>
 <root>
-  <Order nr="00:49">
-    <Customer>00:49</Customer>
-  <Time>10013</Time>
-  <ProductOrder Status="Waiting" amount="1" orderId="00:49 pc. black 2 fuses (1214)">
-      <Quality>1</Quality>
-    <Product>pc. black 2 fuses (1214)</Product>
-    </ProductOrder>
-  <ProductOrder Status="Waiting" amount="1" orderId="00:49 pc. white phones (6001)">
-      <Quality>1</Quality>
-    <Product>pc. white phones (6001)</Product>
+  <Order nr="10010">
+    <Customer>10010</Customer>
+  <Time>00:27</Time>
+  <ProductOrder Status="Waiting" amount="2" orderId="10010 pcs. black 2 fuses (1214)">
+      <Quality>2</Quality>
+    <Product>pcs. black 2 fuses (1214)</Product>
     </ProductOrder>
   </Order>
-<Order nr="00:47">
-    <Customer>00:47</Customer>
-  <Time>10012</Time>
-  <ProductOrder Status="Waiting" amount="1" orderId="00:47 pc. black no fuses (1211)">
+<Order nr="10010">
+    <Customer>10010</Customer>
+  <Time>00:27</Time>
+  <ProductOrder Status="Waiting" amount="2" orderId="10010 pcs. black 2 fuses (1214)">
+      <Quality>2</Quality>
+    <Product>pcs. black 2 fuses (1214)</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10010">
+    <Customer>10010</Customer>
+  <Time>00:27</Time>
+  <ProductOrder Status="Waiting" amount="2" orderId="10010 pcs. black 2 fuses (1214)">
+      <Quality>2</Quality>
+    <Product>pcs. black 2 fuses (1214)</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10006">
+    <Customer>10006</Customer>
+  <Time>00:25</Time>
+  <ProductOrder Status="Waiting" amount="1" orderId="10006 pc. black no fuses (1211)">
       <Quality>1</Quality>
     <Product>pc. black no fuses (1211)</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10006">
+    <Customer>10006</Customer>
+  <Time>00:25</Time>
+  <ProductOrder Status="Waiting" amount="1" orderId="10006 pc. black no fuses (1211)">
+      <Quality>1</Quality>
+    <Product>pc. black no fuses (1211)</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10006">
+    <Customer>10006</Customer>
+  <Time>00:25</Time>
+  <ProductOrder Status="Waiting" amount="1" orderId="10006 pc. black no fuses (1211)">
+      <Quality>1</Quality>
+    <Product>pc. black no fuses (1211)</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10005">
+    <Customer>10005</Customer>
+  <Time>00:20</Time>
+  <ProductOrder Status="Waiting" amount="1" orderId="10005 pc. black 1 fuse l (1212)">
+      <Quality>1</Quality>
+    <Product>pc. black 1 fuse l (1212)</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10004">
+    <Customer>10004</Customer>
+  <Time>00:15</Time>
+  <ProductOrder Status="Waiting" amount="1" orderId="10004 pc. black 1 fuse r (1213)">
+      <Quality>1</Quality>
+    <Product>pc. black 1 fuse r (1213)</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10004">
+    <Customer>10004</Customer>
+  <Time>00:15</Time>
+  <ProductOrder Status="Waiting" amount="1" orderId="10004 pc. black 1 fuse r (1213)">
+      <Quality>1</Quality>
+    <Product>pc. black 1 fuse r (1213)</Product>
+    </ProductOrder>
+  </Order>
+<Order nr="10004">
+    <Customer>10004</Customer>
+  <Time>00:15</Time>
+  <ProductOrder Status="Waiting" amount="1" orderId="10004 pc. black 1 fuse r (1213)">
+      <Quality>1</Quality>
+    <Product>pc. black 1 fuse r (1213)</Product>
     </ProductOrder>
   </Order>
 </root>

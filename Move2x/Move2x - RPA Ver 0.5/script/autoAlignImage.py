@@ -3,10 +3,11 @@ import cv2
 import numpy as np
 import os
 from script import SearchBot
-MAX_FEATURES = 500
-GOOD_MATCH_PERCENT = 0.40
+
 
 def alignImages():
+  MAX_FEATURES = 1000
+  GOOD_MATCH_PERCENT = 1
   tempSearch = 'temp\\'
   typeSearch = '.png'
   nameSearch = 'align'  
@@ -31,7 +32,7 @@ def alignImages():
   # Match features.
   matcher = cv2.DescriptorMatcher_create(cv2.DESCRIPTOR_MATCHER_BRUTEFORCE_HAMMING)
   matches = matcher.match(descriptors1, descriptors2, None)
-
+  
   # Sort matches by score
   #matches.sort(key=lambda x: x.distance, reverse=False)
 
@@ -63,5 +64,7 @@ def alignImages():
  
   cv2.imwrite(outFilename, im1Reg)
   print(SearchBot.check('webcam','ref'))
+  if(SearchBot.check('webcam','ref') < 0.64):
+      alignImages()
  
   

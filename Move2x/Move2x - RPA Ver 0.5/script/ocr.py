@@ -2,7 +2,7 @@ import cv2
 import pytesseract as pt
 from datetime import datetime
 pt.pytesseract.tesseract_cmd = 'Tesseract-OCR\\tesseract.exe'
-
+import re
 
 
 def imageColorGray(image):
@@ -37,11 +37,12 @@ def listOfWords(img):
         for b in words:
             if len(b) > 2:
                 b = b.replace('|', '')
+                b = b.replace(',', '.')
                 b = b.lstrip()
-                print(b)
+                
                 if(b[2] == ':' and len(b) > 10):
                     time = b[:5]
-                    customer = b[5:].lstrip()
+                    customer = int(re.search(r'\d+', b[5:]).group()) 
                
                 try:
                     if datetime.strptime(b, '%H:%M'):
@@ -52,10 +53,9 @@ def listOfWords(img):
                 try:
                     if(int(b[1:])and len(b) > 5):
                         b = b[1:].lstrip()
-                        print('here')
-                        print(b )
+                        
                     if int(b):
-                        customer = b
+                        customer = int(b)
                      
                 except:
                     lala = 2

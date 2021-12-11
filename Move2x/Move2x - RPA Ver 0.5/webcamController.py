@@ -60,19 +60,18 @@ def takePicture():
 def alignPicture():
     autoAlignImage.alignImages()
     return 'Aligning image'
+
 def saveXml(order):
     xml.saveToXmlList(order)
+
 def ocr():   
     for img in SearchBot.searchForAutoCrop():
         order = imageReader.listOfWords(img)
-        #os.remove(temp+img+type)
+        os.remove('Temp\\'+img+'.png')
         if order:
             saveXml(order)
-            print(order)
-
         
     return 'OCR is completion'
 
-def remove_duplicates(l):
-    return list(dict.fromkeys(l))
+
 
