@@ -17,8 +17,7 @@ class MainFrame(tk.Frame):
         btnY = 200
 
         super().__init__(*args, **kwargs)
-        self.listOfOrders = ProductAccess.getOrderFromDataBase()
-        self.listOfOrders = sorted(self.listOfOrders, key = lambda i: i[0])
+        self.listOfOrders = ProductAccess.getCustomerFromDataBase()        
         
         sb = Scrollbar(self, orient=VERTICAL)
         sb.pack(side=RIGHT, fill=Y)
@@ -59,7 +58,8 @@ class MainFrame(tk.Frame):
         self.listbox.delete(0,tk.END)
         
         for order in orderlist:
-            self.after(0, self.listbox_insert,order[0] +' - '+ str(order[1]) +' - '+ str(order[2]) +' - '+ order[3] +' - '+ order[4] )
+            
+            self.after(0, self.listbox_insert,order[0] +' - '+ str(order[1])  )
         
         
         return orderlist
@@ -74,17 +74,23 @@ class MainFrame(tk.Frame):
         
         matches = [x for x in self.listOfOrders if curselectedOrder[1] == x[1]]
         
-        for order in matches:
-            subject, message = self.emailBuilder(order,generateEmailDetails.returnCompany())
-            sendEmail.sendEmail( subject, message)
+        for orders in matches:
+            orderTime = orders[0]
+            orderCustomer = orders[1]
+            orderProductList = orders[2]
+            companyName = generateEmailDetails.returnCompany()
+            for order in orderProductList:
+                subject, message = self.emailBuilder(orderTime,orderCustomer, order,companyName)
+                sendEmail.sendEmail( subject, message)
+                
             self.listOfOrders.remove(order)
         self.getOrderFromDatabase()
 
-    def emailBuilder(self,order, companyName):
+    def emailBuilder(self,orderTime,orderCustomer, order, companyName):
         curOrder = order
         curCompanyName = companyName
         subject = "Dear Smarter Production inc. l would like to ordre "
-        messageText = subject + str(order[2]) + ' ' + curOrder[3] + ' ' + curOrder[4] + ' ' + curOrder[5] +'\n'+'By the time: '+ curOrder[0] + '\n'+'Best regards'+'\n'+ curCompanyName+ ' ('+ str(order[1])+')'
+        messageText = subject + str(order[0]) + ' ' + curOrder[1] + ' ' + curOrder[2] + ' ' + curOrder[3] +'\n'+'By the time: '+ orderTime + '\n'+'Best regards'+'\n'+ curCompanyName+ ' ('+ str(orderCustomer)+')'
         return subject, messageText
         
         

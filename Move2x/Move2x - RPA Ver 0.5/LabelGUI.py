@@ -37,13 +37,13 @@ class MainFrame(tk.Frame):
         global var1
         var1 = tk.IntVar()
         self.btnCancel = tk.Button(self, text='Cancel Order', command=self.btnCancel)
-        self.btnCancel.place(y=btnY, x=300, anchor='s')
+        self.btnCancel.place(y=btnY, x=150, anchor='s')
         self.btnPrint = tk.Button(self, text='Print Order', command=self.btnPrint)
-        self.btnPrint.place(y=btnY, x=400, anchor='s')
+        self.btnPrint.place(y=btnY, x=300, anchor='s')
         self.btnRefresh = tk.Button(self, text='Refresh Orders', command=self.btnRefresh)
-        self.btnRefresh.place(y=btnY, x=190, anchor='s')
-        self.btnRefresh = tk.Button(self, text='Open Dymo', command=self.btnOpenDymo)
-        self.btnRefresh.place(y=btnY, x=90, anchor='s')
+        self.btnRefresh.place(y=btnY, x=50, anchor='s')
+        #self.btnRefresh = tk.Button(self, text='Open Dymo', command=self.btnOpenDymo)
+        #self.btnRefresh.place(y=btnY, x=90, anchor='s')
         self.c1 = tk.Checkbutton(self, text='Email check',variable=var1, onvalue=1, offvalue=0, command=self.c1Check)
         self.c1.place(y=btnY, x=540, anchor='s')
         self.lblCustomer = tk.Label(self, bg="white", text='Customer')
@@ -65,7 +65,7 @@ class MainFrame(tk.Frame):
         self.options.set(qualityList[0]) # default value
         self.om1 =tk.OptionMenu(self, self.om_variable, *qualityList)
         
-        self.om1.place(y=btnY+2, x=465, anchor='s')
+        self.om1.place(y=btnY+2, x=365, anchor='s')
         self.pack(fill=BOTH, expand=1)
         self.xmlOrder()
 

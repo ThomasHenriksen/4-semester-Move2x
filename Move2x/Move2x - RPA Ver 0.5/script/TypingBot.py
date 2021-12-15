@@ -10,7 +10,7 @@ def type_string_with_delay(text):
     word = text
     for character in word:  # Loop over each character in the string
        pyautogui.press(character)
-       #time.sleep(0.001)  # Sleep for the amount of seconds generated
+       
 
 def printLabel():
     pyautogui.keyDown('ctrl')

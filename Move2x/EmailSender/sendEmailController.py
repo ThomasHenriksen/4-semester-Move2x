@@ -33,7 +33,7 @@ def sendEmail(subject, message):
         server.send_message(msg)
         # Quits the session
         server.quit()
-        print("Email sent successfully!")
+        
         # After sending the email, deletes the subject, sender and recepient, so a new mail can be sent
         del msg['Subject']
         del msg['From']
