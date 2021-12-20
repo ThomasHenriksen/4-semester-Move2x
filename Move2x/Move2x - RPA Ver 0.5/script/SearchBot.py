@@ -25,7 +25,7 @@ Parameters:
 -Label (--Label): input the name of that its trying to find 
 Return: 
 
--max_loc (--float): output coordinates where it fundet a match 
+-max_loc (--float): output coordinates where it found a match 
 """
 def find_label(take_screenshot, Label): 
     tempSearch = 'resources\\'
@@ -104,34 +104,38 @@ def searchForAutoCrop():
     bottomCorner_w = bottomCorner_img.shape[1]
     bottomCorner_h = bottomCorner_img.shape[0]
 
-    threshold = 0.930 #how good the matchs have to before it will 
-    yloc, xloc = np.where( topCornerResult >= threshold)
-    yloc2, xloc2 = np.where( bottomCornerResult >= threshold)
+    threshold = 0.930 #how good the matches have to be, before it will accept the coordinates.
+    yloc, xloc = np.where( topCornerResult >= threshold) #find all the topcorners results 
+    yloc2, xloc2 = np.where( bottomCornerResult >= threshold) #find all the bottomcorners results
     findCropCoordinates  = []
     for(x,y) in zip(xloc, yloc):
         
-        fundet = False
+        found = False
         Coordinates = []
         for(x2,y2) in zip(xloc2, yloc2):
-            if(x < x2 and y < y2 and fundet == False):
-                if(x2 > 1250):
-                    if(x < 400):
+            if(x < x2 and y < y2 and found == False):
+                if(x2 > 1250): #Must only find coordinates that are further away than 1250 pixels  
+                    if(x < 400): #Must only find coordinates that are below 400 pixels
                         
-                        fundet = True
+                        found = True
                         Coordinates.append(x)
                         Coordinates.append(y)
                         Coordinates.append(x2)
                         Coordinates.append(y2)
                         findCropCoordinates.append(Coordinates)
     index = 0 
-
+    """
+    This while loop goes through all the coordinates to find all the collisions, then removes those that clash by 5 pixels
+    """
     while(index < len(findCropCoordinates)-1):
         
         if((findCropCoordinates[index+1][1]-findCropCoordinates[index][1])> 5):
             findCropCoordinates.remove(findCropCoordinates[index])
         index+=1
 
-
+    """
+    In this for each loop, it loops through the coordinates and crops the orders out and than saves it 
+    """
     listOfFiles = []
     i = 0
     for(x,y,x2,y2) in findCropCoordinates:

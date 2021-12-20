@@ -1,14 +1,35 @@
+"""
+This script is used for controlling the Email and XML save
+
+Made by 
+@BJARKE ROBERT STØVE ANDERSØN
+@CHRISTIAN MARC JØRGENSEN
+@MAGNUS SØRENSEN 
+@THOMAS HENRIKSEN  
+"""
 from script import xmlScript as xml
 from script import ReadEmail as email
 
 
 
-
+#This method is used to read the Email
 def readEmail():
-    return email.getEmail()
+    return email.getEmail() #Returns the email or emails if there are more
+
+#This method is used to save the XML file
 def saveXml(order):
-    print(order)
     xml.saveOrder(order)
+
+
+"""
+This method is used for deconstructing the email and assemble an order
+
+                  !!!!!!Attention!!!!!!!
+THIS CODE NEEDS TO BE REFACTORED FROM HARDCODED TO DYNAMIC
+
+Return:
+-update (--bool): outputs true if there is a new email
+"""
 def getOrderFromEmail():
     emailText = readEmail()
     update = False

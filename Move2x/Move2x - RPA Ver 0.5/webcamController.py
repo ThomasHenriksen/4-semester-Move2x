@@ -11,6 +11,14 @@ import os
 import re
 from collections import Counter
 
+#This is the script used for business logic for images
+
+#Made by 
+#@BJARKE ROBERT STØVE ANDERSØN
+#@CHRISTIAN MARC JØRGENSEN
+#@MAGNUS SØRENSEN 
+#@THOMAS HENRIKSEN 
+
 def windowsKey():
     typingBot.windowsKey()
 
@@ -27,11 +35,11 @@ def writerBot(text):
     typingBot.type_string_with_delay(text)
 
 def webcam():
-     fundet = False
+     found = False
      objScreen = screenshot('windows')
      max_val = SearchBot.check(objScreen, 'takePicture')
      if(max_val >= 0.75):
-       fundet = True
+       found = True
      else:
          windowsKey()
          text = ['logitech']
@@ -45,13 +53,13 @@ def webcam():
 def takePicture():
     index = 0
     while(index < 2):
-        fundet = False
-        while(fundet == False):
+        found = False
+        while(found == False):
 
             objScreen = screenshot('windows')
             max_val = SearchBot.check(objScreen, 'takePicture')
             if(max_val >= 0.75):
-                fundet = True
+                found = True
         objScreen = screenshot('windows')
         objLoc = search(objScreen, 'takePicture')
         click(objLoc)

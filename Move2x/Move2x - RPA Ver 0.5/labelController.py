@@ -1,3 +1,11 @@
+#This script is used for controlling printing and navigating the controls for the label
+
+#Made by 
+#@BJARKE ROBERT STØVE ANDERSØN
+#@CHRISTIAN MARC JØRGENSEN
+#@MAGNUS SØRENSEN 
+#@THOMAS HENRIKSEN  
+
 from script import openFile
 from script import LabelClick
 from script import SearchBot
@@ -8,32 +16,39 @@ from script import xmlScript as xml
 import time
 import os
 
+"""
+This method is used to print the label in the DYMO Label Software
 
-def labelMaker(customer, time, product,quality):
-    size = int(quality)   
+Parameters:
+-customer (--string): inputs a string containing the customer
+-time (--string): inputs a string containing the time
+-product (--string): inputs a string containing the product
+-amount (--int): inputs the amount of prints
+"""
+def labelMaker(customer, time, product, amount):
+    size = int(amount)   
     i = 0
 
-    fundet = False
-    print('test')
+    found = False
     dymo()
-    print('test')
-    while(fundet == False):
+    while(found == False):
         objScreen = screenshot('windows')
         max_val = SearchBot.check(objScreen, 'customerNumber')
-        
-        print(max_val)
+       
         if(max_val >= 0.75):
-            fundet = True
-        if(fundet):
-            writeLabel('customerNumber', customer)
-            writeLabel('Time', time)
-            writeLabel('Produkt1', product)
-            while(i < size):
-               printLabel()
-               print(i)
-               i+=1
+            found = True
+    if(found):
+       writeLabel('customerNumber', customer)
+       writeLabel('Time', time)
+       writeLabel('Produkt1', product)
+       while(i < size):
+             printLabel()
+             i+=1
     return 'Print completion'
 
+"""
+This method is used to cancel the save for label
+"""
 def exitLabel():
     objScreen = screenshot('windows')
     objLoc = search(objScreen, 'exitLabel')
@@ -44,33 +59,31 @@ def exitLabel():
         objScreen = screenshot('windows')
         objLoc = search(objScreen, 'newLabelNo')
         click(objLoc)
-    return False
 
+"""
+This method is used for typing out the sentence
+Parameters:
+-labelTextField (--string): inputs a string containing the name of the field
+-textToEnter (--string): inputs a string containing the text to write
+"""
 def writeLabel(labelTextField, textToEnter):
     objScreen = screenshot('windows')
     objLoc = search(objScreen, labelTextField)
-    print(textToEnter)
-    text = textToEnter
     click(objLoc)
-    writerBot(text)
-    return False
+    writerBot(textToEnter)
 
-def removeLabelText(labelTextField):
-    objScreen = screenshot('windows')
-    objLoc = search(objScreen, labelTextField)
-    text = readChooseWordXml()
-    click(objLoc)
-    spacebar()
-    return False
-
+"""
+This method is used for deleting the old template and make a new template by copy it from the backup 
+and open the DYMO Label Software
+"""
 def dymo(): 
     openFile.deleteFile()
     openFile.copyFile()
     openFile.openFile()
-    fundet = False
+    found = False
     
     i = 0
-    while(i < 5 and fundet == False):
+    while(i < 5 and found == False):
         
         objScreen = screenshot('windows')
         max_val = SearchBot.check(objScreen, 'newLabelNo')
@@ -79,7 +92,7 @@ def dymo():
             objScreen = screenshot('windows')
             objLoc = search(objScreen, 'newLabelNo')
             click(objLoc)
-            fundet = True
+            found = True
         i += 1
     return 'Dymo is open'
 
@@ -103,11 +116,6 @@ def click(max_loc):
 
 def writerBot(text):
     return typingBot.type_string_with_delay(text)
-
-def readChooseWordXml():
-    word = xml.readXml('choosenword')
-  
-    return word
 
 
 

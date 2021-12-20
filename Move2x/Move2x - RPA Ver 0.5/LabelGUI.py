@@ -1,6 +1,5 @@
 import tkinter as tk
 from tkinter import *
-
 from concurrent import futures
 import time
 import os 
@@ -55,15 +54,15 @@ class MainFrame(tk.Frame):
         global iemail
         iemail = 0
         self.options = tk.StringVar(self) # variable 
-        global qualityList 
-        qualityList = ["1"]
+        global amountList 
+        amountList = ["1"]
 
         self.om_variable = tk.StringVar(self)
-        self.om_variable.set(qualityList[0])
+        self.om_variable.set(amountList[0])
         self.om_variable.trace('w', self.option_select)
 
-        self.options.set(qualityList[0]) # default value
-        self.om1 =tk.OptionMenu(self, self.om_variable, *qualityList)
+        self.options.set(amountList[0]) # default value
+        self.om1 =tk.OptionMenu(self, self.om_variable, *amountList)
         
         self.om1.place(y=btnY+2, x=365, anchor='s')
         self.pack(fill=BOTH, expand=1)
@@ -104,21 +103,21 @@ class MainFrame(tk.Frame):
         return orderList
 
     
-    def set_size_options(self, quality):
+    def set_size_options(self, amount):
         
-        size =int(quality)   
+        size =int(amount)   
         
         i = 0
-        qualityList = []
+        amountList = []
         while(i < size):
            i+=1
-           qualityList.append(i)
+           amountList.append(i)
            
-        qualityList.reverse()
+        amountList.reverse()
         menu = self.om1["menu"]
         menu.delete(0, "end")
-        self.om_variable.set(qualityList[0])
-        for string in qualityList:
+        self.om_variable.set(amountList[0])
+        for string in amountList:
             menu.add_command(label=string, command=lambda value=string: self.om_variable.set(value))
     
     def option_select(self, *args):

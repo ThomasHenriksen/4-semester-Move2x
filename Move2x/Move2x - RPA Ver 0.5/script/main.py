@@ -71,7 +71,7 @@ def dymo():
     openFile.deleteFile()
     openFile.copyFile()
     openFile.openFile()
-    fundet = False
+    found = False
     time.sleep(0.1)
     objScreen = screenshot('windows')
     max_val = SearchBot.check(objScreen, 'newLabelCheck')
@@ -82,13 +82,13 @@ def dymo():
 
 
 def takePicture():
-    fundet = False
-    while(fundet == False):
+    found = False
+    while(found == False):
         print('waiting')
         objScreen = screenshot('windows')
         max_val = SearchBot.check(objScreen, 'WebcamCheck')
         if(max_val >= 0.75):
-            fundet = True
+            found = True
     objScreen = screenshot('windows')
     objLoc = search(objScreen, 'takePicture')
     click(objLoc)

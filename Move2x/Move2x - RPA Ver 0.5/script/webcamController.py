@@ -27,11 +27,11 @@ def writerBot(text):
     typingBot.type_string_with_delay(text)
 
 def webcam():
-     fundet = False
+     found = False
      objScreen = screenshot('windows')
      max_val = SearchBot.check(objScreen, 'takePicture')
      if(max_val >= 0.75):
-       fundet = True
+       found = True
      else:
          windowsKey()
          text = ['logitech']
@@ -43,13 +43,13 @@ def webcam():
      return 'Webcam is open'
 
 def takePicture():
-    fundet = False
-    while(fundet == False):
+    found = False
+    while(found == False):
         print('waiting')
         objScreen = screenshot('windows')
         max_val = SearchBot.check(objScreen, 'takePicture')
         if(max_val >= 0.75):
-            fundet = True
+            found = True
     objScreen = screenshot('windows')
     objLoc = search(objScreen, 'takePicture')
     click(objLoc)
