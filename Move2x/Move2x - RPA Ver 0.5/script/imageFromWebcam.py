@@ -1,5 +1,5 @@
 """
-This script is used for takes the image from Logitech Capture default folder 
+This script is used for takning the image from Logitech Capture default folder 
 
 
 Made by 
