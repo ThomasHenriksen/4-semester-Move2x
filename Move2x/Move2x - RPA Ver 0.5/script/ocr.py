@@ -113,7 +113,7 @@ def OCR(img):
                         time = b
                         
                 except:
-                    lala = 2
+                    lala = 2 # doesn't do anything  
                 try:
                     if(int(b[1:])and len(b) > 5):
                         b = b[1:].lstrip()
