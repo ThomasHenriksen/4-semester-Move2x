@@ -104,7 +104,7 @@ def searchForAutoCrop():
     bottomCorner_w = bottomCorner_img.shape[1]
     bottomCorner_h = bottomCorner_img.shape[0]
 
-    threshold = 0.930
+    threshold = 0.930 #how good the matchs have to before it will 
     yloc, xloc = np.where( topCornerResult >= threshold)
     yloc2, xloc2 = np.where( bottomCornerResult >= threshold)
     findCropCoordinates  = []

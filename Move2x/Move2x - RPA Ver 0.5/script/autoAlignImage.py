@@ -1,13 +1,31 @@
+"""
+This script is used for align the image so its easyer for the ocr to scan the image 
+
+
+Made by 
+@BJARKE ROBERT STØVE ANDERSØN
+@CHRISTIAN MARC JØRGENSEN
+@MAGNUS SØRENSEN 
+@THOMAS HENRIKSEN  
+"""
+
 from __future__ import print_function
 import cv2
 import numpy as np
 import os
 from script import SearchBot
 
+"""
+This method is used for to align the image from the temp folder, where the name is align. it will save the new image as webcam.png in the temp folder 
 
+"""
 def alignImages():
+  """
+  how good the the align have to be 
+  """
   MAX_FEATURES = 1000
   GOOD_MATCH_PERCENT = 1
+
   tempSearch = 'temp\\'
   typeSearch = '.png'
   nameSearch = 'align'  
@@ -19,11 +37,13 @@ def alignImages():
   refFilename = "resources\\ref.png"
   
   im2 = cv2.imread(refFilename, cv2.IMREAD_COLOR)
+
   # Convert images to grayscale
   im1Gray = cv2.cvtColor(im1, cv2.COLOR_BGR2GRAY)
   im2Gray = cv2.cvtColor(im2, cv2.COLOR_BGR2GRAY)
   im1Gray = cv2.resize(im1Gray, None, fx=2, fy=2, interpolation=cv2.INTER_LINEAR)
   im2Gray = cv2.resize(im2Gray, None, fx=2, fy=2, interpolation=cv2.INTER_LINEAR)
+
   # Detect ORB features and compute descriptors.
   orb = cv2.ORB_create(MAX_FEATURES)
   keypoints1, descriptors1 = orb.detectAndCompute(im1Gray, None)
@@ -62,8 +82,13 @@ def alignImages():
   
   #os.remove(outFilename)
  
-  cv2.imwrite(outFilename, im1Reg)
-  print(SearchBot.check('webcam','ref'))
+  cv2.imwrite(outFilename, im1Reg) #saves the file as webcam.png in the temp folder 
+
+
+  """
+  Checks if the align image look like the order card if not it will do the method again 
+
+  """
   if(SearchBot.check('webcam','ref') < 0.64):
       alignImages()
  
