@@ -62,7 +62,7 @@ def saveOrder(orderList):
         if(product[index-8] == 'r' or product[index-8] == 'l'):
            product = product[:index-8] +  product[index-8].upper()+product[index-7:]
         
-        fundet = findOrderXml('ocr', str(customer) + ' ' + product)
+        fundet = findOrderXml('ocr', customer + ' ' + product)
 
 
         if not fundet:
@@ -182,8 +182,7 @@ def getOrder():
             test.append('1')
             test.append('No Order')
             order.append(test)
-        
-        order = sorted(order, key = lambda i: (i[2],i[1]))
+        order = sorted(order, key = lambda i: i[2])
         s = []
         for i in order:
              if i not in s:
@@ -200,7 +199,9 @@ def buildOrder(order):
 
     for productOrder in status:
         status = productOrder.get('Status')      
-        amount = productOrder.get('Amount')    
+        amount = productOrder.get('Amount')
+        if int(amount):
+            amount = amount
         productText = productOrder[1].text
         data.append(status)
         data.append(customer)

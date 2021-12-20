@@ -43,18 +43,21 @@ def webcam():
      return 'Webcam is open'
 
 def takePicture():
-    fundet = False
-    while(fundet == False):
-        
+    index = 0
+    while(index < 2):
+        fundet = False
+        while(fundet == False):
+
+            objScreen = screenshot('windows')
+            max_val = SearchBot.check(objScreen, 'takePicture')
+            if(max_val >= 0.75):
+                fundet = True
         objScreen = screenshot('windows')
-        max_val = SearchBot.check(objScreen, 'takePicture')
-        if(max_val >= 0.75):
-            fundet = True
-    objScreen = screenshot('windows')
-    objLoc = search(objScreen, 'takePicture')
-    click(objLoc)
-    time.sleep(0.2)
-    getFile.takeImageFromWebcamFolder()
+        objLoc = search(objScreen, 'takePicture')
+        click(objLoc)
+        time.sleep(0.2)
+        getFile.takeImageFromWebcamFolder()
+        index += 1
     return 'img is completion'
 
 def alignPicture():
@@ -66,7 +69,7 @@ def saveXml(order):
 
 def ocr():   
     for img in SearchBot.searchForAutoCrop():
-        order = imageReader.listOfWords(img)
+        order = imageReader.OCR(img)
         os.remove('Temp\\'+img+'.png')
         if order:
             saveXml(order)

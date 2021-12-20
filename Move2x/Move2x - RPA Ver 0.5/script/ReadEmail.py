@@ -1,7 +1,22 @@
-#modules
+"""
+This script is used for reading E-mails
+
+
+Made by 
+@BJARKE ROBERT STØVE ANDERSØN
+@CHRISTIAN MARC JØRGENSEN
+@MAGNUS SØRENSEN 
+@THOMAS HENRIKSEN  
+"""
 import imaplib
 import email
+"""
+This method gets a Email from G-Mail and returns the mail
 
+return:
+
+-emailOrder (--emailOrder): output the a Email 
+"""
 def getEmail():
     #credentials - E-mail for reading
     username ="move2produktion@gmail.com"
@@ -27,7 +42,7 @@ def getEmail():
     #total number of mails from specific user
     #print("Total messages from selected Email:" , len(selected_mails[0].split()))
 
-    listOfEmail =[]
+    emailOrder =[]
     for num in selected_mails[0].split():
         _, data = mail.fetch(num , '(RFC822)')
         _, bytes_data = data[0]
@@ -38,8 +53,8 @@ def getEmail():
     
         #access data
        # print("To:", email_message["to"])
-        #print("From: ",email_message["from"])
-       #print("Date: ",email_message["date"])
+       # print("From: ",email_message["from"])
+       # print("Date: ",email_message["date"])
        # print("Subject: ",email_message["subject"])
         for part in email_message.walk():
             if part.get_content_type()=="text/plain" or part.get_content_type()=="text/html":
@@ -47,6 +62,6 @@ def getEmail():
               #  print("Message: \n", message.decode())
                 messageText = message.decode()
               #  print("==========================================\n")
-                listOfEmail.append(messageText)
+                emailOrder.append(messageText)
                 break
-    return listOfEmail
+    return emailOrder

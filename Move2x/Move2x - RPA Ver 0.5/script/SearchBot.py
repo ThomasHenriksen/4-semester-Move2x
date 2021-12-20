@@ -1,5 +1,5 @@
 import numpy as np
-import cv2 as cv
+import cv2 
 import pyautogui as pg
 import pyautogui, time
 from PIL import Image as imgTesting
@@ -13,12 +13,12 @@ def find_label(take_screenshot, Label):
     temp = 'temp\\'
     type = '.png'
     path = temp + take_screenshot + type 
-    haystack_img = cv.imread(path) #Screenshot
-    #haystack_img = cv.resize(haystack_img, (1024, 720))
-    needle_img = cv.imread(pathSearch)#Label img to find with in screenshot
-    result = cv.matchTemplate(haystack_img, needle_img, cv.TM_CCOEFF_NORMED) # match Screenshot and Label img 
+    haystack_img = cv2.imread(path) #Screenshot
+    #haystack_img = cv2.resize(haystack_img, (1024, 720))
+    needle_img = cv2.imread(pathSearch)#Label img to find with in screenshot
+    result = cv2.matchTemplate(haystack_img, needle_img, cv2.TM_CCOEFF_NORMED) # match Screenshot and Label img 
 
-    min_val, max_val, min_loc, max_loc = cv.minMaxLoc(result)
+    min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
 
     #print('Best match top left positopn: %s' % str(max_loc))
     print('Best match confidence: %s' % str(max_val))
@@ -49,17 +49,17 @@ def searchForAutoCrop():
     type = '.png'
     path = temp + 'webcam' + type 
 
-    method = cv.TM_CCOEFF_NORMED
+    method = cv2.TM_CCOEFF_NORMED
 
-    img = cv.imread(path) #Screenshot
+    img = cv2.imread(path) #Screenshot
     height, width, __ = img.shape
-    #haystack_img = cv.resize(haystack_img, (1024, 720))
-    topCorner_img = cv.imread(topCornerpath)#Label img to find with in screenshot
-    bottomCorner_img = cv.imread(bottomCornerPathSearch)#Label img to find with in screenshot
-    topCornerResult = cv.matchTemplate(img, topCorner_img, method) # match Screenshot and Label img 
-    bottomCornerResult = cv.matchTemplate(img, bottomCorner_img, method) # match Screenshot and Label img 
-    min_val, max_val, min_loc, max_loc = cv.minMaxLoc(topCornerResult)
-    min_val, max_val, min_loc, max_loc = cv.minMaxLoc(bottomCornerResult)
+    #haystack_img = cv2.resize(haystack_img, (1024, 720))
+    topCorner_img = cv2.imread(topCornerpath)#Label img to find with in screenshot
+    bottomCorner_img = cv2.imread(bottomCornerPathSearch)#Label img to find with in screenshot
+    topCornerResult = cv2.matchTemplate(img, topCorner_img, method) # match Screenshot and Label img 
+    bottomCornerResult = cv2.matchTemplate(img, bottomCorner_img, method) # match Screenshot and Label img 
+    min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(topCornerResult)
+    min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(bottomCornerResult)
     #print('Best match top left positopn: %s' % str(max_loc))
     #print('Best match confidence: %s' % str(max_val))
     # Sets the level off accepteable match with in screenshot
@@ -118,12 +118,12 @@ def check(take_screenshot, whatToCheck):
     temp = 'temp\\'
     type = '.png'
     path = temp + take_screenshot + type 
-    haystack_img = cv.imread(path) #Screenshot
+    haystack_img = cv2.imread(path) #Screenshot
   
-    needle_img = cv.imread(pathSearch)#Label img to find with in screenshot
-    result = cv.matchTemplate(haystack_img, needle_img, cv.TM_CCOEFF_NORMED) # match Screenshot and Label img 
+    needle_img = cv2.imread(pathSearch)#Label img to find with in screenshot
+    result = cv2.matchTemplate(haystack_img, needle_img, cv2.TM_CCOEFF_NORMED) # match Screenshot and Label img 
 
-    min_val, max_val, min_loc, max_loc = cv.minMaxLoc(result)
+    min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
    # print('Best match confidence: %s' % str(max_val))
 
 

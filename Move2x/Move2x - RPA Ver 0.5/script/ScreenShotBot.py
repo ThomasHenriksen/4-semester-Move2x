@@ -1,10 +1,32 @@
-import pyautogui as pg
+"""
+This script is used for screen shot of the current window 
+
+
+Made by 
+@BJARKE ROBERT STØVE ANDERSØN
+@CHRISTIAN MARC JØRGENSEN
+@MAGNUS SØRENSEN 
+@THOMAS HENRIKSEN  
+"""
+
+
+
 from PIL import ImageGrab
 import os
 from pathlib import Path
 import time
 from script import TypingBot as typingBot
+"""
+This method is used for take a screen shot
 
+Parameters:
+
+-window (--string): input a name for a image
+
+Return: 
+
+-name (--string): output the name of the image
+"""
 def take_screenshot (window):
    
     time.sleep(0.2)
@@ -22,10 +44,5 @@ def take_screenshot (window):
          os.remove(my_filePNG)
     im.save(path)
 
-
-
-   # path = temp + name + type     
-   # myScreenshot = pg.screenshot() 
-   # myScreenshot.save(path)
     return name
 
