@@ -19,9 +19,9 @@ class MainFrame(tk.Frame):
         xml.createXml('ocr')
         self.buttonScanner = tk.Button(self, text='Scan order', command=self.btnWebcam)
         self.buttonScanner.pack(pady=5)
-        self.buttonRead = tk.Button(
-        self, text='Scan read order', command=self.btnRead)
-        self.buttonRead.pack(pady=5)
+        #self.buttonRead = tk.Button(
+        #self, text='Scan read order', command=self.btnRead)
+        #self.buttonRead.pack(pady=5)
         self.buttonDymo = tk.Button(self, text='Dymo Print', command=self.btnDymo)
         self.buttonDymo.pack(pady=5)
         self.pack()

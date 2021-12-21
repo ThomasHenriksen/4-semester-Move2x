@@ -1,9 +1,9 @@
 #This script is used for controlling printing and navigating the controls for the label
 
 #Made by 
-#@BJARKE ROBERT STØVE ANDERSØN
-#@CHRISTIAN MARC JØRGENSEN
-#@MAGNUS SØRENSEN 
+#@BJARKE ROBERT STï¿½VE ANDERSï¿½N
+#@CHRISTIAN MARC Jï¿½RGENSEN
+#@MAGNUS Sï¿½RENSEN 
 #@THOMAS HENRIKSEN  
 
 from script import openFile

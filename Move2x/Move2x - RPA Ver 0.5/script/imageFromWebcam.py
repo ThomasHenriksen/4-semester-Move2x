@@ -30,7 +30,8 @@ def pathToFile():
     return latest_file
 
 """
-This method is used for getting the newest file in the Logitech Capture default folder, its removes the old image and then moves the new file in to the temp folder 
+This method is used for getting the newest file in the Logitech Capture default folder, 
+its removes the old image and then moves the new file in to the temp folder 
 """
 def takeImageFromWebcamFolder():
     folder = '/temp/*'

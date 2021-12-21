@@ -33,6 +33,8 @@ def click(max_loc):
 
 def writerBot(text):
     typingBot.type_string_with_delay(text)
+
+
 """
 This method is used to open the Logitech Capture Webcam program
 
@@ -56,6 +58,7 @@ def webcam():
          objLoc = search(objScreen, 'logi')
          click(objLoc)
      return 'Webcam is open'
+
 """
 This method is used to take a picture with Logitech Capture.
 
@@ -81,6 +84,7 @@ def takePicture():
         getFile.takeImageFromWebcamFolder()
         index += 1
     return 'img is completed'
+
 """
 This method is used to Aligne the image.
 

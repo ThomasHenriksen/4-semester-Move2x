@@ -20,11 +20,9 @@ import re
 This method is used to grayed out a image, it take in as input and then returns a grayed out version of the image 
 
 Parameters:
-
 -image (--image): input a image
 
 Return: 
-
 -image (--image): output a grayed out version of the image
 """
 def imageColorGray(image):
@@ -34,11 +32,9 @@ def imageColorGray(image):
 This method is used for Optical character recognition from a image and outputs a list of orders 
 
 Parameters:
-
 -image (--image): input the name of the name
 
 Return: 
-
 -list (--list): output a order with(the Time, the customer number, the list Product)
 """
 def OCR(img):
@@ -103,15 +99,12 @@ def OCR(img):
                 b = b.replace('.', '')
                 b = b.replace('pe', 'pc')
                 b = b.lstrip()
-                
                 if(b[2] == ':' and len(b) > 10):
                     time = b[:5]
                     customer = int(re.search(r'\d+', b[5:]).group()) 
-               
                 try:
                     if datetime.strptime(b, '%H:%M'):
                         time = b
-                        
                 except:
                     lala = 2 # doesn't do anything  
                 try:
@@ -120,7 +113,6 @@ def OCR(img):
                         
                     if int(b):
                         customer = int(b)
-                     
                 except:
                     lala = 2
                 try:
@@ -128,11 +120,8 @@ def OCR(img):
                     if len(b) > 20:
                         product = b
                         orderProduct.append(product)
-                        
-                        
                 except:
                     lala = 2
-                
    
     if time:
         if customer:
