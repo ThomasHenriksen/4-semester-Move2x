@@ -82,7 +82,7 @@ Parameters:
 """
 def saveOrder(orderList):
     time = orderList[0]
-    customer = orderList[1]
+    customer = str(orderList[1])
     productOrder = orderList[2]
     amount = ''
     product = ''

@@ -38,9 +38,7 @@ Return:
 -list (--list): output a order with(the Time, the customer number, the list Product)
 """
 def OCR(img):
-    
     list =[] #makes a list that is empty 
-
     """
     Getting the file from temp folder and its type
     """
@@ -48,7 +46,6 @@ def OCR(img):
     type = '.png'
     imgName = img
     path = temp + imgName + type 
-
     """
     reads the image.
     grayed out the image. 
@@ -57,7 +54,6 @@ def OCR(img):
     img = cv2.imread(path)
     img = imageColorGray(img)
     height, width = img.shape
-
     """
     Makes a empty order by,
     time, customer, list of orderProduct, product
@@ -66,7 +62,6 @@ def OCR(img):
     customer = ''
     orderProduct = []
     product = ''
-
     """
     looks for images that have width bigger then 750 px
     """

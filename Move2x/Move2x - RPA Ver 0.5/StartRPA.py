@@ -27,13 +27,13 @@ class MainFrame(tk.Frame):
         self.pack()
  
     def btnDymo(self):
-        print('Button clicked')
+        
         thread_pool_executor.submit(self.blocking_Dymo)
     def btnWebcam(self):
-        print('Button clicked')
+        
         thread_pool_executor.submit(self.blocking_Scanner)
     def btnRead(self):
-        print('Button clicked')
+        
         thread_pool_executor.submit(self.blocking_Read)
     def set_label_text(self, text=''):
         self.label['text'] = text

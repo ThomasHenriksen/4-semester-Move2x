@@ -43,6 +43,7 @@
     <Compile Include="script\ScreenShotBot.py" />
     <Compile Include="script\SearchBot.py" />
     <Compile Include="script\TypingBot.py" />
+    <Compile Include="unitTest\xmlUnitTest.py" />
     <Compile Include="webcamController.py">
       <SubType>Code</SubType>
     </Compile>
@@ -103,9 +104,12 @@
     <Content Include="Temp\webcam3.png" />
     <Content Include="Temp\windows.png" />
     <Content Include="Move2x RPA.bat" />
+    <Content Include="unitTest\__pycache__\xml.cpython-37.pyc" />
     <Content Include="XML\_ocr.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="unitTest\" />
+    <Folder Include="unitTest\__pycache__\" />
     <Folder Include="XML\" />
     <Folder Include="resources\" />
     <Folder Include="script\" />
